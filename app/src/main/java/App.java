@@ -7,10 +7,9 @@ import app.src.main.java.Dosen.*;
 import java.util.*;
 public class App {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-        String nama = scan.nextLine();
+
         
-        System.out.printf("nama %s\n",nama);
+        System.out.printf("Selamat nubes!!\n");
 
         
     }
