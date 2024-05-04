@@ -52,7 +52,7 @@ public abstract class Creature {
     }
     
     // Abstract method attack
-    public abstract void attack();
+    public abstract void resetCooldown();
 
     // Abstract method for movement
     public abstract void move();
