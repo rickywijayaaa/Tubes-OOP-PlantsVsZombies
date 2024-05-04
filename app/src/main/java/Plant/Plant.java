@@ -6,5 +6,5 @@ public class Plant {
 
 
     Windy w = new Windy();
-    
+    //suka bgt pak windy lu kii
 }
