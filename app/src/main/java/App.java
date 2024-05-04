@@ -5,12 +5,15 @@
 
 import java.util.*;
 import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public class App {
     public static void main(String[] args) {
 
-        
+        NormalZombie zom1 = new NormalZombie("NormalZombie",1,1,1,true,1,1);
         System.out.printf("Selamat nubes!!\n");
+        zom1.move();
+        zom1.attack();
 
         
     }
