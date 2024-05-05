@@ -10,7 +10,7 @@ import app.src.main.java.Zombies.*;
 public class App {
     public static void main(String[] args) {
 
-        NormalZombie zom1 = new NormalZombie("NormalZombie",1,1,1,true,1,1);
+        NormalZombie zom1 = new NormalZombie();
         BucketheadZombie zom2 = new BucketheadZombie("NormalZombie",1,1,1,true,1,1);
         FlagZombie zom3 = new FlagZombie("NormalZombie",1,1,1,true,1,1);
         DolphinRiderZombie zom4 = new DolphinRiderZombie("NormalZombie",1,1,1,true,50,50);
