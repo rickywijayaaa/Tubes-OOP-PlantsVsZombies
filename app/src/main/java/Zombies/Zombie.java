@@ -24,7 +24,7 @@ public abstract class Zombie extends Creature {
         
     }
     
-    // Abstract methods 
+    // Abstract method attack plant
     public abstract void attack();
 
     @Override
