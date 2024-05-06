@@ -2,8 +2,8 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Peashooter extends Plant {
-    public Peashooter(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, int cost, int range, double cooldown) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, cost, range, cooldown);
+    public Peashooter(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+        super("Peashooter", 100, 100, 25, 4, -1, 10, false);
     }
 
     // Implementing abstract method dari Plant class

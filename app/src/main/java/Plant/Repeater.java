@@ -2,8 +2,8 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Repeater extends Plant {
-    public Repeater(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, int cost, int range, double cooldown) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, cost, range, cooldown);
+    public Repeater(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+        super("Repeater", 200, 300, 20, 1.5, 3, 0.5, false);
     }
 
     // Implementing abstract method dari Plant class
