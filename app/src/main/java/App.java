@@ -11,12 +11,17 @@ public class App {
     public static void main(String[] args) {
 
         NormalZombie zom1 = new NormalZombie();
-        BucketheadZombie zom2 = new BucketheadZombie("NormalZombie",1,1,1,true,1,1);
-        FlagZombie zom3 = new FlagZombie("NormalZombie",1,1,1,true,1,1);
-        DolphinRiderZombie zom4 = new DolphinRiderZombie("NormalZombie",1,1,1,true,50,50);
-        System.out.printf("Selamat nubes!!\n");
-        zom4.move();
-        zom4.attack();
+        ConeheadZombie zom2 = new ConeheadZombie();
+        PoleVaultingZombie zom3 = new PoleVaultingZombie();
+        BucketheadZombie zom4 = new BucketheadZombie();
+        DuckyTubeZombie zom5 = new DuckyTubeZombie();
+        DolphinRiderZombie zom6 = new DolphinRiderZombie();
+        zom1.displayZombie();
+        zom2.displayZombie();
+        zom3.displayZombie();
+        zom4.displayZombie();
+        zom5.displayZombie();
+        zom6.displayZombie();
 
         
     }
