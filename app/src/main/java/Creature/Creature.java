@@ -1,7 +1,4 @@
-
-
 package app.src.main.java.Creature;
-
 
 public abstract class Creature {
     private String name;
