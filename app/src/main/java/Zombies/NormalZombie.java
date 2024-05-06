@@ -5,7 +5,7 @@ import app.src.main.java.Creature.*;
 
 public class NormalZombie extends Zombie {
     public NormalZombie() {
-        super("NormalZombie", 125, 100, 1, false, 0, 0);
+        super("Normal Zombie", 125, 100, 1, false, 0, 500);
     }
 
 

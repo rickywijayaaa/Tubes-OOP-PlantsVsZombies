@@ -4,8 +4,8 @@ import app.src.main.java.Creature.*;
 
 
 public class PoleVaultingZombie extends Zombie {
-    public PoleVaultingZombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, double slowed, double speed) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, slowed, speed);
+    public PoleVaultingZombie() {
+        super("Pole Vaulting Zombie", 175, 100, 1, false, 0, 500);
     }
 
 

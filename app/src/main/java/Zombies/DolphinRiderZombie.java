@@ -5,8 +5,8 @@ import app.src.main.java.Creature.*;
 
 
 public class DolphinRiderZombie extends Zombie {
-    public DolphinRiderZombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, double slowed, double speed) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, slowed, speed);
+    public DolphinRiderZombie() {
+        super("Dolphin Rider Zombie", 175, 100, 1, true, 0, 500);
     }
 
 
