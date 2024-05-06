@@ -16,12 +16,20 @@ public class App {
         BucketheadZombie zom4 = new BucketheadZombie();
         DuckyTubeZombie zom5 = new DuckyTubeZombie();
         DolphinRiderZombie zom6 = new DolphinRiderZombie();
+        SnorkelZombie zom7 = new SnorkelZombie();
+        FlagZombie zom8 = new FlagZombie();
+        ScreendoorZombie zom9 = new ScreendoorZombie();
+        FootballZombie zom10 = new FootballZombie();
         zom1.displayZombie();
         zom2.displayZombie();
         zom3.displayZombie();
         zom4.displayZombie();
         zom5.displayZombie();
         zom6.displayZombie();
+        zom7.displayZombie();
+        zom8.displayZombie();
+        zom9.displayZombie();
+        zom10.displayZombie();
 
         
     }
