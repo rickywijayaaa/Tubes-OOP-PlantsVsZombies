@@ -2,8 +2,8 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Chomper extends Plant {
-    public Chomper(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, int cost, int range, double cooldown) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, cost, range, cooldown);
+    public Chomper(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+        super("Chomper", 150, 300, 100, 2, 1, 10, false);
     }
 
     // Implementing abstract method dari Plant class
