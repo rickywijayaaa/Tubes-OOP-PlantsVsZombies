@@ -4,8 +4,8 @@ import app.src.main.java.Creature.*;
 
 
 public class FlagZombie extends Zombie {
-    public FlagZombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, double slowed, double speed) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, slowed, speed);
+    public FlagZombie() {
+        super("Flag Zombie",300,50,1,false,0,1);
     }
 
 

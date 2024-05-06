@@ -4,8 +4,8 @@ import app.src.main.java.Creature.*;
 
 
 public class ScreendoorZombie extends Zombie {
-    public ScreendoorZombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, double slowed, double speed) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, slowed, speed);
+    public ScreendoorZombie() {
+        super("Screendoor Zombie",500,75,1,false,0,1);
     }
 
 
