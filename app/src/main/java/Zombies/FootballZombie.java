@@ -3,9 +3,9 @@ package app.src.main.java.Zombies;
 import app.src.main.java.Creature.*;
 
 
-public class SnorkelZombie extends Zombie {
-    public SnorkelZombie() {
-        super("Snorkel Zombie",200,150,1,true,0,1);
+public class FootballZombie extends Zombie {
+    public FootballZombie() {
+        super("Football Zombie" ,300,100,7,false,0,5 );
     }
 
 
