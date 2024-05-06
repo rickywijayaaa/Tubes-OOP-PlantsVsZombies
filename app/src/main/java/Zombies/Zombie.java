@@ -20,8 +20,18 @@ public abstract class Zombie extends Creature {
         return speed;
     }
 
-    public void setAquatics(boolean air){
-        
+
+    
+    public void setSpeed(double newspeed){
+        speed = newspeed;
+    }
+
+    public void setSlowed(double newslow){
+        slowed = newslow;
+    }
+
+    public void displayZombie(){
+        System.out.println("nama: " + getName() + " memiliki health : " + getHealth() + " attack damage : " + getAttackDamage() + " attack speed : " + getAttackSpeed());
     }
     
     // Abstract method attack plant
