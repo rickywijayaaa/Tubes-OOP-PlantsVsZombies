@@ -4,8 +4,8 @@ import app.src.main.java.Creature.*;
 
 
 public class NormalZombie extends Zombie {
-    public NormalZombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, double slowed, double speed) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, slowed, speed);
+    public NormalZombie() {
+        super("Normal Zombie", 125, 100, 1, false, 0, 500);
     }
 
 
