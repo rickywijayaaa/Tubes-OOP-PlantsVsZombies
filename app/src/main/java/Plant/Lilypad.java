@@ -23,5 +23,6 @@ public class Lilypad extends Plant {
     @Override
     public void resetCooldown() {
         // Lilypad tidak memiliki cooldowns, jadi method tidak melakukan apapun
+        // coba
     }
 }
