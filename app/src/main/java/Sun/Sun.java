@@ -7,7 +7,7 @@ public class Sun {
     private static int lastSun;
     private int sunProduction = 25;
 
-    public static void SunProducing(int sunWaktuTunggu, int sunProduction){
+    public static void SunGenerate(int sunWaktuTunggu, int sunProduction){
         Random acak = new Random();
 
         sunWaktuTunggu =  acak.nextInt(6) + 5;
