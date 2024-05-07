@@ -27,7 +27,7 @@ public class Tile {
         entity.add(creature);
     }
 
-    public void remove(Creature creature) {
+    public void removeCreature(Creature creature) {
         entity.remove(creature);
     }
 
