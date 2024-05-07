@@ -4,7 +4,7 @@
 // package app.src.main.java;
 
 import app.src.main.java.MapGame.*;
-
+import app.src.main.java.Sun.*;
 import app.src.main.java.Plant.CabbagePult;
 import app.src.main.java.Plant.CherryBomb;
 import app.src.main.java.Plant.Lilypad;
@@ -100,6 +100,9 @@ public class App {
         System.out.println("GameMap after remove entities:");
         koor11.removeCreature(pl10);
         peta.displayMap();
+        Sun matahari = new Sun();
+        // matahari.SunGenerate();
+        // System.out.println("Total Sun: " + matahari.getSun());
 
         
     }
