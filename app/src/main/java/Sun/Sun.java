@@ -4,8 +4,9 @@ import java.util.Random;
 
 public class Sun {
     private int sunWaktuTunggu;
-    private static int lastSun;
     private int sunProduction = 25;
+    private static int lastSun;
+    
 
     public static void SunGenerate(int sunWaktuTunggu, int sunProduction){
         Random acak = new Random();
