@@ -3,9 +3,16 @@
  */
 // package app.src.main.java;
 
-import java.util.*;
-import app.src.main.java.Creature.*;
-import app.src.main.java.Zombies.*;
+import app.src.main.java.Zombies.BucketheadZombie;
+import app.src.main.java.Zombies.ConeheadZombie;
+import app.src.main.java.Zombies.DolphinRiderZombie;
+import app.src.main.java.Zombies.DuckyTubeZombie;
+import app.src.main.java.Zombies.FlagZombie;
+import app.src.main.java.Zombies.FootballZombie;
+import app.src.main.java.Zombies.NormalZombie;
+import app.src.main.java.Zombies.PoleVaultingZombie;
+import app.src.main.java.Zombies.ScreendoorZombie;
+import app.src.main.java.Zombies.SnorkelZombie;
 
 public class App {
     public static void main(String[] args) {

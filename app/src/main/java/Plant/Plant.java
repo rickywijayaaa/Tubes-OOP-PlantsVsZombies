@@ -6,8 +6,8 @@ public abstract class Plant extends Creature {
     private int range;
     private double cooldown;
 
-    public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, int cost, int range, double cooldown) {
-        super(name, health, attackDamage, attackSpeed, isAquatic);
+    public Plant(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+        super(name, cost, health, attackDamage, attackSpeed, range, cooldown, isAquatic);
         this.cost = cost;
         this.range = range;
         this.cooldown = cooldown;

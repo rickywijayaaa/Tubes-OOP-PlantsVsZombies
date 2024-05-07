@@ -2,8 +2,8 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Squash extends Plant {
-    public Squash(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, int cost, int range, double cooldown) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, cost, range, cooldown);
+    public Squash(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+        super("Squash", 50, 100, 5000, 0, 1, 20, false);
     }
 
     // Implementing abstract method dari Plant class

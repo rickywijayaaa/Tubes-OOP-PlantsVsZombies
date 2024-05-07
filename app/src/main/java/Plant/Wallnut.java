@@ -2,8 +2,8 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Wallnut extends Plant {
-    public Wallnut(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, int cost, int range, double cooldown) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, cost, range, cooldown);
+    public Wallnut(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+        super("Wallnut", 50, 1000, 0, 0, 0, 20, false);
     }
 
     // Implementing abstract method dari Plant class
