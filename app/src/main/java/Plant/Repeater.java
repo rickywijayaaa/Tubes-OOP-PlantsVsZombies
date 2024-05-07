@@ -4,7 +4,11 @@ import app.src.main.java.Zombies.*;
 
 public class Repeater extends Plant {
     public Repeater() {
+<<<<<<< HEAD
         super("Repeater", 300, 20, 1.5,false,200, 3, 0.5);
+=======
+        super("Repeater", 200, 300, 20, 1.5, 3, 0.5, false);
+>>>>>>> d0a5937 (update blm bener)
     }
 
     // Implementing abstract method dari Plant class

@@ -11,7 +11,7 @@ public class CherryBomb extends Plant {
     @Override
     public void attack(Zombie zom) {
         // Cherry Bomb meledak, membunuh zombie di sekitarnya
-        System.out.println(getName() + " explodes, damaging nearby zombies! DUARRR");
+        System.out.println(getName() + " explodes, damaging nearby zombies! DUARRR!!");
     }
 
     // Implementing abstract method dari Creature class

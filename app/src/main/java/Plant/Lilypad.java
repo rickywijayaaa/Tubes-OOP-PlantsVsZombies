@@ -4,7 +4,11 @@ import app.src.main.java.Zombies.*;
 
 public class Lilypad extends Plant {
     public Lilypad() {
+<<<<<<< HEAD
         super("Lilypad", 100, 0, 0, true,25,0, 10);
+=======
+        super("Lilypad", 25, 100, 0, 0, 0, 10, true);
+>>>>>>> d0a5937 (update blm bener)
     }
 
     // Implementing abstract method dari Plant class

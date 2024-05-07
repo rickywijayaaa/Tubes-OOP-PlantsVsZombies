@@ -4,7 +4,11 @@ import app.src.main.java.Zombies.*;
 
 public class Peashooter extends Plant {
     public Peashooter() {
+<<<<<<< HEAD
         super("Peashooter", 100, 25, 4, false, 100, -1, 10);
+=======
+        super("Peashooter", 100, 100, 25, 4, -1, 10, false);
+>>>>>>> d0a5937 (update blm bener)
     }
 
     // Implementing abstract method dari Plant class
