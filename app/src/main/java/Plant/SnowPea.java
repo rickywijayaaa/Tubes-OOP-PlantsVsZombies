@@ -1,4 +1,6 @@
 package app.src.main.java.Plant;
+import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public class SnowPea extends Plant {
     public SnowPea() {
@@ -7,9 +9,9 @@ public class SnowPea extends Plant {
 
     // Implementing abstract method dari Plant class
     @Override
-    public void attack() {
+    public void attack(Zombie zom) {
         // Snow Pea menyerang dengan menembakkan frozen peas ke zombies untuk memperlambat zombies
-        System.out.println(getName() + " shoots frozen peas at zombies, slowing them down!");
+        zom.setHealth(getAttackDamage());
     }
 
     // Implementing abstract method dari Creature class

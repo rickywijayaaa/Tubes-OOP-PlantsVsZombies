@@ -1,5 +1,6 @@
 package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public class Repeater extends Plant {
     public Repeater() {
@@ -8,9 +9,9 @@ public class Repeater extends Plant {
 
     // Implementing abstract method dari Plant class
     @Override
-    public void attack() {
+    public void attack(Zombie zom) {
         // Repeater menyerang shooting more peas ke zombies
-        System.out.println(getName() + " shoots more peas at zombies!");
+        zom.setHealth(getAttackDamage());
     }
 
     // Implementing abstract method dari Creature class
