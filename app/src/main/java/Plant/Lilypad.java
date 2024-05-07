@@ -1,4 +1,6 @@
 package app.src.main.java.Plant;
+import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public class Lilypad extends Plant {
     public Lilypad() {
@@ -7,9 +9,9 @@ public class Lilypad extends Plant {
 
     // Implementing abstract method dari Plant class
     @Override
-    public void attack() {
+    public void attack(Zombie zom) {
         // Lilypad tidak memiliki attack karena merupakan support plant
-        System.out.println(getName() + " is a support plant and doesn't attack! <3");
+        System.out.println("Lilypad can't attack");
     }
 
     // Implementing abstract method dari Creature class

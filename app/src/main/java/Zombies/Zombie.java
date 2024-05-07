@@ -1,5 +1,6 @@
 package app.src.main.java.Zombies;
 import app.src.main.java.Creature.*;
+import app.src.main.java.Plant.*;
 
 public abstract class Zombie extends Creature {
     private double slowed;
@@ -35,7 +36,7 @@ public abstract class Zombie extends Creature {
     }
     
     // Abstract method attack plant
-    public abstract void attack();
+    public abstract void attack(Plant pl);
 
     @Override
     public void resetCooldown(){

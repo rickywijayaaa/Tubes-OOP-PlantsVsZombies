@@ -1,4 +1,6 @@
 package app.src.main.java.Plant;
+import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public class CherryBomb extends Plant {
     public CherryBomb() {
@@ -7,7 +9,7 @@ public class CherryBomb extends Plant {
 
     // Implementing abstract method dari Plant class
     @Override
-    public void attack() {
+    public void attack(Zombie zom) {
         // Cherry Bomb meledak, membunuh zombie di sekitarnya
         System.out.println(getName() + " explodes, damaging nearby zombies! DUARRR");
     }

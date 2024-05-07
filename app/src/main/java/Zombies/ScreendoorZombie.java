@@ -1,6 +1,7 @@
 package app.src.main.java.Zombies;
 
 import app.src.main.java.Creature.*;
+import app.src.main.java.Plant.*;
 
 
 public class ScreendoorZombie extends Zombie {
@@ -25,9 +26,9 @@ public class ScreendoorZombie extends Zombie {
     }
 
     @Override
-    public void attack() {
+    public void attack(Plant pl) {
         // Implementasi attack untuk zombie
-        System.out.println(getName() + " attack with " + getAttackDamage());
+        pl.setHealth(getAttackDamage());
     }
 }
 

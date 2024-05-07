@@ -1,4 +1,6 @@
 package app.src.main.java.Plant;
+import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public class Wallnut extends Plant {
     public Wallnut() {
@@ -7,9 +9,9 @@ public class Wallnut extends Plant {
 
     // Implementing abstract method dari Plant class
     @Override
-    public void attack() {
+    public void attack(Zombie zom) {
         // Wall-nut tidak memiliki attack action karena merupakan defensive plant
-        System.out.println(getName() + " is a defensive plant and doesn't attack!");
+        System.out.println(getName() + " can't attack");
     }
 
     // Implementing abstract method dari Creature class

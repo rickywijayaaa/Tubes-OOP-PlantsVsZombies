@@ -1,4 +1,6 @@
 package app.src.main.java.Plant;
+import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public class Squash extends Plant {
     public Squash() {
@@ -7,9 +9,9 @@ public class Squash extends Plant {
 
     // Implementing abstract method dari Plant class
     @Override
-    public void attack() {
+    public void attack(Zombie zom) {
         // Squash menyerang dengan squashing zombies di lane-nya
-        System.out.println(getName() + " squashes zombies in its lane! *nyek*");
+        zom.setHealth(getAttackDamage());
     }
 
     // Implementing abstract method dari Creature class

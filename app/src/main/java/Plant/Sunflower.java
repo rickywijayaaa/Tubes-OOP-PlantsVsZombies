@@ -1,4 +1,6 @@
 package app.src.main.java.Plant;
+import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 
 public class Sunflower extends Plant {
@@ -13,7 +15,7 @@ public class Sunflower extends Plant {
     }
 
     @Override
-    public void attack(){
+    public void attack(Zombie zom){
 
     }
 

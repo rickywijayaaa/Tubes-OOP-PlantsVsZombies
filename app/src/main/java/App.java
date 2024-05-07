@@ -70,6 +70,12 @@ public class App {
         pl9.displayPlant();
         pl10.displayPlant();
 
+        zom7.attack(pl3);
+        pl3.displayPlant();
+
+        pl2.attack(zom9);
+        zom9.displayZombie();
+
 
         
     }

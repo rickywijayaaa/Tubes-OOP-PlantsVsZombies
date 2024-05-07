@@ -1,5 +1,6 @@
 package app.src.main.java.Plant;
-import app.src.main.java.Creature.Creature;
+import app.src.main.java.Creature.*;
+import app.src.main.java.Zombies.*;
 
 public abstract class Plant extends Creature {
     private int cost;
@@ -27,7 +28,7 @@ public abstract class Plant extends Creature {
     }
 
     // Abstract method attack zombie
-    public abstract void attack();
+    public abstract void attack(Zombie zom);
 
     //display plant
     public void displayPlant(){

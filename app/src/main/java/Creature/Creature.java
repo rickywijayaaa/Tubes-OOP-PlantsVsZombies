@@ -27,7 +27,12 @@ public abstract class Creature {
     // Setter method untuk mengurangi health akibat damage
     public void setHealth(int damage) {
         if(!isDead()){
-            health -= damage;
+            if(damage <  health){
+                health -= damage;
+            }
+            else{
+                health = 0;
+            }
         }
     }
 

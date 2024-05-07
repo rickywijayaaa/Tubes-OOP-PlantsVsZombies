@@ -1,5 +1,6 @@
 package app.src.main.java.Zombies;
 
+import app.src.main.java.Plant.*;
 import app.src.main.java.Creature.*;
 
 
@@ -25,9 +26,9 @@ public class ConeheadZombie extends Zombie {
     }
 
     @Override
-    public void attack() {
+    public void attack(Plant pl) {
         // Implementasi attack untuk zombie
-        System.out.println(getName() + " attack with " + getAttackDamage());
+        pl.setHealth(getAttackDamage());
     }
 }
 
