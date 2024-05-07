@@ -23,6 +23,8 @@ public class App {
         zom5.displayZombie();
         zom6.displayZombie();
         //coba branch 
+        Cherrybomb plan1 = new Cherrybomb();
+        plan1.displayPlant();
 
         
     }

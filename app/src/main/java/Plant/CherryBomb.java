@@ -2,7 +2,7 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class CherryBomb extends Plant {
-    public CherryBomb(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+    public CherryBomb() {
         super("Cherry Bomb", 150, 0, 1000, 0, 3, 30, false);
     }
 
@@ -10,7 +10,7 @@ public class CherryBomb extends Plant {
     @Override
     public void attack() {
         // Cherry Bomb meledak, membunuh zombie di sekitarnya
-        System.out.println(getName() + " explodes, damaging nearby zombies! DUARRR");
+        System.out.println(getName() + " explodes, damaging nearby zombies! DUARRR!!");
     }
 
     // Implementing abstract method dari Creature class

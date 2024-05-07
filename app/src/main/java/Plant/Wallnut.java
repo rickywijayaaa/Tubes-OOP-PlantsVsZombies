@@ -2,7 +2,7 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Wallnut extends Plant {
-    public Wallnut(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+    public Wallnut() {
         super("Wallnut", 50, 1000, 0, 0, 0, 20, false);
     }
 

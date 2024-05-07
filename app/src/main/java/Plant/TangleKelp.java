@@ -2,7 +2,7 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class TangleKelp extends Plant {
-    public TangleKelp(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+    public TangleKelp() {
         super("Tangle Kelp", 25, 100, 5000, 0, 1, 5, true);
     }
 

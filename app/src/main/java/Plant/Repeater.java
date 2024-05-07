@@ -2,7 +2,7 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Repeater extends Plant {
-    public Repeater(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+    public Repeater() {
         super("Repeater", 200, 300, 20, 1.5, 3, 0.5, false);
     }
 

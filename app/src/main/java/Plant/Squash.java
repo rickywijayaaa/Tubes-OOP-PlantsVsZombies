@@ -2,7 +2,7 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Squash extends Plant {
-    public Squash(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+    public Squash() {
         super("Squash", 50, 100, 5000, 0, 1, 20, false);
     }
 

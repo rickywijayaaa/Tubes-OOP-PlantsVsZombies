@@ -2,7 +2,7 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class Lilypad extends Plant {
-    public Lilypad(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+    public Lilypad() {
         super("Lilypad", 25, 100, 0, 0, 0, 10, true);
     }
 

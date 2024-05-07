@@ -1,8 +1,8 @@
 package app.src.main.java.Plant;
-import app.src.main.java.Creature.*;
+import app.src.main.jav!a.Creature.*;
 
 public class CabbagePult extends Plant {
-    public CabbagePult(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
+    public CabbagePult() {
         super("Cabbage Pult", 100, 100, 20, 1.5, 3, 5, false);
     }
 
@@ -10,7 +10,7 @@ public class CabbagePult extends Plant {
     @Override
     public void attack() {
         // Cabbage Pult menyerang dengan memakan zombies
-        System.out.println(getName() + " nyam! chomps down on zombies!");
+        System.out.println(getName() + " chomps down on zombies! nyam!");
     }
 
     // Implementing abstract method dari Creature class
