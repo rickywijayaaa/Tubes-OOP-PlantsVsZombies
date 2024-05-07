@@ -3,22 +3,21 @@ import java.util.Random;
 
 
 public class Sun {
-    private int sunWaitingTime;
+    private int sunWaktuTunggu;
     private static int lastSun;
-    private int sunPerProduction = 25;
+    private int sunProduction = 25;
 
-    public static void SunProducing(int sunWaitingTime, int sunPerProduction){
-        Random rand = new Random();
+    public static void SunProducing(int sunWaktuTunggu, int sunProduction){
+        Random acak = new Random();
 
-        sunWaitingTime =  rand.nextInt(6) + 5;
+        sunWaktuTunggu =  acak.nextInt(6) + 5;
 
         try {
-            Thread.sleep(sunWaitingTime * 1000);
-        } catch (InterruptedException ssunn){
-            ssunn.printStackTrace();
+            Thread.sleep(sunWaktuTunggu * 1000);
+        } catch (InterruptedException e){
+            e.printStackTrace();
         }
-        
-        lastSun = lastSun + sunPerProduction;
+        lastSun = lastSun + sunProduction;
     }
 
     public long getSun(){
