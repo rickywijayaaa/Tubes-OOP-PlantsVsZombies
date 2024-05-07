@@ -3,6 +3,16 @@
  */
 // package app.src.main.java;
 
+import app.src.main.java.Plant.CabbagePult;
+import app.src.main.java.Plant.CherryBomb;
+import app.src.main.java.Plant.Lilypad;
+import app.src.main.java.Plant.Peashooter;
+import app.src.main.java.Plant.Repeater;
+import app.src.main.java.Plant.SnowPea;
+import app.src.main.java.Plant.Squash;
+import app.src.main.java.Plant.Sunflower;
+import app.src.main.java.Plant.TangleKelp;
+import app.src.main.java.Plant.Wallnut;
 import app.src.main.java.Zombies.BucketheadZombie;
 import app.src.main.java.Zombies.ConeheadZombie;
 import app.src.main.java.Zombies.DolphinRiderZombie;
@@ -37,6 +47,29 @@ public class App {
         zom8.displayZombie();
         zom9.displayZombie();
         zom10.displayZombie();
+        System.out.println(" ");
+        Sunflower pl1 = new Sunflower();
+        Peashooter pl2 = new Peashooter();
+        Wallnut pl3 = new Wallnut();
+        SnowPea pl4 = new SnowPea();
+        Squash pl5 = new Squash();
+        Lilypad pl6 = new Lilypad();
+        CherryBomb pl7 = new CherryBomb();
+        Repeater pl8 = new Repeater();
+        CabbagePult pl9 = new CabbagePult();
+        TangleKelp pl10 = new TangleKelp();
+
+        pl1.displayPlant();
+        pl2.displayPlant();
+        pl3.displayPlant();
+        pl4.displayPlant();
+        pl5.displayPlant();
+        pl6.displayPlant();
+        pl7.displayPlant();
+        pl8.displayPlant();
+        pl9.displayPlant();
+        pl10.displayPlant();
+
 
         
     }
