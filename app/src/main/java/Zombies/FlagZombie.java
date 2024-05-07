@@ -1,7 +1,8 @@
 package app.src.main.java.Zombies;
 
-import app.src.main.java.Creature.*;
 
+import app.src.main.java.Creature.*;
+import app.src.main.java.Plant.*;
 
 public class FlagZombie extends Zombie {
     public FlagZombie() {
@@ -25,9 +26,9 @@ public class FlagZombie extends Zombie {
     }
 
     @Override
-    public void attack() {
+    public void attack(Plant pl) {
         // Implementasi attack untuk zombie
-        System.out.println(getName() + " attack with " + getAttackDamage());
+        pl.setHealth(getAttackDamage());
     }
 }
 

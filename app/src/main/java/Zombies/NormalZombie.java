@@ -1,6 +1,8 @@
 package app.src.main.java.Zombies;
 
+
 import app.src.main.java.Creature.*;
+import app.src.main.java.Plant.*;
 
 
 public class NormalZombie extends Zombie {
@@ -27,10 +29,9 @@ public class NormalZombie extends Zombie {
     }
 
     @Override
-    public void attack() {
-        // Implementing the movement behavior for a NormalZombie
-        // For example:
-        System.out.println(getName() + " attack with " + getAttackDamage());
+    public void attack(Plant pl) {
+        // Implementasi attack untuk zombie
+        pl.setHealth(getAttackDamage());
     }
 }
 
