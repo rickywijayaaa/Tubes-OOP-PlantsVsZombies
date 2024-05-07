@@ -1,24 +1,23 @@
-package Sun;
+package app.src.main.java.Sun;
 import java.util.Random;
 
 
 public class Sun {
-    private int sunWaktuTunggu;
-    private int sunProduction = 25;
+
     private static int lastSun;
     
 
-    public static void SunGenerate(int sunWaktuTunggu, int sunProduction){
+    public static void SunGenerate(){
         Random acak = new Random();
 
-        sunWaktuTunggu =  acak.nextInt(6) + 5;
+         int sunWaktuTunggu =  acak.nextInt(6) + 5;
 
         try {
             Thread.sleep(sunWaktuTunggu * 1000);
         } catch (InterruptedException e){
             e.printStackTrace();
         }
-        lastSun = lastSun + sunProduction;
+        lastSun = lastSun + 25;
     }
 
     public long getSun(){
