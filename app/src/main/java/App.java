@@ -3,6 +3,8 @@
  */
 // package app.src.main.java;
 
+import app.src.main.java.MapGame.*;
+
 import app.src.main.java.Plant.CabbagePult;
 import app.src.main.java.Plant.CherryBomb;
 import app.src.main.java.Plant.Lilypad;
@@ -23,6 +25,7 @@ import app.src.main.java.Zombies.NormalZombie;
 import app.src.main.java.Zombies.PoleVaultingZombie;
 import app.src.main.java.Zombies.ScreendoorZombie;
 import app.src.main.java.Zombies.SnorkelZombie;
+
 
 public class App {
     public static void main(String[] args) {
@@ -76,6 +79,27 @@ public class App {
         pl2.attack(zom9);
         zom9.displayZombie();
 
+
+        Peta peta = new Peta();
+    
+
+        Tile koor11 = peta.getTile(1, 4);
+        Tile koor17 = peta.getTile(1, 7);
+
+        peta.displayMap();
+
+        // Menambahkan entitas ke GameMap pada posisi yang benar
+        koor11.addCreature(pl10); // Tambah Sunflower ke Lawn
+        koor17.addCreature(pl2); // Tambah Zombie ke ZombieSpaw
+        koor11.addCreature(pl3);
+
+        // Menampilkan GameMap
+        System.out.println("GameMap after adding entities:");
+        peta.displayMap(); // Menampilkan representasi GameMap
+
+        System.out.println("GameMap after remove entities:");
+        koor11.removeCreature(pl10);
+        peta.displayMap();
 
         
     }
