@@ -2,8 +2,8 @@ package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 
 public class CabbagePult extends Plant {
-    public CabbagePult(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
-        super("Cabbage Pult", 100, 100, 20, 1.5, 3, 5, false);
+    public CabbagePult() {
+        super("Cabbage Pult", 100, 20, 1.5,false,100, 3, 5);
     }
 
     // Implementing abstract method dari Plant class

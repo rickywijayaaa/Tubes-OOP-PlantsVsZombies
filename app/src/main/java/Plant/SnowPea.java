@@ -1,9 +1,8 @@
 package app.src.main.java.Plant;
-import app.src.main.java.Creature.*;
 
 public class SnowPea extends Plant {
-    public SnowPea(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
-        super("Snow Pea", 175, 100, 25, 4, -1, 10, false);
+    public SnowPea() {
+        super("Snow Pea", 100, 25, 4, false, 175,-1, 10);
     }
 
     // Implementing abstract method dari Plant class

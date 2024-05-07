@@ -3,9 +3,26 @@
  */
 // package app.src.main.java;
 
-import java.util.*;
-import app.src.main.java.Creature.*;
-import app.src.main.java.Zombies.*;
+import app.src.main.java.Plant.CabbagePult;
+import app.src.main.java.Plant.CherryBomb;
+import app.src.main.java.Plant.Lilypad;
+import app.src.main.java.Plant.Peashooter;
+import app.src.main.java.Plant.Repeater;
+import app.src.main.java.Plant.SnowPea;
+import app.src.main.java.Plant.Squash;
+import app.src.main.java.Plant.Sunflower;
+import app.src.main.java.Plant.TangleKelp;
+import app.src.main.java.Plant.Wallnut;
+import app.src.main.java.Zombies.BucketheadZombie;
+import app.src.main.java.Zombies.ConeheadZombie;
+import app.src.main.java.Zombies.DolphinRiderZombie;
+import app.src.main.java.Zombies.DuckyTubeZombie;
+import app.src.main.java.Zombies.FlagZombie;
+import app.src.main.java.Zombies.FootballZombie;
+import app.src.main.java.Zombies.NormalZombie;
+import app.src.main.java.Zombies.PoleVaultingZombie;
+import app.src.main.java.Zombies.ScreendoorZombie;
+import app.src.main.java.Zombies.SnorkelZombie;
 
 public class App {
     public static void main(String[] args) {
@@ -16,13 +33,43 @@ public class App {
         BucketheadZombie zom4 = new BucketheadZombie();
         DuckyTubeZombie zom5 = new DuckyTubeZombie();
         DolphinRiderZombie zom6 = new DolphinRiderZombie();
+        SnorkelZombie zom7 = new SnorkelZombie();
+        FlagZombie zom8 = new FlagZombie();
+        ScreendoorZombie zom9 = new ScreendoorZombie();
+        FootballZombie zom10 = new FootballZombie();
         zom1.displayZombie();
         zom2.displayZombie();
         zom3.displayZombie();
         zom4.displayZombie();
         zom5.displayZombie();
         zom6.displayZombie();
-        //coba branch 
+        zom7.displayZombie();
+        zom8.displayZombie();
+        zom9.displayZombie();
+        zom10.displayZombie();
+        System.out.println(" ");
+        Sunflower pl1 = new Sunflower();
+        Peashooter pl2 = new Peashooter();
+        Wallnut pl3 = new Wallnut();
+        SnowPea pl4 = new SnowPea();
+        Squash pl5 = new Squash();
+        Lilypad pl6 = new Lilypad();
+        CherryBomb pl7 = new CherryBomb();
+        Repeater pl8 = new Repeater();
+        CabbagePult pl9 = new CabbagePult();
+        TangleKelp pl10 = new TangleKelp();
+
+        pl1.displayPlant();
+        pl2.displayPlant();
+        pl3.displayPlant();
+        pl4.displayPlant();
+        pl5.displayPlant();
+        pl6.displayPlant();
+        pl7.displayPlant();
+        pl8.displayPlant();
+        pl9.displayPlant();
+        pl10.displayPlant();
+
 
         
     }

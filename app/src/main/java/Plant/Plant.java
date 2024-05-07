@@ -1,13 +1,13 @@
 package app.src.main.java.Plant;
-import app.src.main.java.Creature.*;
+import app.src.main.java.Creature.Creature;
 
 public abstract class Plant extends Creature {
     private int cost;
     private int range;
     private double cooldown;
 
-    public Plant(String name, int cost, int health, int attackDamage, double attackSpeed, int range, double cooldown, boolean isAquatic) {
-        super(name, cost, health, attackDamage, attackSpeed, range, cooldown, isAquatic);
+    public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int cost,int range, double cooldown) {
+        super(name,health, attackDamage, attackSpeed, isAquatic);
         this.cost = cost;
         this.range = range;
         this.cooldown = cooldown;
@@ -28,6 +28,11 @@ public abstract class Plant extends Creature {
 
     // Abstract method attack zombie
     public abstract void attack();
+
+    //display plant
+    public void displayPlant(){
+        System.out.println("nama: " + getName() + " memiliki health : " + getHealth() + " attack damage : " + getAttackDamage() + " attack speed : " + getAttackSpeed());
+    }
 
     
     // Implementing abstract methods dari Creature class

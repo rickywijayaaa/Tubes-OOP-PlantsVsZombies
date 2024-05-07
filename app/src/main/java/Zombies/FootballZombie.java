@@ -3,9 +3,9 @@ package app.src.main.java.Zombies;
 import app.src.main.java.Creature.*;
 
 
-public class NewspaperZombie extends Zombie {
-    public NewspaperZombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, double slowed, double speed) {
-        super(name, health, attackDamage, attackSpeed, isAquatic, slowed, speed);
+public class FootballZombie extends Zombie {
+    public FootballZombie() {
+        super("Football Zombie" ,300,100,7,false,0,5 );
     }
 
 
