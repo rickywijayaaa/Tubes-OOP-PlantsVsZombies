@@ -4,11 +4,7 @@ import app.src.main.java.Zombies.*;
 
 public class Wallnut extends Plant {
     public Wallnut() {
-<<<<<<< HEAD
         super("Wallnut", 1000, 0, 0, false, 50, 0, 20);
-=======
-        super("Wallnut", 50, 1000, 0, 0, 0, 20, false);
->>>>>>> d0a5937 (update blm bener)
     }
 
     // Implementing abstract method dari Plant class

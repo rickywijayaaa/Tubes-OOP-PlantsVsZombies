@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package app.src.main.java.Plant;
 import app.src.main.java.Creature.*;
 import app.src.main.java.Zombies.*;
@@ -5,11 +6,7 @@ import app.src.main.java.Zombies.*;
 
 public class Sunflower extends Plant {
     public Sunflower() {
-<<<<<<< HEAD
         super("Sunflower", 100, 0, 0, false,50, 0, 10);
-=======
-        super("Sunflower", 50, 100, 0, 0, 0, 10, false);
->>>>>>> d0a5937 (update blm bener)
     }
 
     @Override

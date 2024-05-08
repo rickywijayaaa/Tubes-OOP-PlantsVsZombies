@@ -4,11 +4,7 @@ import app.src.main.java.Zombies.*;
 
 public class SnowPea extends Plant {
     public SnowPea() {
-<<<<<<< HEAD
         super("Snow Pea", 100, 25, 4, false, 175,-1, 10);
-=======
-        super("Snow Pea", 175, 100, 25, 4, -1, 10, false);
->>>>>>> d0a5937 (update blm bener)
     }
 
     // Implementing abstract method dari Plant class

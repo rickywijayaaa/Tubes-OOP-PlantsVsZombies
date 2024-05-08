@@ -4,11 +4,7 @@ import app.src.main.java.Zombies.*;
 
 public class TangleKelp extends Plant {
     public TangleKelp() {
-<<<<<<< HEAD
         super("Tangle Kelp", 100, 5000, 0,true,25, 1, 5);
-=======
-        super("Tangle Kelp", 25, 100, 5000, 0, 1, 5, true);
->>>>>>> d0a5937 (update blm bener)
     }
 
     // Implementing abstract method dari Plant class
