@@ -4,8 +4,8 @@ import Zombies.*;
 
 
 public class Sunflower extends Plant {
-    public Sunflower() {
-        super("Sunflower", 100, 0, 0, false,50, 0, 10);
+    public Sunflower(int x, int y) {
+        super("Sunflower", 100, 0, 0, false,x,y,50, 0, 10);
     }
 
     @Override

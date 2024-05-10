@@ -3,8 +3,8 @@ import Plant.*;
 import Creature.*;
 
 public class FlagZombie extends Zombie {
-    public FlagZombie() {
-        super("Flag Zombie",300,50,1,false,0,1);
+    public FlagZombie(int x, int y) {
+        super("Flag Zombie",300,50,1,false,x,y,0,1);
     }
 
 

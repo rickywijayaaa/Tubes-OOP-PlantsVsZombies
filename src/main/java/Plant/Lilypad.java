@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class Lilypad extends Plant {
-    public Lilypad() {
-        super("Lilypad", 100, 0, 0, true,25,0, 10);
+    public Lilypad(int x, int y) {
+        super("Lilypad", 100, 0, 0, true,x,y,25,0, 10);
     }
 
     // Implementing abstract method dari Plant class

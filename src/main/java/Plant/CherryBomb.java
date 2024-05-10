@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class CherryBomb extends Plant {
-    public CherryBomb() {
-        super("Cherry Bomb", 150, 1000,0, false,150, 3, 30);
+    public CherryBomb(int x, int y) {
+        super("Cherry Bomb", 150, 1000,0, false,x , y,150, 3, 30);
     }
 
     // Implementing abstract method dari Plant class

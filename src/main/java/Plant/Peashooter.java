@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class Peashooter extends Plant {
-    public Peashooter() {
-        super("Peashooter", 100, 25, 4, false, 100, -1, 10);
+    public Peashooter(int x, int y) {
+        super("Peashooter", 100, 25, 4, false, x,y,100, -1, 10);
     }
 
     // Implementing abstract method dari Plant class

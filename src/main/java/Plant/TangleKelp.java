@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class TangleKelp extends Plant {
-    public TangleKelp() {
-        super("Tangle Kelp", 100, 5000, 0,true,25, 1, 5);
+    public TangleKelp(int x, int y) {
+        super("Tangle Kelp", 100, 5000, 0,true,x,y,25, 1, 5);
     }
 
     // Implementing abstract method dari Plant class

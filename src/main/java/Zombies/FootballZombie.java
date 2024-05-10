@@ -3,8 +3,8 @@ import Plant.*;
 import Creature.*;
 
 public class FootballZombie extends Zombie {
-    public FootballZombie() {
-        super("Football Zombie" ,300,100,7,false,0,5 );
+    public FootballZombie(int x, int y) {
+        super("Football Zombie" ,300,100,7,false,x,y,0,5);
     }
 
 

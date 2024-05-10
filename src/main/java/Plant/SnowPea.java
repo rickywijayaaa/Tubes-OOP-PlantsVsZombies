@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class SnowPea extends Plant {
-    public SnowPea() {
-        super("Snow Pea", 100, 25, 4, false, 175,-1, 10);
+    public SnowPea(int x, int y) {
+        super("Snow Pea", 100, 25, 4, false, x,y,175,-1, 10);
     }
 
     // Implementing abstract method dari Plant class
