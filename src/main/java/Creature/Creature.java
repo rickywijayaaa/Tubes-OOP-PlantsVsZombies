@@ -71,6 +71,10 @@ public abstract class Creature {
     public Koordinat getKoordinat(){
         return k;
     }
+
+    public void setKoordinat(Koordinat koor){
+        k = koor;
+    }
     
     // Abstract method attack
     public abstract void resetCooldown();
