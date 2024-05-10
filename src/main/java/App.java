@@ -15,7 +15,7 @@ import java.util.concurrent.*;
 public class App {
     public static void main(String[] args) {
         NormalZombie zom1 = new NormalZombie(1,1);
-        ConeheadZombie zom2 = new ConeheadZombie(1,1);
+        ConeheadZombie zom2 = new ConeheadZombie(1,2);
         PoleVaultingZombie zom3 = new PoleVaultingZombie(1,1);
         BucketheadZombie zom4 = new BucketheadZombie(1,1);
         DuckyTubeZombie zom5 = new DuckyTubeZombie(1,1);
@@ -71,8 +71,8 @@ public class App {
         Peta peta = new Peta();
     
 
-        Tile koor11 = peta.getTile(1, 4);
-        Tile koor17 = peta.getTile(1, 7);
+        Tile koor11 = peta.getTile(zom1.getKoordinat().getX(), zom1.getKoordinat().getY());
+        Tile koor17 = peta.getTile(1, 2);
 
         peta.displayMap();
 
@@ -101,6 +101,8 @@ public class App {
 
         System.out.println("Lokasi zom1 : ");
         zom1.displayCreaturekoor();
+        System.out.println("Lokasi zom2 : ");
+        zom2.displayCreaturekoor();
         
     }
 }
