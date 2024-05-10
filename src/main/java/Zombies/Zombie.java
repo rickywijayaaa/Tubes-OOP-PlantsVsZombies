@@ -56,9 +56,6 @@ public abstract class Zombie extends Creature {
         Koordinat koorZ = getKoordinat(); // Get zombie's current position
         int koorx = koorZ.getX();
         int koory = koorZ.getY();
-        // int row = position[0];
-        // int col = position[1];
-        // Calculate the position of the next tile (moving left)
         int nextCol = koory - 1;
 
         // Check if the next tile is within the bounds of the game map
@@ -87,14 +84,15 @@ public abstract class Zombie extends Creature {
     // the object advance in the game map from right to left
 
     // public void special(GameMap gameMap) {
-    //     int[] position = getPosition(); // ? Buat posisi zombie
-    //     Tile tile = gameMap.getTile(position[0], position[1]); // ? Buat Nentuin tile zombienya
+    //     Koordinat koorZ = getKoordinat(); // Get zombie's current position
+    //     int koorx = koorZ.getX();
+    //     int koory = koorZ.getY();
 
-    //     ArrayList<Entities> entity = tile.getEntities();
+    //     ArrayList<Creature> entity = tile.getCreature();
 
-    //     for (Entities entities : entity) {
-    //         if (entities instanceof Plant) {
-    //             Plant plant = (Plant) entities;
+    //     for (Creature creature : create) {
+    //         if (creature instanceof Plant) {
+    //             Plant plant = (Plant) creature;
     //             plant.die(gameMap); // ? Kalo special ketemu plant, langsung dilompatin trus plantny mati
     //             setSpecial(false);; // ? special nya ilang
     //         }

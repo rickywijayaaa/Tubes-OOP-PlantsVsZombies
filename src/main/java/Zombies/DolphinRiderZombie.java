@@ -1,6 +1,7 @@
 package Zombies;
 import Plant.*;
 import Creature.*;
+import MapGame.*;
 
 
 public class DolphinRiderZombie extends Zombie {
@@ -28,6 +29,10 @@ public class DolphinRiderZombie extends Zombie {
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
         pl.setHealth(getAttackDamage());
+    }
+
+    public void jump(Peta gameMap){
+        
     }
 }
 
