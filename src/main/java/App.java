@@ -14,6 +14,17 @@ import java.util.concurrent.*;
 
 public class App {
     public static void main(String[] args) {
+        // inisiasi detik awal mulai game
+        long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+        System.out.println("detik awal game: " + seconds);
+
+        //nyoba thread
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // inisiasi zombie
         NormalZombie zom1 = new NormalZombie(1,1);
         ConeheadZombie zom2 = new ConeheadZombie(1,2);
         PoleVaultingZombie zom3 = new PoleVaultingZombie(1,1);
@@ -24,17 +35,17 @@ public class App {
         FlagZombie zom8 = new FlagZombie(1,1);
         ScreendoorZombie zom9 = new ScreendoorZombie(1,1);
         FootballZombie zom10 = new FootballZombie(1,1);
-        zom1.displayZombie();
-        zom2.displayZombie();
-        zom3.displayZombie();
-        zom4.displayZombie();
-        zom5.displayZombie();
-        zom6.displayZombie();
-        zom7.displayZombie();
-        zom8.displayZombie();
-        zom9.displayZombie();
-        zom10.displayZombie();
-        System.out.println(" ");
+        // zom1.displayZombie();
+        // zom2.displayZombie();
+        // zom3.displayZombie();
+        // zom4.displayZombie();
+        // zom5.displayZombie();
+        // zom6.displayZombie();
+        // zom7.displayZombie();
+        // zom8.displayZombie();
+        // zom9.displayZombie();
+        // zom10.displayZombie();
+        // System.out.println(" ");
         Sunflower pl1 = new Sunflower(1,1);
         Peashooter pl2 = new Peashooter(1,1);
         Wallnut pl3 = new Wallnut(1,1);
@@ -45,27 +56,22 @@ public class App {
         Repeater pl8 = new Repeater(1,1);
         CabbagePult pl9 = new CabbagePult(1,1);
         TangleKelp pl10 = new TangleKelp(1,1);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        pl1.displayPlant();
-        pl2.displayPlant();
-        pl3.displayPlant();
-        pl4.displayPlant();
-        pl5.displayPlant();
-        pl6.displayPlant();
-        pl7.displayPlant();
-        pl8.displayPlant();
-        pl9.displayPlant();
-        pl10.displayPlant();
+        // pl1.displayPlant();
+        // pl2.displayPlant();
+        // pl3.displayPlant();
+        // pl4.displayPlant();
+        // pl5.displayPlant();
+        // pl6.displayPlant();
+        // pl7.displayPlant();
+        // pl8.displayPlant();
+        // pl9.displayPlant();
+        // pl10.displayPlant();
 
-        zom7.attack(pl3);
-        pl3.displayPlant();
+        // zom7.attack(pl3);
+        // pl3.displayPlant();
 
-        pl2.attack(zom9);
-        zom9.displayZombie();
+        // pl2.attack(zom9);
+        // zom9.displayZombie();
 
 
         Peta peta = new Peta();
@@ -95,9 +101,8 @@ public class App {
         // matahari.SunGenerate();
         // System.out.println("Total Sun: " + matahari.getSun());
         //coba desktop
-        long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-        System.out.println("detik : " + seconds);
-        System.out.println("detik zombie : " + zom1.getStartTime());
+        long waktuzom1 = zom1.getStartTime() - seconds;
+        System.out.println("detik zombie : " + waktuzom1);
 
         System.out.println("Lokasi zom1 : ");
         zom1.displayCreaturekoor();
