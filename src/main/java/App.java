@@ -85,6 +85,7 @@ public class App {
         Sun matahari = new Sun();
         // matahari.SunGenerate();
         // System.out.println("Total Sun: " + matahari.getSun());
+        //coba desktop
 
         
     }
