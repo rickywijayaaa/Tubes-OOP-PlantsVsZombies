@@ -83,7 +83,7 @@ public class App {
         peta.displayMap();
 
         // Menambahkan entitas ke GameMap pada posisi yang benar
-        koor11.addCreature(pl10); // Tambah Sunflower ke Lawn
+        koor11.addCreature(zom1); // Tambah Sunflower ke Lawn
         koor17.addCreature(pl2); // Tambah Zombie ke ZombieSpaw
         koor11.addCreature(pl3);
 
@@ -92,7 +92,6 @@ public class App {
         peta.displayMap(); // Menampilkan representasi GameMap
 
         System.out.println("GameMap after remove entities:");
-        koor11.removeCreature(pl10);
         peta.displayMap();
         Sun.getInstance();
         Sun.setSun(25);
@@ -108,6 +107,13 @@ public class App {
         zom1.displayCreaturekoor();
         System.out.println("Lokasi zom2 : ");
         zom2.displayCreaturekoor();
+        
+        System.out.println("Peta sebelum walk : ");
+        peta.displayMap();
+
+        System.out.println("Peta setelah walk : ");
+        zom1.walk(peta);
+        peta.displayMap();
         
     }
 }
