@@ -4,8 +4,8 @@ import Creature.*;
 
 
 public class DolphinRiderZombie extends Zombie {
-    public DolphinRiderZombie() {
-        super("Dolphin Rider Zombie", 175, 100, 1, true, 0, 500);
+    public DolphinRiderZombie(int x, int y) {
+        super("Dolphin Rider Zombie", 175, 100, 1, true,x,y, 0, 500);
     }
 
 

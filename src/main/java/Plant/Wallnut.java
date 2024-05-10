@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class Wallnut extends Plant {
-    public Wallnut() {
-        super("Wallnut", 1000, 0, 0, false, 50, 0, 20);
+    public Wallnut(int x, int y) {
+        super("Wallnut", 1000, 0, 0, false,x,y, 50, 0, 20);
     }
 
     // Implementing abstract method dari Plant class

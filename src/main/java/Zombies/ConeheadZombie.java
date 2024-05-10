@@ -4,8 +4,8 @@ import Creature.*;
 
 
 public class ConeheadZombie extends Zombie {
-    public ConeheadZombie() {
-        super("Conehead Zombie", 250, 100, 1, false, 0, 500);
+    public ConeheadZombie(int x, int y) {
+        super("Conehead Zombie", 250, 100, 1, false,x,y, 0, 500);
     }
 
 

@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class CabbagePult extends Plant {
-    public CabbagePult() {
-        super("Cabbage Pult", 100, 20, 1.5,false,100, 3, 5);
+    public CabbagePult(int x, int y) {
+        super("Cabbage Pult", 100, 20, 1.5,false,x,y,100, 3, 5);
     }
 
     // Implementing abstract method dari Plant class

@@ -3,8 +3,8 @@ import Creature.*;
 import Zombies.*;
 
 public class Repeater extends Plant {
-    public Repeater() {
-        super("Repeater", 300, 20, 1.5,false,200, 3, 0.5);
+    public Repeater(int x, int y) {
+        super("Repeater", 300, 20, 1.5,false,x,y,200, 3, 0.5);
     }
 
     // Implementing abstract method dari Plant class
