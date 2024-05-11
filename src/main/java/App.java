@@ -78,7 +78,7 @@ public class App {
     
 
         Tile koor11 = peta.getTile(zom1.getKoordinat().getX(), zom1.getKoordinat().getY());
-        Tile koor17 = peta.getTile(1, 2);
+        Tile koor17 = peta.getTile(1, 1);
 
         peta.displayMap();
 
@@ -114,6 +114,12 @@ public class App {
         System.out.println("Peta setelah walk : ");
         zom1.walk(peta);
         peta.displayMap();
+
+        System.out.println("Peta setelah repeater dibunuh : ");
+        pl2.die(peta);
+        peta.displayMap();
         
     }
 }
+
+

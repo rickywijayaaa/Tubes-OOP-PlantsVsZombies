@@ -1,6 +1,8 @@
 package Plant;
 import Creature.*;
 import Zombies.*;
+import MapGame.*;
+import Koordinat.*;
 
 public abstract class Plant extends Creature {
     private int cost;
@@ -35,6 +37,14 @@ public abstract class Plant extends Creature {
         System.out.println("nama: " + getName() + " memiliki health : " + getHealth() + " attack damage : " + getAttackDamage() + " attack speed : " + getAttackSpeed());
     }
 
+    public void die(Peta mapGame) {
+        Koordinat koorZ = getKoordinat(); // Get zombie's current position
+        int koorx = koorZ.getX();
+        int koory = koorZ.getY();
+        Tile tile = mapGame.getTile(koorx, koory);
+        koorZ.displayKoordinat();
+        tile.removeCreature(this);
+    }
     
     // Implementing abstract methods dari Creature class
     @Override
@@ -50,4 +60,6 @@ public abstract class Plant extends Creature {
     }
 
 }
+
+
 
