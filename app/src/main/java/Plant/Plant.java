@@ -49,8 +49,5 @@ public abstract class Plant extends Creature {
         // Plants biasanya tidak melakukan "move"
     }
 
-    public void displayPlant(){
-        System.out.println("nama: " + getName() + " memiliki cost : " + getCost() + " memiliki health : " + getHealth() + " attack damage : " + getAttackDamage() + " attack speed : " + getAttackSpeed() + " range : " + getRange() + " cooldown : " + getCooldown());
-    }
 }
 

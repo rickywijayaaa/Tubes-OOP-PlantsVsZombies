@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 package app.src.main.java.Plant;
-import app.src.main.java.Creature.*;
 import app.src.main.java.Zombies.*;
+import app.src.main.java.Creature.*;
 
 
 public class Sunflower extends Plant {
