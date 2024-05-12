@@ -10,15 +10,4 @@ plugins {
 repositories {
     // Use the plugin portal to apply community plugins in convention plugins.
     gradlePluginPortal()
-
-}
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = "21"
-    }
 }
