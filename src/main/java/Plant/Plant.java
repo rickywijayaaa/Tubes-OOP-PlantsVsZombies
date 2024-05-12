@@ -58,8 +58,8 @@ public abstract class Plant extends Creature {
         // Implementing move behavior untuk Plant
         // Plants biasanya tidak melakukan "move"
     }
-
 }
+
 
 
 

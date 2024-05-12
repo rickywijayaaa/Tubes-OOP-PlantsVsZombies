@@ -5,7 +5,7 @@ import Creature.*;
 
 public class NormalZombie extends Zombie {
     public NormalZombie(int x, int y) {
-        super("Normal Zombie", 125, 100, 1, false,x,y, 0, 500);
+        super("Normal Zombie", 125, 100, 1, false,x,y, 0, 5);
     }
 
 
