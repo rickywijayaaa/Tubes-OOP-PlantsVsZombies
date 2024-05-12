@@ -4,17 +4,37 @@ import Zombies.*;
 import MapGame.*;
 import Koordinat.*;
 
+import java.util.HashMap;
+
 public abstract class Plant extends Creature {
     private int cost;
     private int range;
     private double cooldown;
+
+    //winata 12/5
+    static HashMap<Class<? extends Plant> , Boolean> coolDownMap = new HashMap<>();
+    //winata 12/5
 
     public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y,int cost,int range, double cooldown) {
         super(name,health, attackDamage, attackSpeed, isAquatic,x,y);
         this.cost = cost;
         this.range = range;
         this.cooldown = cooldown;
+
+        //winata 12/5
+        coolDownMap.putIfAbsent(this.getClass(),false);
+        //winata 12/5
     }
+
+    //winata 12/5
+    public boolean isInCooldown() {
+        return coolDownMap.get(this.getClass());
+    }
+    public void setCooldown(boolean isInCooldown) {
+        coolDownMap.put(this.getClass(), isInCooldown);
+    }
+    //winata 12/5
+
 
     // Getter methods untuk atribut tambahan
     public int getCost() {
@@ -45,6 +65,7 @@ public abstract class Plant extends Creature {
         koorZ.displayKoordinat();
         tile.removeCreature(this);
     }
+
     
     // Implementing abstract methods dari Creature class
     @Override

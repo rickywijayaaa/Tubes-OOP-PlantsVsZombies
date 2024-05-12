@@ -25,5 +25,7 @@ public class Peashooter extends Plant {
     public void resetCooldown() {
         // Peashooter tidak memiliki cooldowns, jadi method tidak melakukan apapun
     }
+
+
 }
 
