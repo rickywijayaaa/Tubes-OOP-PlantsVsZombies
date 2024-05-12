@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MenuGame {
     
-    public static void main(String[] args) {
+    public static void Menu() {
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
         

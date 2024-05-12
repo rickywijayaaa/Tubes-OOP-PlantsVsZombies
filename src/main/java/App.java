@@ -8,12 +8,15 @@ import Sun.*;
 import Plant.*;
 import Zombies.*;
 import Koordinat.*;
+import MenuGame.*;
 
 import java.util.concurrent.*;
 
 
 public class App {
     public static void main(String[] args) {
+
+        MenuGame.Menu();
         // inisiasi detik awal mulai game
         long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         System.out.println("detik awal game: " + seconds);
