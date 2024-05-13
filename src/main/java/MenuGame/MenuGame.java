@@ -2,6 +2,8 @@ package MenuGame;
 
 import java.util.Scanner;
 
+
+
 public class MenuGame {
     
     public static void Menu() {
@@ -23,6 +25,7 @@ public class MenuGame {
             switch (choice) {
                 case 1:
                     System.out.println("Memulai permainan...");
+                    Start.Start();
                     break;
                 case 2:
                     System.out.println("1. Deskripsi Permainan");
@@ -54,6 +57,7 @@ public class MenuGame {
                     System.out.println("8. Cherry Bomb");
                     System.out.println("9. Repeater");
                     System.out.println("10. Tangle Kelp");
+                    System.out.println("Pilih tanaman untuk dilihat atributnya : (1/2/3/dst)");
                     int pilih = scanner.nextInt();
                     scanner.nextLine(); 
                     switch (pilih) {
@@ -101,6 +105,7 @@ public class MenuGame {
                     System.out.println("8. Screendoor Zombie");
                     System.out.println("9. Snorkel Zombie");
                     System.out.println("10. Football Zombie");
+                    System.out.println("Pilih zombie untuk dilihat atributnya : (1/2/3/dst)");
                     int pilih2 = scanner.nextInt();
                     scanner.nextLine(); 
                     switch (pilih2) {
@@ -148,4 +153,3 @@ public class MenuGame {
         scanner.close();
     }
 }
-
