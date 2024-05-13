@@ -16,7 +16,7 @@ import java.util.concurrent.*;
 public class App {
     public static void main(String[] args) {
 
-        MenuGame.Menu();
+        //MenuGame.Menu();
         // inisiasi detik awal mulai game
         long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         System.out.println("detik awal game: " + seconds);
@@ -33,7 +33,7 @@ public class App {
         PoleVaultingZombie zom3 = new PoleVaultingZombie(1,1);
         BucketheadZombie zom4 = new BucketheadZombie(1,1);
         DuckyTubeZombie zom5 = new DuckyTubeZombie(1,1);
-        DolphinRiderZombie zom6 = new DolphinRiderZombie(1,1);
+        DolphinRiderZombie zom6 = new DolphinRiderZombie(1,4);
         SnorkelZombie zom7 = new SnorkelZombie(1,1);
         FlagZombie zom8 = new FlagZombie(1,1);
         ScreendoorZombie zom9 = new ScreendoorZombie(1,1);
@@ -51,7 +51,7 @@ public class App {
         // System.out.println(" ");
         Sunflower pl1 = new Sunflower(1,1);
         Peashooter pl2 = new Peashooter(1,1);
-        Wallnut pl3 = new Wallnut(1,1);
+        Wallnut pl3 = new Wallnut(1,3);
         SnowPea pl4 = new SnowPea(1,1);
         Squash pl5 = new Squash(1,1);
         Lilypad pl6 = new Lilypad(1,1);
@@ -81,14 +81,14 @@ public class App {
     
 
         Tile koor11 = peta.getTile(zom1.getKoordinat().getX(), zom1.getKoordinat().getY());
-        Tile koor17 = peta.getTile(1, 1);
+        Tile koor17 = peta.getTile(1, 4);
+        Tile koor12 = peta.getTile(1, 3);
 
-        peta.displayMap();
 
         // Menambahkan entitas ke GameMap pada posisi yang benar
-        koor11.addCreature(zom1); // Tambah Sunflower ke Lawn
-        koor17.addCreature(pl2); // Tambah Zombie ke ZombieSpaw
-        koor11.addCreature(pl3);
+        koor17.addCreature(zom6); // Tambah Sunflower ke Lawn
+        //koor17.addCreature(pl2); // Tambah Zombie ke ZombieSpaw
+        koor12.addCreature(pl3);
 
         // Menampilkan GameMap
         System.out.println("GameMap after adding entities:");
@@ -100,26 +100,30 @@ public class App {
         Sun.setSun(25);
 
         System.out.println("jumlah matahari : "+ Sun.getSun());
-        // matahari.SunGenerate();
-        // System.out.println("Total Sun: " + matahari.getSun());
-        //coba desktop
-        long waktuzom1 = zom1.getStartTime() - seconds;
-        System.out.println("detik zombie : " + waktuzom1);
+        // // matahari.SunGenerate();
+        // // System.out.println("Total Sun: " + matahari.getSun());
+        // //coba desktop
+        // long waktuzom1 = zom1.getStartTime() - seconds;
+        // System.out.println("detik zombie : " + waktuzom1);
 
-        System.out.println("Lokasi zom1 : ");
-        zom1.displayCreaturekoor();
-        System.out.println("Lokasi zom2 : ");
-        zom2.displayCreaturekoor();
+        // System.out.println("Lokasi zom1 : ");
+        // zom1.displayCreaturekoor();
+        // System.out.println("Lokasi zom2 : ");
+        // zom2.displayCreaturekoor();
         
-        System.out.println("Peta sebelum walk : ");
-        peta.displayMap();
+        // System.out.println("Peta sebelum walk : ");
+        // peta.displayMap();
 
-        System.out.println("Peta setelah walk : ");
-        zom1.walk(peta);
-        peta.displayMap();
+        // System.out.println("Peta setelah walk : ");
+        // zom1.walk(peta);
+        // peta.displayMap();
 
-        System.out.println("Peta setelah repeater dibunuh : ");
-        pl2.die(peta);
+        // System.out.println("Peta setelah repeater dibunuh : ");
+        // pl2.die(peta);
+        // peta.displayMap();
+        System.out.println("Peta setelah loncat : ");
+        System.out.println("");
+        zom6.jump(peta);
         peta.displayMap();
         
     }

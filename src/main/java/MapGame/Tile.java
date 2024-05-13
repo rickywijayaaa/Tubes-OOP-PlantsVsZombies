@@ -52,5 +52,12 @@ public class Tile {
     public boolean getCanPlant() {
         return canPlant;
     }
+
+    // fungsi untuk menghapus semua creature pada suatu petak
+    public void removeAllCreatures() {
+        entity.clear();
+    }
+
+
     
 }
