@@ -25,9 +25,9 @@ public class MenuGame {
                     System.out.println("Memulai permainan...");
                     break;
                 case 2:
-                    System.out.println("1. Deskripsi permainan");
-                    System.out.println("2. Cara bermain");
-                    System.out.println("3. Daftar command");
+                    System.out.println("1. Deskripsi Permainan");
+                    System.out.println("2. Cara Bermain");
+                    System.out.println("3. Daftar Command");
                     int choose = scanner.nextInt();
                     scanner.nextLine(); 
                     switch (choose) {
