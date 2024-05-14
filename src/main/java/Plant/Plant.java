@@ -3,6 +3,7 @@ import Creature.*;
 import Zombies.*;
 import MapGame.*;
 import Koordinat.*;
+import java.util.HashMap;
 
 public abstract class Plant extends Creature {
     private int cost;

@@ -3,6 +3,7 @@ import Creature.*;
 import Zombies.*;
 import Plant.*;
 import java.util.ArrayList;
+import Sun.*;
 
 
 public class Peta {
