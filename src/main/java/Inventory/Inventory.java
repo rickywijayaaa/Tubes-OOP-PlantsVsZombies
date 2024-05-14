@@ -42,7 +42,9 @@ public class Inventory {
         return deck;
     }
 
-
+    public boolean isCooldownOver () {
+        return false;
+    }
 
     public void choosePlant(int index){
         Plant plant = inven.remove(index);
@@ -63,17 +65,75 @@ public class Inventory {
     }
 
     public void displayInventory() {
-        System.out.println("Inventory tanaman:");
+        System.out.println("Inventory tanaman beserta costnya:");
         for (int i = 0; i < inven.size(); i++) {
-            System.out.println((i + 1) + ". " + inven.get(i).getName());
+            System.out.println((i + 1) + ". " + inven.get(i).getName() + " - " + inven.get(i).getCost()) ;
         }
     }
 
     public void displayDeck() {
-        System.out.println("Deck tanaman:");
+        System.out.println("Deck tanaman beserta costnya:");
         for (int i = 0; i < deck.size(); i++) {
-            System.out.println((i + 1) + ". " + deck.get(i).getName());
+            System.out.println((i + 1) + ". " + deck.get(i).getName()+ " - " + deck.get(i).getCost());
         }
+    }
+
+    public void addPlant(Plant plant, int koorx, int koory){
+            Tile tile = peta.getTile(koorx,koory);
+            tile.addCreature(plant);
+    //     try {
+    //         Tile tile = peta.getTile(koorx, koory);
+    //         System.out.println("check1");
+    //         if (tile.hasPlanted()) {
+    //             System.out.println("check2");
+    //             throw new ExceptionIsPlanted("Tile berikut sudah ada tanaman !!!");
+    //         }
+    //         else if (isCooldownOver()) {
+    //             System.out.println("check3");
+    //             throw new ExceptionPlantStillCooldown("Tanaman masih cooldown!!");
+
+    //         }
+    //         else {
+    //             System.out.println("check4");
+    //             tile.addCreature(plant);
+    //         }
+    //     }
+    //     catch (ExceptionIsPlanted e) {
+    //         System.out.println(e.getMessage());
+    //     }
+    //     catch (ExceptionPlantStillCooldown e) {
+    //         System.out.println(e.getMessage());
+    //     }
+    // }
     }
 }
     
+// class ExceptionIsPlanted extends java.lang.Exception {
+//     public ExceptionIsPlanted(String message) {
+//         System.out.println(message);
+//     }
+//     @Override
+//     public String getMessage(){
+//         return "Petak sudah terdapat tanaman !!!";
+//     }
+// }
+
+// class ExceptionIsNotPlanted extends java.lang.Exception {
+//     public ExceptionIsNotPlanted(String message) {
+//         System.out.println(message);
+//     }
+//     @Override
+//     public String getMessage(){
+//         return "Belum ditanamn";
+//     }
+// }
+
+// class ExceptionPlantStillCooldown extends java.lang.Exception {
+//     public ExceptionPlantStillCooldown(String message){
+//         System.out.println(message);
+//     }
+//     @Override
+//     public String getMessage(){
+//         return "Tanaman masih cooldown!!";
+//     }
+// }

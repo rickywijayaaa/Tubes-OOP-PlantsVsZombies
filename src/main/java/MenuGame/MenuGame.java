@@ -1,7 +1,8 @@
 package MenuGame;
 
 import java.util.Scanner;
-
+import Inventory.*;
+import Deck.*;
 
 
 public class MenuGame {
@@ -26,7 +27,8 @@ public class MenuGame {
                 switch (choice) {
                     case 1:
                         System.out.println("Memulai permainan...");
-                        Start.Start();
+                        Inventory inven = new Inventory();
+                        Start.Start(inven);
                         isRunning = false;
                         break;
                     case 2:

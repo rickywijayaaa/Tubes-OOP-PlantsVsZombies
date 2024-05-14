@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Start {
 
-        public static void Start(){
+        public static void Start(Inventory inven){
         Scanner scanner = new Scanner(System.in);
         // long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         // System.out.println("detik awal game: " + seconds);
@@ -27,7 +27,7 @@ public class Start {
         // }
         
         System.out.println("");
-        Inventory inven = new Inventory();
+        
         inven.displayInventory();
       
         boolean isRunningStart = true;
@@ -125,8 +125,17 @@ public class Start {
                             break;
                         }
                     case 5 :
+                        if (inven.getDeckInven().size() == 6){
                             System.out.println("");
                             System.out.println("Deck sudah penuh!!! Game dimulaii !!!");
+                            Game.play(inven);
+                            break;
+                        }                        
+                        else{
+                            System.out.println("");
+                            System.out.println("Deck belum penuh!!! isi deck terlebih dahulu");
+                            break;
+                        }
                     default:
                         System.out.println("Pilihan tidak valid.");
 
