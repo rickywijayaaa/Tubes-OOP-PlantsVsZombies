@@ -9,13 +9,30 @@ public abstract class Plant extends Creature {
     private int range;
     private double cooldown;
 
+    
+    static HashMap<Class<? extends Plant> , Boolean> coolDownMap = new HashMap<>();
+   
+
     public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y,int cost,int range, double cooldown) {
         super(name,health, attackDamage, attackSpeed, isAquatic,x,y);
         this.cost = cost;
         this.range = range;
         this.cooldown = cooldown;
+
+    
+        coolDownMap.putIfAbsent(this.getClass(),false);
+   
     }
 
+    public boolean isInCooldown() {
+        return coolDownMap.get(this.getClass());
+    }
+    public void setCooldown(boolean isInCooldown) {
+        coolDownMap.put(this.getClass(), isInCooldown);
+    }
+
+
+  
     // Getter methods untuk atribut tambahan
     public int getCost() {
         return cost;
