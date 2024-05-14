@@ -44,17 +44,22 @@ public class Start {
                 
                 switch (choice) {
                     case 1:
-                        System.out.println("");
-                        inven.displayInventory();
-                        System.out.println("");
-                        System.out.println("Masukkan nomor indeks tanaman yang ingin dimasukkan ke deck:");
-                        int indexChoose = scanner.nextInt();
-                        inven.choosePlant(indexChoose - 1); // Karena indeks dimulai dari 1, sementara ArrayList dimulai dari 0
-                        System.out.println("");
-                        inven.displayInventory();
-                        System.out.println("");
-                        inven.displayDeck();
-                        break;
+                        if(inven.getDeckInven().size() <6){
+                            System.out.println("");
+                            inven.displayInventory();
+                            System.out.println("");
+                            System.out.println("Masukkan nomor indeks tanaman yang ingin dimasukkan ke deck:");
+                            int indexChoose = scanner.nextInt();
+                            inven.choosePlant(indexChoose - 1); // Karena indeks dimulai dari 1, sementara ArrayList dimulai dari 0
+                            System.out.println("");
+                            inven.displayInventory();
+                            System.out.println("");
+                            inven.displayDeck();
+                            break;
+                        }
+                        else{
+                            System.out.println("Deck Sudah Penuh (6 Tanaman) !!! ");
+                        }
                     case 2:
                         System.out.println("");
                         inven.displayInventory();
@@ -104,10 +109,11 @@ public class Start {
                 }
                 System.out.println("Apakah Anda ingin melanjutkan? (ya/tidak)");
                 String lanjut = scanner.next();
+
                 if (!lanjut.equalsIgnoreCase("ya")) {
                     isRunningStart = false;
                 }
             }
-            scanner.close(); // Penutupan scanner setelah loop while selesai
+           
     }
 }
