@@ -27,7 +27,7 @@ public class MenuGame {
                     case 1:
                         System.out.println("Memulai permainan...");
                         Start.Start();
-
+                        isRunning = false;
                         break;
                     case 2:
                         System.out.println("1. Deskripsi permainan");
