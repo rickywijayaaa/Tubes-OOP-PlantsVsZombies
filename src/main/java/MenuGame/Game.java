@@ -419,7 +419,16 @@ public class Game {
                     break;
                 case 2:
                     System.out.println("");
+                    System.out.printf("Pilih baris untuk tanaman yang ingin dihapus (x) : ");
+                    int koorxdel = scanner.nextInt();
+                    scanner.nextLine();  // Consume the newline character
+                    System.out.printf("Pilih baris untuk tanaman yang ingin dihapus (y) : ");
+                    int koorydel = scanner.nextInt();
+                    scanner.nextLine();  // Consume the newline character
+                    System.out.println("");
                     System.out.println("Hapus tanaman ");
+                    Tile hapustile = peta.getTile(koorxdel,koorydel);
+                    hapustile.removeAllCreatures();
                     break;
                 case 3 : 
                     peta.displayMap();

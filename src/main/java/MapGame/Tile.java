@@ -58,6 +58,15 @@ public class Tile {
         entity.clear();
     }
 
+    public void removePlant() {
+        entity.clear();
+        // for (Creature creatures : entity) { 
+        //     if (creatures instanceof Plant) {
+        //         entity.clear();
+        //     }
+        // }
+    }
+
 
     
 }
