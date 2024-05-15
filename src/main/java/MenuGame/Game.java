@@ -19,6 +19,8 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         long mulaigame = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         boolean isRunningGame = true;
+        Sun.getInstance();
+        Sun.setSun(500);
         Peta peta = new Peta();
         System.out.println("");
         System.out.println("Deck tanaman yang dapat kamu gunakan");
@@ -54,52 +56,92 @@ public class Game {
                                 case "Sunflower":
                                     Sunflower p1 = new Sunflower(koorx,koory);
                                     Tile posisi1 = peta.getTile(koorx,koory);
-                                    posisi1.addCreature(p1);
+                                    try {
+                                        peta.plant(p1, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println("Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Repeater":
                                     Repeater p2 = new Repeater(koorx,koory);
                                     Tile posisi2 = peta.getTile(koorx,koory);
-                                    posisi2.addCreature(p2);
+                                    try {
+                                        peta.plant(p2, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Snow Pea":
                                     SnowPea p3 = new SnowPea(koorx,koory);
                                     Tile posisi3 = peta.getTile(koorx,koory);
-                                    posisi3.addCreature(p3);
+                                    try {
+                                        peta.plant(p3, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Lilypad":
                                     Lilypad p4 = new Lilypad(koorx,koory);
                                     Tile posisi4 = peta.getTile(koorx,koory);
-                                    posisi4.addCreature(p4);
+                                    try {
+                                        peta.plant(p4, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Wallnut":
                                     Wallnut p5 = new Wallnut(koorx,koory);
                                     Tile posisi5 = peta.getTile(koorx,koory);
-                                    posisi5.addCreature(p5);
+                                    try {
+                                        peta.plant(p5, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Peashooter":
                                     Peashooter p6 = new Peashooter(koorx,koory);
                                     Tile posisi6 = peta.getTile(koorx,koory);
-                                    posisi6.addCreature(p6);
+                                    try {
+                                        peta.plant(p6, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Squash":
                                     Squash p7 = new Squash(koorx,koory);
                                     Tile posisi7 = peta.getTile(koorx,koory);
-                                    posisi7.addCreature(p7);
+                                    try {
+                                        peta.plant(p7, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Cherry Bomb":
                                     CherryBomb p8 = new CherryBomb(koorx,koory);
                                     Tile posisi8 = peta.getTile(koorx,koory);
-                                    posisi8.addCreature(p8);
+                                    try {
+                                        peta.plant(p8, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Cabbage Pult":
                                     CabbagePult p9 = new CabbagePult(koorx,koory);
                                     Tile posisi9 = peta.getTile(koorx,koory);
-                                    posisi9.addCreature(p9);
+                                    try {
+                                        peta.plant(p9, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;   
                                 case "Tangle Kelp":
                                     TangleKelp p10 = new TangleKelp(koorx,koory);
                                     Tile posisi10 = peta.getTile(koorx,koory);
-                                    posisi10.addCreature(p10);
+                                    try {
+                                        peta.plant(p10, koorx, koory);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;                    
                                 
                             }
@@ -116,52 +158,92 @@ public class Game {
                                 case "Sunflower":
                                     Sunflower p1 = new Sunflower(koorx2,koory2);
                                     Tile posisi1 = peta.getTile(koorx2,koory2);
-                                    posisi1.addCreature(p1);
+                                    try {
+                                        peta.plant(p1, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Repeater":
                                     Repeater p2 = new Repeater(koorx2,koory2);
                                     Tile posisi2 = peta.getTile(koorx2,koory2);
-                                    posisi2.addCreature(p2);
+                                    try {
+                                        peta.plant(p2, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Snow Pea":
                                     SnowPea p3 = new SnowPea(koorx2,koory2);
                                     Tile posisi3 = peta.getTile(koorx2,koory2);
-                                    posisi3.addCreature(p3);
+                                    try {
+                                        peta.plant(p3, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Lilypad":
                                     Lilypad p4 = new Lilypad(koorx2,koory2);
                                     Tile posisi4 = peta.getTile(koorx2,koory2);
-                                    posisi4.addCreature(p4);
+                                    try {
+                                        peta.plant(p4, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Wallnut":
                                     Wallnut p5 = new Wallnut(koorx2,koory2);
                                     Tile posisi5 = peta.getTile(koorx2,koory2);
-                                    posisi5.addCreature(p5);
+                                    try {
+                                        peta.plant(p5, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Peashooter":
                                     Peashooter p6 = new Peashooter(koorx2,koory2);
                                     Tile posisi6 = peta.getTile(koorx2,koory2);
-                                    posisi6.addCreature(p6);
+                                    try {
+                                        peta.plant(p6, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Squash":
                                     Squash p7 = new Squash(koorx2,koory2);
                                     Tile posisi7 = peta.getTile(koorx2,koory2);
-                                    posisi7.addCreature(p7);
+                                    try {
+                                        peta.plant(p7, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Cherry Bomb":
                                     CherryBomb p8 = new CherryBomb(koorx2,koory2);
                                     Tile posisi8 = peta.getTile(koorx2,koory2);
-                                    posisi8.addCreature(p8);
+                                    try {
+                                        peta.plant(p8, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Cabbage Pult":
                                     CabbagePult p9 = new CabbagePult(koorx2,koory2);
                                     Tile posisi9 = peta.getTile(koorx2,koory2);
-                                    posisi9.addCreature(p9);
+                                    try {
+                                        peta.plant(p9, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;   
                                 case "Tangle Kelp":
                                     TangleKelp p10 = new TangleKelp(koorx2,koory2);
                                     Tile posisi10 = peta.getTile(koorx2,koory2);
-                                    posisi10.addCreature(p10);
+                                    try {
+                                        peta.plant(p10, koorx2, koory2);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;                    
                                 
                             }
@@ -178,52 +260,92 @@ public class Game {
                                 case "Sunflower":
                                     Sunflower p1 = new Sunflower(koorx3,koory3);
                                     Tile posisi1 = peta.getTile(koorx3,koory3);
-                                    posisi1.addCreature(p1);
+                                    try {
+                                        peta.plant(p1, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Repeater":
                                     Repeater p2 = new Repeater(koorx3,koory3);
                                     Tile posisi2 = peta.getTile(koorx3,koory3);
-                                    posisi2.addCreature(p2);
+                                    try {
+                                        peta.plant(p2, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Snow Pea":
                                     SnowPea p3 = new SnowPea(koorx3,koory3);
                                     Tile posisi3 = peta.getTile(koorx3,koory3);
-                                    posisi3.addCreature(p3);
+                                    try {
+                                        peta.plant(p3, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Lilypad":
                                     Lilypad p4 = new Lilypad(koorx3,koory3);
                                     Tile posisi4 = peta.getTile(koorx3,koory3);
-                                    posisi4.addCreature(p4);
+                                    try {
+                                        peta.plant(p4, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Wallnut":
                                     Wallnut p5 = new Wallnut(koorx3,koory3);
                                     Tile posisi5 = peta.getTile(koorx3,koory3);
-                                    posisi5.addCreature(p5);
+                                    try {
+                                        peta.plant(p5, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Peashooter":
                                     Peashooter p6 = new Peashooter(koorx3,koory3);
                                     Tile posisi6 = peta.getTile(koorx3,koory3);
-                                    posisi6.addCreature(p6);
+                                    try {
+                                        peta.plant(p6, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Squash":
                                     Squash p7 = new Squash(koorx3,koory3);
                                     Tile posisi7 = peta.getTile(koorx3,koory3);
-                                    posisi7.addCreature(p7);
+                                    try {
+                                        peta.plant(p7, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Cherry Bomb":
                                     CherryBomb p8 = new CherryBomb(koorx3,koory3);
                                     Tile posisi8 = peta.getTile(koorx3,koory3);
-                                    posisi8.addCreature(p8);
+                                    try {
+                                        peta.plant(p8, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Cabbage Pult":
                                     CabbagePult p9 = new CabbagePult(koorx3,koory3);
                                     Tile posisi9 = peta.getTile(koorx3,koory3);
-                                    posisi9.addCreature(p9);
+                                    try {
+                                        peta.plant(p9, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;   
                                 case "Tangle Kelp":
                                     TangleKelp p10 = new TangleKelp(koorx3,koory3);
                                     Tile posisi10 = peta.getTile(koorx3,koory3);
-                                    posisi10.addCreature(p10);
+                                    try {
+                                        peta.plant(p10, koorx3, koory3);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;                    
                                 
                             }
@@ -240,52 +362,92 @@ public class Game {
                                 case "Sunflower":
                                     Sunflower p1 = new Sunflower(koorx4,koory4);
                                     Tile posisi1 = peta.getTile(koorx4,koory4);
-                                    posisi1.addCreature(p1);
+                                    try {
+                                        peta.plant(p1, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Repeater":
                                     Repeater p2 = new Repeater(koorx4,koory4);
                                     Tile posisi2 = peta.getTile(koorx4,koory4);
-                                    posisi2.addCreature(p2);
+                                    try {
+                                        peta.plant(p2, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Snow Pea":
                                     SnowPea p3 = new SnowPea(koorx4,koory4);
                                     Tile posisi3 = peta.getTile(koorx4,koory4);
-                                    posisi3.addCreature(p3);
+                                    try {
+                                        peta.plant(p3, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Lilypad":
                                     Lilypad p4 = new Lilypad(koorx4,koory4);
                                     Tile posisi4 = peta.getTile(koorx4,koory4);
-                                    posisi4.addCreature(p4);
+                                    try {
+                                        peta.plant(p4, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Wallnut":
                                     Wallnut p5 = new Wallnut(koorx4,koory4);
                                     Tile posisi5 = peta.getTile(koorx4,koory4);
-                                    posisi5.addCreature(p5);
+                                    try {
+                                        peta.plant(p5, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Peashooter":
                                     Peashooter p6 = new Peashooter(koorx4,koory4);
                                     Tile posisi6 = peta.getTile(koorx4,koory4);
-                                    posisi6.addCreature(p6);
+                                    try {
+                                        peta.plant(p6, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Squash":
                                     Squash p7 = new Squash(koorx4,koory4);
                                     Tile posisi7 = peta.getTile(koorx4,koory4);
-                                    posisi7.addCreature(p7);
+                                    try {
+                                        peta.plant(p7, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Cherry Bomb":
                                     CherryBomb p8 = new CherryBomb(koorx4,koory4);
                                     Tile posisi8 = peta.getTile(koorx4,koory4);
-                                    posisi8.addCreature(p8);
+                                    try {
+                                        peta.plant(p8, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Cabbage Pult":
                                     CabbagePult p9 = new CabbagePult(koorx4,koory4);
                                     Tile posisi9 = peta.getTile(koorx4,koory4);
-                                    posisi9.addCreature(p9);
+                                    try {
+                                        peta.plant(p9, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;   
                                 case "Tangle Kelp":
                                     TangleKelp p10 = new TangleKelp(koorx4,koory4);
                                     Tile posisi10 = peta.getTile(koorx4,koory4);
-                                    posisi10.addCreature(p10);
+                                    try {
+                                        peta.plant(p10, koorx4, koory4);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;                    
                                 
                             }
@@ -302,52 +464,92 @@ public class Game {
                                 case "Sunflower":
                                     Sunflower p1 = new Sunflower(koorx5,koory5);
                                     Tile posisi1 = peta.getTile(koorx5,koory5);
-                                    posisi1.addCreature(p1);
+                                    try {
+                                        peta.plant(p1, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Repeater":
                                     Repeater p2 = new Repeater(koorx5,koory5);
                                     Tile posisi2 = peta.getTile(koorx5,koory5);
-                                    posisi2.addCreature(p2);
+                                    try {
+                                        peta.plant(p2, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Snow Pea":
                                     SnowPea p3 = new SnowPea(koorx5,koory5);
                                     Tile posisi3 = peta.getTile(koorx5,koory5);
-                                    posisi3.addCreature(p3);
+                                    try {
+                                        peta.plant(p3, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Lilypad":
                                     Lilypad p4 = new Lilypad(koorx5,koory5);
                                     Tile posisi4 = peta.getTile(koorx5,koory5);
-                                    posisi4.addCreature(p4);
+                                    try {
+                                        peta.plant(p4, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Wallnut":
                                     Wallnut p5 = new Wallnut(koorx5,koory5);
                                     Tile posisi5 = peta.getTile(koorx5,koory5);
-                                    posisi5.addCreature(p5);
+                                    try {
+                                        peta.plant(p5, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Peashooter":
                                     Peashooter p6 = new Peashooter(koorx5,koory5);
                                     Tile posisi6 = peta.getTile(koorx5,koory5);
-                                    posisi6.addCreature(p6);
+                                    try {
+                                        peta.plant(p6, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Squash":
                                     Squash p7 = new Squash(koorx5,koory5);
                                     Tile posisi7 = peta.getTile(koorx5,koory5);
-                                    posisi7.addCreature(p7);
+                                    try {
+                                        peta.plant(p7, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Cherry Bomb":
                                     CherryBomb p8 = new CherryBomb(koorx5,koory5);
                                     Tile posisi8 = peta.getTile(koorx5,koory5);
-                                    posisi8.addCreature(p8);
+                                    try {
+                                        peta.plant(p8, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Cabbage Pult":
                                     CabbagePult p9 = new CabbagePult(koorx5,koory5);
                                     Tile posisi9 = peta.getTile(koorx5,koory5);
-                                    posisi9.addCreature(p9);
+                                    try {
+                                        peta.plant(p9, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;   
                                 case "Tangle Kelp":
                                     TangleKelp p10 = new TangleKelp(koorx5,koory5);
                                     Tile posisi10 = peta.getTile(koorx5,koory5);
-                                    posisi10.addCreature(p10);
+                                    try {
+                                        peta.plant(p10, koorx5, koory5);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;                    
                                 
                             }
@@ -364,52 +566,92 @@ public class Game {
                                 case "Sunflower":
                                     Sunflower p1 = new Sunflower(koorx6,koory6);
                                     Tile posisi1 = peta.getTile(koorx6,koory6);
-                                    posisi1.addCreature(p1);
+                                    try {
+                                        peta.plant(p1, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Repeater":
                                     Repeater p2 = new Repeater(koorx6,koory6);
                                     Tile posisi2 = peta.getTile(koorx6,koory6);
-                                    posisi2.addCreature(p2);
+                                    try {
+                                        peta.plant(p2, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Snow Pea":
                                     SnowPea p3 = new SnowPea(koorx6,koory6);
                                     Tile posisi3 = peta.getTile(koorx6,koory6);
-                                    posisi3.addCreature(p3);
+                                    try {
+                                        peta.plant(p3, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Lilypad":
                                     Lilypad p4 = new Lilypad(koorx6,koory6);
                                     Tile posisi4 = peta.getTile(koorx6,koory6);
-                                    posisi4.addCreature(p4);
+                                    try {
+                                        peta.plant(p4, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Wallnut":
                                     Wallnut p5 = new Wallnut(koorx6,koory6);
                                     Tile posisi5 = peta.getTile(koorx6,koory6);
-                                    posisi5.addCreature(p5);
+                                    try {
+                                        peta.plant(p5, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Peashooter":
                                     Peashooter p6 = new Peashooter(koorx6,koory6);
                                     Tile posisi6 = peta.getTile(koorx6,koory6);
-                                    posisi6.addCreature(p6);
+                                    try {
+                                        peta.plant(p6, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;    
                                 case "Squash":
                                     Squash p7 = new Squash(koorx6,koory6);
                                     Tile posisi7 = peta.getTile(koorx6,koory6);
-                                    posisi7.addCreature(p7);
+                                    try {
+                                        peta.plant(p7, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break; 
                                 case "Cherry Bomb":
                                     CherryBomb p8 = new CherryBomb(koorx6,koory6);
                                     Tile posisi8 = peta.getTile(koorx6,koory6);
-                                    posisi8.addCreature(p8);
+                                    try {
+                                        peta.plant(p8, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;
                                 case "Cabbage Pult":
                                     CabbagePult p9 = new CabbagePult(koorx6,koory6);
                                     Tile posisi9 = peta.getTile(koorx6,koory6);
-                                    posisi9.addCreature(p9);
+                                    try {
+                                        peta.plant(p9, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;   
                                 case "Tangle Kelp":
                                     TangleKelp p10 = new TangleKelp(koorx6,koory6);
                                     Tile posisi10 = peta.getTile(koorx6,koory6);
-                                    posisi10.addCreature(p10);
+                                    try {
+                                        peta.plant(p10, koorx6, koory6);
+                                    } catch (Exception e) {
+                                        System.out.println(" Error: " + e.getMessage());
+                                    }
                                     break;                    
                                 
                             }
