@@ -26,9 +26,18 @@ public class Peta {
         }
     }
 
-    void plant(int row, int col, Plant toBePlanted) throws Exception {
+
+
+    public Tile getTile(int row, int col) {
+        if (row < 0 || row >= 6 || col < 0 || col >= 11) {
+            throw new IllegalArgumentException("Indeks di luar batas matriks");
+        }
+        return this.grid[row][col];
+    }
+
+    public void plant(Plant toBePlanted,int row, int col) throws Exception {
         if (col <= 0 || col >= 10) {
-            throw new Exception("Tile bertanam invalid");
+            throw new Exception("Tile belum ada lilypad sehingga tidak bisa ditanam");
         }
         if (Sun.getSun() < toBePlanted.getCost()) {
             throw new Exception("Tidak cukup matahari untuk membeli tanaman");
@@ -37,9 +46,18 @@ public class Peta {
             throw new Exception("Tanaman " + toBePlanted.getName() + " masih dalam cooldown");
         }
 
-        boolean pool = row >= 2 && row <= 3;
+        boolean pool = row >= 2 && row <= 3 && col!= 0 && col!=10;
         if (toBePlanted instanceof Lilypad && !pool) {
             throw new Exception("Tile bertanam invalid");
+        }
+        boolean base = col==0;
+        if (base){
+            throw new Exception("Tanaman tidak bisa ditanam di base !");
+        }
+
+        boolean spawn = col==10;
+        if (spawn){
+            throw new Exception("Tanaman tidak bisa ditanam di spawn zombie !");
         }
 
         boolean lilyPlanted = false;
@@ -60,15 +78,8 @@ public class Peta {
             throw new Exception("Tile bertanam invalid");
         }
 
-        toBePlanted.setCooldown(true);
+        //toBePlanted.setCooldown(true);
         this.grid[row][col].addCreature(toBePlanted);
-    }
-
-    public Tile getTile(int row, int col) {
-        if (row < 0 || row >= 6 || col < 0 || col >= 11) {
-            throw new IllegalArgumentException("Indeks di luar batas matriks");
-        }
-        return this.grid[row][col];
     }
 
     public void displayMap() {

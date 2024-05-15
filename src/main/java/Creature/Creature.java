@@ -10,7 +10,7 @@ public abstract class Creature {
     private double attackSpeed;
     private boolean isAquatic;
     private Koordinat k;
-    private long startTime;
+    private long timeCreated;
 
     public Creature(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic, int x , int y) {
         this.name = name;
@@ -19,8 +19,9 @@ public abstract class Creature {
         this.attackSpeed = attackSpeed;
         this.isAquatic = isAquatic;
         this.k = new Koordinat(x,y);
-        startTime = TimeUnit.SECONDS.convert(System.currentTimeMillis(),TimeUnit.MILLISECONDS);
+        long timeCreated = TimeUnit.SECONDS.convert(System.currentTimeMillis(),TimeUnit.MILLISECONDS);
     }
+
 
     // Getter methods
     public String getName() {
@@ -60,8 +61,8 @@ public abstract class Creature {
         return health <= 0;
     }
 
-    public long getStartTime(){
-        return startTime;
+    public long getTimeCreated(){
+        return timeCreated;
     }
 
     public void displayCreaturekoor(){
