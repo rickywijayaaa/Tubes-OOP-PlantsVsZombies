@@ -26,7 +26,13 @@ public abstract class Plant extends Creature {
     }
 
     public boolean isInCooldown() {
-        return coolDownMap.get(this.getClass());
+        // if (timemilis - this.getTimeCreated()% cooldown == 0){
+        //     return true;
+        // }
+        // else{
+        //     return false;
+        // }
+        return false;
     }
     public void setCooldown(boolean isInCooldown) {
         coolDownMap.put(this.getClass(), isInCooldown);
@@ -76,6 +82,7 @@ public abstract class Plant extends Creature {
         // Implementing move behavior untuk Plant
         // Plants biasanya tidak melakukan "move"
     }
+
 }
 
 

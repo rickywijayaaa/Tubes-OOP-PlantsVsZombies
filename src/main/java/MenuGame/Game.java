@@ -10,15 +10,17 @@ import Koordinat.*;
 import MenuGame.*;
 import Deck.*;
 import Inventory.*;
-
+import Thread.*;
 import java.util.concurrent.*;
 import java.util.Scanner;
 
 public class Game {
+
+
     public static void play(Inventory inven){
         Scanner scanner = new Scanner(System.in);
-        long mulaigame = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         boolean isRunningGame = true;
+        long mulaigame = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         Sun.getInstance();
         Sun.setSun(500);
         Peta peta = new Peta();
@@ -27,6 +29,12 @@ public class Game {
         System.out.println("");
         inven.displayDeck();
 
+        // for (int row = 0; row < 6; row++) {
+
+        //     for (int col = 10; col = 0; col--) {
+        //     }
+        // }
+
         while(isRunningGame){
             
             System.out.println("");
@@ -34,7 +42,8 @@ public class Game {
             System.out.println("1. Tanam tanaman");
             System.out.println("2. Menghapus tanaman dari peta");
             System.out.println("3. Lihat Peta");
-            System.out.printf("Masukkan input tindakan (1/2/3) : ");
+            System.out.println("3. Coba Thread");
+            System.out.printf("Masukkan input tindakan (1/2/3/4) : ");
             int choice2 = scanner.nextInt();
             switch (choice2) {
                 case 1:

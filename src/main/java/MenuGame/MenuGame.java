@@ -13,6 +13,7 @@ public class MenuGame {
         int choice;
         try{
             while (isRunning) {
+                System.out.println("\n======= PLANT VS ZOMBIE =======");
                 System.out.println("Menu: ");
                 System.out.println("1. Start");
                 System.out.println("2. Help");
