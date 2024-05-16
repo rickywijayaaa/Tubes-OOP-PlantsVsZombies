@@ -73,8 +73,9 @@ public abstract class Creature {
         return k;
     }
 
-    public void setKoordinat(Koordinat koor){
-        k = koor;
+    public void setKoordinat(int x2 , int y2){
+        Koordinat newkoor = new Koordinat(x2,y2);
+        k = newkoor;
     }
     
     // Abstract method attack

@@ -22,8 +22,6 @@ public abstract class Zombie extends Creature {
     public double getSpeed() {
         return speed;
     }
-
-
     
     public void setSpeed(double newspeed){
         speed = newspeed;
@@ -58,26 +56,36 @@ public abstract class Zombie extends Creature {
         int koory = koorZ.getY();
         int nextCol = koory - 1;
 
-        // Check if the next tile is within the bounds of the game map
-        if (nextCol > 0) {
-            Tile tile = gameMap.getTile(koorx,koory); // Get the current tile
-            Tile nextTile = gameMap.getTile(koorx,nextCol); // Get the next tile
+        if((this.getSpeed())== 0){
+            // Check if the next tile is within the bounds of the game map
+            if (nextCol > 0) {
+                Tile tile = gameMap.getTile(koorx,koory); // Get the current tile
+                Tile nextTile = gameMap.getTile(koorx,nextCol); // Get the next tile
 
-            // Remove the zombie from the current tile
-            tile.removeCreature(this);
-            nextTile.addCreature(this);
-        } else if (nextCol == 0 ) {
-            Tile tile = gameMap.getTile(koorx,koory); // Get the current tile
-            Tile nextTile = gameMap.getTile(koorx,nextCol); // Get the next tile
+                // Remove the zombie from the current tile
+                // masalah kalau satu tile ada 2 jenis zombie
+                nextTile.addCreature(this);
+                tile.removeCreature(this);
+                this.setKoordinat(koorx,nextCol);
+                this.setSpeed(5);
+            } else if (nextCol == 0 ) {
+                Tile tile = gameMap.getTile(koorx,koory); // Get the current tile
+                Tile nextTile = gameMap.getTile(koorx,nextCol); // Get the next tile
 
-            // Remove the zombie from the current tile
-            tile.removeCreature(this);
-            nextTile.addCreature(this);
-            // game end
-        }    
-        else{ 
-            // Zombie has reached the end of the map, you may want to handle this case
-            // For example, remove the zombie from the game or trigger a game over condition
+                // Remove the zombie from the current tile
+                nextTile.addCreature(this);
+                tile.removeCreature(this);
+                this.setKoordinat(koorx,nextCol);
+                this.setSpeed(5);
+                // game end
+            }    
+            else{ 
+                // Zombie has reached the end of the map, you may want to handle this case
+                // For example, remove the zombie from the game or trigger a game over condition
+            }            
+        }
+        else{
+            this.setSpeed(this.getSpeed()-1);
         }
     }
 
