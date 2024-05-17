@@ -12,7 +12,7 @@ public class PoleVaultingZombie extends Zombie {
 
     // Implementasi abstract method 
     @Override
-    public void resetCooldown(){
+    public void resetCooldown(double newcooldown){
         // Implementasi resetCooldown dari Creature
         System.out.println("nanti dioveerride");
     }

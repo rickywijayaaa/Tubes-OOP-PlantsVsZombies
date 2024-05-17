@@ -22,7 +22,7 @@ public class CherryBomb extends Plant {
 
     // Implementing abstract method dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Cherry Bomb tidak memiliki cooldowns, jadi method tidak melakukan apapun
     }
 }

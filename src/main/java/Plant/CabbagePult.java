@@ -22,7 +22,7 @@ public class CabbagePult extends Plant {
 
     // Implementing abstract method dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Cabbage Pult tidak cooldowns, jadi method tidak melakukan apapun
     }
 }

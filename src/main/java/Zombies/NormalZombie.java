@@ -12,7 +12,7 @@ public class NormalZombie extends Zombie {
 
     // Implementing abstract method from Creature class
     @Override
-    public void resetCooldown(){
+    public void resetCooldown(double newcooldown){
         // Implementing the attack behavior for a NormalZombie
         // For example:
         System.out.println("nanti dioveerride");

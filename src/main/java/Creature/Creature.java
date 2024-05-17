@@ -79,7 +79,7 @@ public abstract class Creature {
     }
     
     // Abstract method attack
-    public abstract void resetCooldown();
+    public abstract void resetCooldown(double newcooldown);
 
     // Abstract method for movement
     public abstract void move();

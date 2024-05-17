@@ -22,7 +22,7 @@ public class Lilypad extends Plant {
 
     // Implementing abstract method dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Lilypad tidak memiliki cooldowns, jadi method tidak melakukan apapun
         // coba
     }

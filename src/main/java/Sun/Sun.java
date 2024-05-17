@@ -32,6 +32,7 @@ public class Sun {
     public static void setSun(int jumlah){
         Sun.amountSun = jumlah;
     }
+    
     // private static int lastSun;
     
 

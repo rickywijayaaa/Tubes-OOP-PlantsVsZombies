@@ -4,6 +4,8 @@ import Zombies.*;
 import MapGame.*;
 import Koordinat.*;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Plant extends Creature {
     private int cost;
@@ -72,15 +74,27 @@ public abstract class Plant extends Creature {
     
     // Implementing abstract methods dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Implementing attack behavior untuk Plant
         // Methodnya akan beragam sesuai dengan Plant
+        cooldown = newcooldown;
     }
 
     @Override
     public void move() {
         // Implementing move behavior untuk Plant
         // Plants biasanya tidak melakukan "move"
+    }
+
+    public List<Zombie> getRange(List<Zombie> listofZombies){
+        List<Zombie> zombiesInRange = new ArrayList<>();
+        for (Zombie z : listofZombies) {
+            if (Math.abs(z.getKoordinat().getX() - this.getKoordinat().getX()) <= range
+                && Math.abs(z.getKoordinat().getY() - this.getKoordinat().getY()) <= range) {
+                zombiesInRange.add(z);
+            }
+        }
+    return zombiesInRange;
     }
 
 }
