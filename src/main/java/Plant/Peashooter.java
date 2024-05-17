@@ -22,7 +22,7 @@ public class Peashooter extends Plant {
 
     // Implementing abstract method dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Peashooter tidak memiliki cooldowns, jadi method tidak melakukan apapun
     }
 }
