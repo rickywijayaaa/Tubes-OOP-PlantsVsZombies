@@ -39,7 +39,7 @@ public abstract class Zombie extends Creature {
     public abstract void attack(Plant pl);
 
     @Override
-    public void resetCooldown(){
+    public void resetCooldown(double newcooldown){
         // Implementing the resetCooldown from creature
         System.out.println(getName() + " attacks with " + getAttackDamage() + " damage!");
     }

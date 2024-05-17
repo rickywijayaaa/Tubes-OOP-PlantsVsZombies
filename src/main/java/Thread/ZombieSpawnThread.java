@@ -9,17 +9,20 @@ import Zombies.*;
 import Koordinat.*;
 import MenuGame.*;
 import Deck.*;
+import Creature.*;
 import Inventory.*;
 
 public class ZombieSpawnThread implements Runnable {
     private int gametimer;
     private Peta peta;
     private static ArrayList<Zombie> listzombie;
+    private static ArrayList<Plant> listplant;
 
     public ZombieSpawnThread(int gametimer, Peta mainlawn){
         this.gametimer = gametimer;
         this.peta = mainlawn;
         listzombie = new ArrayList<Zombie>();
+        listplant = new ArrayList<Plant>();
     }
     
     @Override
@@ -30,6 +33,32 @@ public class ZombieSpawnThread implements Runnable {
                 Random rand = new Random();
                 ZombieDeck deckzom = new ZombieDeck();
                 int zombieCount = 0;
+                Sunflower sun1 = new Sunflower(0,1);
+                Sunflower sun2 = new Sunflower(1,1);
+                Repeater plant2 = new Repeater(4,1);
+                Repeater plant3 = new Repeater(5,1);
+                Tile zomtile5 = peta.getTile(0,1);
+                Tile zomtile6 = peta.getTile(1,1);
+                Tile zomtile7 = peta.getTile(4,1);
+                Tile zomtile8 = peta.getTile(5,1);
+                zomtile5.addCreature(sun1);
+                zomtile6.addCreature(sun2);
+                zomtile7.addCreature(plant2);
+                zomtile8.addCreature(plant3);
+
+                for (int row = 0; row < 6; row++) {
+                    for (int col = 0; col < 11; col++) {
+                        Tile tile = peta.getTile(row, col);
+                        ArrayList<Creature> entities = tile.getEntities();
+                        for (Creature creature : entities) {
+                            if (creature instanceof Plant) {
+                                listplant.add((Plant) creature);
+                            }
+                        }
+
+                    }
+                }
+            
                 while(gametimer > 0){
                     if (ThreadControl.getGameTimerThread().getCurrentGameTime() >20 && ThreadControl.getGameTimerThread().getCurrentGameTime() <160) {
 
@@ -62,6 +91,13 @@ public class ZombieSpawnThread implements Runnable {
                             zombie.walk(peta);
                         }
                         peta.displayMap();
+                        for (int x = 0 ; x < listplant.size();x++) {
+                            if (listplant.get(x) instanceof Sunflower) {
+                                Sunflower sun = (Sunflower)listplant.get(x); 
+                                sun.act();
+                            }
+                        }
+                        System.out.println("jumlah matahari : "+ Sun.getSun());
                     }
                     Thread.sleep(1000);
                 }
