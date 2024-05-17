@@ -87,18 +87,29 @@ public class Peta {
             for (int col = 0; col < 11; col++) {
                 Tile tile = getTile(row, col);
                 ArrayList<Creature> entities = tile.getEntities();
-
+    
                 StringBuilder sb = new StringBuilder();
-                sb.append("[");
+                
+                if (tile instanceof PoolTile) {
+                    sb.append("{");
+                } else {
+                    sb.append("[");
+                }
+    
                 for (Creature entity : entities) {
                     sb.append(entity.getName()).append(", ");
                 }
-
-                if (sb.length() > 1) { 
-                    sb.setLength(sb.length() - 2); 
+    
+                if (sb.length() > 1) {
+                    sb.setLength(sb.length() - 2); // Remove trailing ", "
                 }
-
-                sb.append("]");
+    
+                if (tile instanceof PoolTile) {
+                    sb.append("}");
+                } else {
+                    sb.append("]");
+                }
+    
                 System.out.print(sb.toString());
             }
             System.out.println();
