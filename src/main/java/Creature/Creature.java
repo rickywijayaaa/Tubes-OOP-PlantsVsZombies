@@ -67,6 +67,10 @@ public abstract class Creature {
         return attackSpeed;
     }
 
+    public void setAttackSpeed(double newspeed){
+        attackSpeed = newspeed;
+    }
+
     public boolean isAquatic() {
         return isAquatic;
     }

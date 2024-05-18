@@ -39,6 +39,7 @@ public class Tile {
         for (Creature creatures : entity) { 
             if (creatures instanceof Plant) {
                 hasPlant = true;
+                return;
             }
         }
         hasPlant = false;

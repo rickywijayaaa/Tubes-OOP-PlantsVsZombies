@@ -76,20 +76,9 @@ public class App {
         ThreadControl.addThread(new GameTimerThread(0));
         ThreadControl.addThread(new ZombieSpawnThread(200,peta));
         ThreadControl.startAllThreads();  
-        
-        new Thread(() -> {
-            while (isRunningGame) {
-                try {
-                    ZombieSpawnThread.attackZombie(peta);
-                    peta.displayMap();
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+    
 
-        MenuGame.Menu();
+        //MenuGame.Menu();
 
     }       
 }
