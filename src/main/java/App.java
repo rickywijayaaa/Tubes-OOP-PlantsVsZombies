@@ -72,10 +72,10 @@ public class App {
         // Start the GenerateSunThread
         // Thread thread = new Thread(sunThread);
         // thread.start();
-        ThreadControl.addThread(new GenerateSunThread(100));
-        ThreadControl.addThread(new GameTimerThread(0));
-        ThreadControl.addThread(new ZombieSpawnThread(200,peta));
-        ThreadControl.startAllThreads();  
+        // ThreadControl.addThread(new GenerateSunThread(100));
+        // ThreadControl.addThread(new GameTimerThread(0));
+        // ThreadControl.addThread(new ZombieSpawnThread(200,peta));
+        // ThreadControl.startAllThreads();  
     
 
         MenuGame.Menu();
