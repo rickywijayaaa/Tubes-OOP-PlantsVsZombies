@@ -7,7 +7,7 @@ import Koordinat.*;
 
 public class DolphinRiderZombie extends Zombie {
     public DolphinRiderZombie(int x, int y) {
-        super("Dolphin Rider Zombie", 175, 100, 1, true,x,y, 0, 5);
+        super("Dolphin Rider Zombie", 175, 100, 1, true,x,y,true, 0, 5);
     }
 
 

@@ -5,7 +5,7 @@ import Creature.*;
 
 public class ConeheadZombie extends Zombie {
     public ConeheadZombie(int x, int y) {
-        super("Conehead Zombie", 250, 100, 1, false,x,y, 0, 5);
+        super("Conehead Zombie", 250, 100, 1, false,x,y,true, 0, 5);
     }
 
 

@@ -1,18 +1,22 @@
 package Plant;
 import Creature.*;
 import Zombies.*;
+import MapGame.*;
+import Koordinat.*;
 
 public class Squash extends Plant {
     public Squash(int x, int y) {
-        super("Squash", 100, 5000, 0, false,x,y,50,1, 20);
+        super("Squash", 100, 5000, 0, false,x,y,true,50,1, 20);
     }
 
     // Implementing abstract method dari Plant class
-    @Override
-    public void attack(Zombie zom) {
-        // Squash menyerang dengan squashing zombies di lane-nya
-        zom.setHealth(getAttackDamage());
-    }
+    // @Override
+    // public void attack(Zombie zom,Peta peta) {
+    //     // Implementing attack behavior untuk Peashooter
+    //     if(zom.getIsAlive()){
+    //         zom.setHealth(getAttackDamage());
+    //     }
+    // }
 
     // Implementing abstract method dari Creature class
     @Override
