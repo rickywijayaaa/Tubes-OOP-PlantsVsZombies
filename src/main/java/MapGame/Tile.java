@@ -44,6 +44,18 @@ public class Tile {
         hasPlant = false;
     }
 
+    // mengembalikan apakah ada zombie 
+    public boolean hasZombie() {
+        boolean check = false;
+        for (Creature creatures : entity) { 
+            if (creatures instanceof Zombie) {
+                check = true;
+            }
+        }
+        return check;
+        
+    }
+
     public boolean hasPlanted() {
         this.isPlanted();
         return hasPlant;
