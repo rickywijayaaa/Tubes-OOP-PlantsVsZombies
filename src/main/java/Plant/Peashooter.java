@@ -32,21 +32,25 @@ public class Peashooter extends Plant {
     }
 
     public void attack2(Peta peta){
-        int startRow = this.getKoordinat().getX();
-        int startCol = this.getKoordinat().getY();
-        
-        for (int i = 1; i <= 11- startCol; i++) {
-            int targetCol = startCol + i;
-            if (targetCol >= 11) break; // Out of grid bounds
-            Tile targetTile = peta.getTile(startRow, targetCol);
-            for (Creature targetCreature : targetTile.getEntities()) {
-                if (targetCreature instanceof Zombie) {
-                    this.attack((Zombie) targetCreature);
-                    return; // Attack the first zombie encountered
+        if(this.getAttackSpeed()==0){
+            int startRow = this.getKoordinat().getX();
+            int startCol = this.getKoordinat().getY();
+            this.setAttackSpeed(4.0);
+            for (int i = 1; i <= 11- startCol; i++) {
+                int targetCol = startCol + i;
+                if (targetCol >= 11) break; // Out of grid bounds
+                Tile targetTile = peta.getTile(startRow, targetCol);
+                for (Creature targetCreature : targetTile.getEntities()) {
+                    if (targetCreature instanceof Zombie) {
+                        this.attack((Zombie) targetCreature);
+                        return; // Attack the first zombie encountered
+                    }
                 }
-            }
+            }   
         }
-    
-    }
+        else{
+            this.setAttackSpeed(getAttackSpeed()-1);
+        }
+     }
 }
 
