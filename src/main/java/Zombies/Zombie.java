@@ -4,12 +4,12 @@ import Creature.*;
 import MapGame.*;
 import Koordinat.*;
 
-public abstract class Zombie extends Creature {
+public abstract class Zombie extends Creature implements Cloneable{
     private double slowed;
     private double speed;
 
-    public Zombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y, double slowed, double speed) {
-        super(name, health, attackDamage, attackSpeed, isAquatic,x,y);
+    public Zombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y, boolean isAlive,double slowed, double speed) {
+        super(name, health, attackDamage, attackSpeed, isAquatic,x,y,true);
         this.slowed = slowed;
         this.speed = speed;
     }
@@ -56,7 +56,7 @@ public abstract class Zombie extends Creature {
         int koory = koorZ.getY();
         int nextCol = koory - 1;
 
-        if((this.getSpeed())== 0){
+        if((this.getSpeed())== 0 ){
             // Check if the next tile is within the bounds of the game map
             if (nextCol > 0) {
                 Tile tile = gameMap.getTile(koorx,koory); // Get the current tile
@@ -106,6 +106,15 @@ public abstract class Zombie extends Creature {
     //         }
     //     }
     // }
+        // Implement clone method
+        @Override
+        public Zombie clone() {
+            try {
+                return (Zombie) super.clone();
+            } catch (CloneNotSupportedException e) {
+                throw new AssertionError(); // Can't happen
+            }
+        }
 }
 
 
