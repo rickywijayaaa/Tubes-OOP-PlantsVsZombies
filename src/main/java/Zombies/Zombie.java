@@ -7,11 +7,13 @@ import Koordinat.*;
 public abstract class Zombie extends Creature implements Cloneable{
     private double slowed;
     private double speed;
+    private boolean isAttack;
 
     public Zombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y, boolean isAlive,double slowed, double speed) {
         super(name, health, attackDamage, attackSpeed, isAquatic,x,y,true);
         this.slowed = slowed;
         this.speed = speed;
+        this.isAttack = false;
     }
 
     // Getter methods 
@@ -21,6 +23,14 @@ public abstract class Zombie extends Creature implements Cloneable{
 
     public double getSpeed() {
         return speed;
+    }
+
+    public boolean isAttack(){
+        return isAttack;
+    }
+
+    public void setAttack(boolean attack){
+        isAttack = attack;
     }
     
     public void setSpeed(double newspeed){
@@ -49,12 +59,18 @@ public abstract class Zombie extends Creature implements Cloneable{
         // Implementing the movement behavior from creature
         System.out.println(getName() + " moves slowly with speed " + getSpeed());
     }
+
+
     //the object decrease plant health in the same tile based on its atkdmg
     public void walk(Peta gameMap) {
         Koordinat koorZ = getKoordinat(); // Get zombie's current position
         int koorx = koorZ.getX();
         int koory = koorZ.getY();
         int nextCol = koory - 1;
+
+        if (isAttack){
+            return;
+        }
 
         if((this.getSpeed())== 0 ){
             // Check if the next tile is within the bounds of the game map
@@ -107,14 +123,15 @@ public abstract class Zombie extends Creature implements Cloneable{
     //     }
     // }
         // Implement clone method
-        @Override
-        public Zombie clone() {
-            try {
-                return (Zombie) super.clone();
-            } catch (CloneNotSupportedException e) {
-                throw new AssertionError(); // Can't happen
-            }
+    @Override
+    public Zombie clone() {
+        try {
+            return (Zombie) super.clone();
+                } catch (CloneNotSupportedException e) {
+            throw new AssertionError(); // Can't happen
         }
+    }
+
 }
 
 

@@ -130,4 +130,25 @@ public class ZombieSpawnThread implements Runnable {
             e.printStackTrace();
         }
     }
+    
+    public static void attackZombie(Peta peta) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 1; j < 10; j++) {
+                Tile tile = peta.getTile(i, j);
+                List<Plant> plants = listplant;
+                List<Zombie> zombies = listzombie;
+    
+                if (!plants.isEmpty()) {
+                    Plant plant = plants.get(0); // Assuming attacking the first plant
+                    for (Zombie zombie : zombies) {
+                        zombie.setAttack(true);
+                        zombie.attack(plant);
+                        if (plant.getHealth() <= 0) {
+                            tile.removeCreature(plant);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
