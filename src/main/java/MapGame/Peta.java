@@ -83,36 +83,52 @@ public class Peta {
     }
 
     public void displayMap() {
+        String red = "\u001B[31m";
+        String green = "\u001B[32m";
+        String blue = "\u001B[34m";
+        String grey = "\u001B[37m";
+        String white = "\u001B[37m";
+
         for (int row = 0; row < 6; row++) {
             for (int col = 0; col < 11; col++) {
                 Tile tile = getTile(row, col);
                 ArrayList<Creature> entities = tile.getEntities();
-    
+
                 StringBuilder sb = new StringBuilder();
-                
+
                 if (tile instanceof PoolTile) {
-                    sb.append("{");
+                    sb.append(blue).append("{");
+                } else if (tile instanceof BaseTile) {
+                    sb.append(red).append("[");
+                } else if (tile instanceof ZombieSpawnTile) {
+                    sb.append(grey).append("[");
+                } else if (tile instanceof GrassTile) {
+                    sb.append(green).append("[");
+                }
+
+                if (entities.isEmpty()) {
+                    sb.append(".");
                 } else {
-                    sb.append("[");
+                    for (Creature entity : entities) {
+                        sb.append(entity.getName())
+                          .append("-")
+                          .append(entity.getHealth())
+                          .append(", ");
+                    }
+                    if (sb.length() > 1) {
+                        sb.setLength(sb.length() - 2); // Remove trailing ", "
+                    }
                 }
-    
-                for (Creature entity : entities) {
-                    sb.append(entity.getName()).append(", ");
-                }
-    
-                if (sb.length() > 1) {
-                    sb.setLength(sb.length() - 2); // Remove trailing ", "
-                }
-    
+
                 if (tile instanceof PoolTile) {
                     sb.append("}");
                 } else {
                     sb.append("]");
                 }
-    
+
                 System.out.print(sb.toString());
             }
-            System.out.println();
+            System.out.println(white); // Reset to white at the end of each row
         }
     }
 }
