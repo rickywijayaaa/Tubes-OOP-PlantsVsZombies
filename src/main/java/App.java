@@ -78,7 +78,7 @@ public class App {
         ThreadControl.startAllThreads();  
     
 
-        //MenuGame.Menu();
+        MenuGame.Menu();
 
     }       
 }
