@@ -60,8 +60,8 @@ public class ZombieSpawnThread implements Runnable {
             }
 
             while (gametimer > 0) {
-                if (ThreadControl.getGameTimerThread().getCurrentGameTime() > 2 && ThreadControl.getGameTimerThread().getCurrentGameTime() < 160) {
-                    if ((rand.nextInt(10) > 3) && (zombieCount < 10)) {
+                if (ThreadControl.getGameTimerThread().getCurrentGameTime() > 20 && ThreadControl.getGameTimerThread().getCurrentGameTime() < 160) {
+                    if ((rand.nextInt(10) >7) && (zombieCount < 10)) {
                         int bariszom = rand.nextInt(6); // Perbaiki jangkauan bariszom
                         int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
                         Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone(); // Buat salinan baru dari zombie
@@ -74,7 +74,7 @@ public class ZombieSpawnThread implements Runnable {
                                 listzombie.add(zom);
                                 zombieCount++;
                             } else {
-                                System.out.println("Aquatic zombie cannot spawn on non-aquatic tile");
+                                //System.out.println("Aquatic zombie cannot spawn on non-aquatic tile");
                             }
                         } else {
                             if (!zom.isAquatic()) {
@@ -83,11 +83,11 @@ public class ZombieSpawnThread implements Runnable {
                                 listzombie.add(zom);
                                 zombieCount++;
                             } else {
-                                System.out.println("Non-aquatic zombie cannot spawn on aquatic tile");
+                                //System.out.println("Non-aquatic zombie cannot spawn on aquatic tile");
                             }
                         }
                     } else {
-                        System.out.println("Zombie not spawned");
+                        //System.out.println("Zombie not spawned");
                     }
                     System.out.println("Zombie Count: " + listzombie.size());
                     System.out.println();
@@ -118,11 +118,25 @@ public class ZombieSpawnThread implements Runnable {
                         Zombie zombie = iter.next();
                         if (!zombie.getIsAlive()) {
                             zombie.die(peta);
+                            System.out.println("");
                             System.out.println(zombie.getName() + " telah matii!!");
                             iter.remove();
                         }
                     }
                 }
+                if (!listplant.isEmpty()) {
+                    Iterator<Plant> iter2 = listplant.iterator();
+                    while (iter2.hasNext()) {
+                        Plant pl = iter2.next();
+                        if (!pl.getIsAlive()) {
+                            pl.die(peta);
+                            System.out.println("");
+                            System.out.println(pl.getName() + " telah matii!!");
+                            iter2.remove();
+                        }
+                    }
+                }
+
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
