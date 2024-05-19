@@ -2,7 +2,7 @@ package MenuGame;
 
 import java.util.Scanner;
 import Inventory.*;
-import Deck.*;
+import Thread.ThreadControl;
 
 
 public class MenuGame {
@@ -67,6 +67,7 @@ public class MenuGame {
                 switch (choice) {
                     case 1:
                         System.out.println("Memulai permainan...");
+                        ThreadControl.startAllThreads();
                         Inventory inven = new Inventory();
                         Start.Start(inven);
                         isRunning = false;
@@ -188,6 +189,7 @@ public class MenuGame {
                         break;
                     case 5:
                         System.out.println("Keluar dari permainan. Sampai jumpa!");
+                        ThreadControl.stopAllThreads();
                         isRunning = false;
                         break;
                     default:

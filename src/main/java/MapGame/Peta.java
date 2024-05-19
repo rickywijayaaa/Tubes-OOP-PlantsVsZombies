@@ -82,7 +82,7 @@ public class Peta {
         this.grid[row][col].addCreature(toBePlanted);
     }
 
-    public void displayMap() {
+    public void displayMap(boolean command) {
         String red = "\u001B[31m";
         String green = "\u001B[32m";
         String blue = "\u001B[34m";
@@ -125,8 +125,13 @@ public class Peta {
                 } else {
                     sb.append("]");
                 }
+                if(command){
+                    System.out.print(sb.toString());
+                }else{
+                    System.out.flush();
+                    System.out.print(sb.toString());
+                }
 
-                System.out.print(sb.toString());
             }
             System.out.println(white); // Reset to white at the end of each row
         }

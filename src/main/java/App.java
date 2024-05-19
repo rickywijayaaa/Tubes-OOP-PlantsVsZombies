@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 
 
-public class App {
+public class  App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean isRunningGame = true;
@@ -70,6 +70,7 @@ public class App {
 
         
         // Start the GenerateSunThread
+<<<<<<< HEAD
         // Thread thread = new Thread(sunThread);
         // thread.start();
         // ThreadControl.addThread(new GenerateSunThread(100));
@@ -78,6 +79,14 @@ public class App {
         // ThreadControl.startAllThreads();  
     
 
+=======
+//         Thread thread = new Thread(sunThread);
+//         thread.start();
+//        ThreadControl.addThread(new GameTimerThread(0));
+//        ThreadControl.addThread(new GenerateSunThread(100));
+//        ThreadControl.addThread(new ZombieSpawnThread(200,peta));
+//        ThreadControl.startAllThreads();
+>>>>>>> 712046afd7339f1aa4c0ad4cf77ef1a3f3936da8
         MenuGame.Menu();
 
     }       

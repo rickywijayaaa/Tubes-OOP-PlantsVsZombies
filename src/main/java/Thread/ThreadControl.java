@@ -15,13 +15,11 @@ public class ThreadControl {
         ThreadList.add(thread);
     }
 
-    public static void removeThread(int i) {
-        ThreadList.remove(i);
-    }
 
     public synchronized static void startAllThreads() {
         for (Runnable run : ThreadList) {
             Thread t = new Thread(run);
+            t.setDaemon(true);
             t.start();
         }
     }
@@ -34,9 +32,7 @@ public class ThreadControl {
                 ((GenerateSunThread)run).endCurrentSundrop();
             }
         }
-        for(int i = 0; i < ThreadList.size(); i++){
-            ThreadControl.removeThread(i);
-        }
+        ThreadList.clear();
     }
 
     public static GameTimerThread getGameTimerThread() {

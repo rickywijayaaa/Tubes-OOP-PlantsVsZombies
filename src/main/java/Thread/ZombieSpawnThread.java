@@ -19,12 +19,14 @@ public class ZombieSpawnThread implements Runnable {
     private Peta peta;
     private static List<Zombie> listzombie;
     private static ArrayList<Plant> listplant;
+    private static String message;
 
     public ZombieSpawnThread(int gametimer, Peta mainlawn) {
         this.gametimer = gametimer;
         this.peta = mainlawn;
         listzombie = new ArrayList<>();
         listplant = new ArrayList<>();
+        message = "|| Zombie Count: " + listzombie.size();
     }
 
     @Override
@@ -65,7 +67,7 @@ public class ZombieSpawnThread implements Runnable {
                         int bariszom = rand.nextInt(6); // Perbaiki jangkauan bariszom
                         int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
                         Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone(); // Buat salinan baru dari zombie
-                        System.out.println("Zombie spawned: " + zom.getName());
+                        System.out.println("\nZombie spawned: " + zom.getName());
 
                         if (bariszom == 2 || bariszom == 3) {
                             if (zom.isAquatic()) {
@@ -86,16 +88,17 @@ public class ZombieSpawnThread implements Runnable {
                                 //System.out.println("Non-aquatic zombie cannot spawn on aquatic tile");
                             }
                         }
+                        updateMessage();
                     } else {
                         //System.out.println("Zombie not spawned");
                     }
-                    System.out.println("Zombie Count: " + listzombie.size());
+//                    System.out.println("Zombie Count: " + listzombie.size());
                     System.out.println();
                     for (Zombie zombie : listzombie) {
                         zombie.walk(peta);
                     }
 
-                    peta.displayMap();
+                    peta.displayMap(false);
 
                     for (Plant plant : listplant) {
                         if (plant instanceof Sunflower) {
@@ -164,5 +167,13 @@ public class ZombieSpawnThread implements Runnable {
                 }
             }
         }
+    }
+
+    private static void updateMessage(){
+        message = " || Zombie Count: " + listzombie.size();
+    }
+
+    public static String getMessage(){
+        return message;
     }
 }
