@@ -41,6 +41,7 @@ public class Game {
             System.out.println("2. Menghapus tanaman dari peta");
             System.out.println("3. Lihat Peta");
             System.out.println("4. Coba Thread");
+            GameTimerThread.printMessage();
             System.out.print("Masukkan input tindakan (1/2/3/4) : ");
 
             waitingForInput.set(true);
@@ -49,6 +50,7 @@ public class Game {
 
             switch (choice2) {
                 case 1:
+                    System.out.println();
                     inven.displayDeck();
                     System.out.println();
                     System.out.printf("Pilih tanaman untuk ditanam : ");

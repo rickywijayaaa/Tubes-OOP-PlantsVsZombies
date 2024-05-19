@@ -11,7 +11,7 @@ import Inventory.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameTimerThread implements Runnable {
-    public int gametimer;
+    public static int gametimer;
     private AtomicBoolean waitingForInput;
 
     public GameTimerThread(int gametime, AtomicBoolean waitingForInput) {
@@ -35,6 +35,13 @@ public class GameTimerThread implements Runnable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void printMessage(){
+        System.out.println("Time right now: " + gametimer +
+                " | Sun: " + GenerateSunThread.getMessage() +
+                " | Zombies: " + ZombieSpawnThread.getMessage()+
+                " | Input: ");
     }
 
     public int getCurrentGameTime() {
