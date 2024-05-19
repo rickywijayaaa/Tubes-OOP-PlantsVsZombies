@@ -4,6 +4,8 @@ import Zombies.*;
 import MapGame.*;
 import Koordinat.*;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Plant extends Creature {
     private int cost;
@@ -14,8 +16,8 @@ public abstract class Plant extends Creature {
     static HashMap<Class<? extends Plant> , Boolean> coolDownMap = new HashMap<>();
    
 
-    public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y,int cost,int range, double cooldown) {
-        super(name,health, attackDamage, attackSpeed, isAquatic,x,y);
+    public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y,boolean isAlive,int cost,int range, double cooldown) {
+        super(name,health, attackDamage, attackSpeed, isAquatic,x,y,isAlive);
         this.cost = cost;
         this.range = range;
         this.cooldown = cooldown;
@@ -54,27 +56,29 @@ public abstract class Plant extends Creature {
     }
 
     // Abstract method attack zombie
-    public abstract void attack(Zombie zom);
+    public void attack(Zombie zombie){
+        // Tile target = getTileAttack(this, peta);
+        // if(target != null){
+        //     for (Creature targetCreature : target.getEntities()) {
+        //         if (targetCreature instanceof Zombie) {
+        //             this.attackZom((Zombie) targetCreature,peta);
+        //             return; // Attack the first zombie encountered
+        //         }
+        //     }  
+        // }
+    }
 
     //display plant
     public void displayPlant(){
         System.out.println("nama: " + getName() + " memiliki health : " + getHealth() + " attack damage : " + getAttackDamage() + " attack speed : " + getAttackSpeed());
     }
-
-    public void die(Peta mapGame) {
-        Koordinat koorZ = getKoordinat(); // Get zombie's current position
-        int koorx = koorZ.getX();
-        int koory = koorZ.getY();
-        Tile tile = mapGame.getTile(koorx, koory);
-        koorZ.displayKoordinat();
-        tile.removeCreature(this);
-    }
     
     // Implementing abstract methods dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Implementing attack behavior untuk Plant
         // Methodnya akan beragam sesuai dengan Plant
+        cooldown = newcooldown;
     }
 
     @Override
@@ -83,6 +87,54 @@ public abstract class Plant extends Creature {
         // Plants biasanya tidak melakukan "move"
     }
 
+    public List<Zombie> getRange(List<Zombie> listofZombies){
+        List<Zombie> zombiesInRange = new ArrayList<>();
+        for (Zombie z : listofZombies) {
+            if (Math.abs(z.getKoordinat().getX() - this.getKoordinat().getX()) <= range
+                && Math.abs(z.getKoordinat().getY() - this.getKoordinat().getY()) <= range) {
+                zombiesInRange.add(z);
+            }
+        }
+    return zombiesInRange;
+    }
+
+
+    // Get Tile buat attack
+
+    public Tile getTileAttack(Plant plant, Peta peta){
+        int col = plant.getKoordinat().getX();
+        int row = plant.getKoordinat().getY();
+        if(plant.getRange()==-1){
+            for(int j = row+1;j<10;j++){
+                Tile check = peta.getTile(col,j);
+                if(check.hasZombie()){
+                    return check;
+                }
+            }
+        }
+        else if (plant.getRange()==1){
+            Tile check2 = peta.getTile(col,row+1);
+            if(check2.hasZombie()){
+                return check2;
+            }
+        }
+        else{
+            for(int j = row+1;j<row+4;j++){
+                Tile check3 = peta.getTile(col,j);
+                if(check3.hasZombie()){
+                    return check3;
+                }
+            }
+        }
+        return null;
+    }
+
+    // public void attackZom(Zombie zom,Peta peta) {
+    //     // Implementing attack behavior untuk Peashooter
+    //     if(zom.getIsAlive()){
+    //         zom.setHealth(getAttackDamage());
+    //     }
+    // }
 }
 
 

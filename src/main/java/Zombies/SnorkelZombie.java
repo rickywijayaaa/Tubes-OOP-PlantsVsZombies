@@ -5,14 +5,14 @@ import Creature.*;
 
 public class SnorkelZombie extends Zombie {
     public SnorkelZombie(int x, int y) {
-        super("Snorkel Zombie",200,150,1,true,x,y,0,5);
+        super("Snorkel Zombie",200,150,1,true,x,y,true,0,5);
     }
 
 
 
     // Implementasi abstract method 
     @Override
-    public void resetCooldown(){
+    public void resetCooldown(double newcooldown){
         // Implementasi resetCooldown dari Creature
         System.out.println("nanti dioveerride");
     }
@@ -27,7 +27,8 @@ public class SnorkelZombie extends Zombie {
     @Override
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
-        pl.setHealth(getAttackDamage());
+        pl.setHealth(pl.getHealth() - this.getAttackDamage());
+        System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
     }
 }
 

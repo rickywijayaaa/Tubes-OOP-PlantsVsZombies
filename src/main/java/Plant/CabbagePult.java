@@ -1,17 +1,22 @@
 package Plant;
 import Creature.*;
 import Zombies.*;
+import MapGame.*;
+import Inventory.*;
+import Koordinat.*;
 
 public class CabbagePult extends Plant {
     public CabbagePult(int x, int y) {
-        super("Cabbage Pult", 100, 20, 1.5,false,x,y,100, 3, 5);
+        super("Cabbage Pult", 100, 20, 1,false,x,y,true,100, 3, 5);
     }
 
-    // Implementing abstract method dari Plant class
+    //Implementing abstract method dari Plant class
     @Override
     public void attack(Zombie zom) {
-        // Cabbage Pult menyerang dengan memakan zombies (langsung mati)
-        zom.setHealth(zom.getHealth());
+        // Implementing attack behavior untuk Peashooter
+        if(zom.getIsAlive()){
+            zom.setHealth(getAttackDamage());
+        }
     }
 
     // Implementing abstract method dari Creature class
@@ -22,8 +27,26 @@ public class CabbagePult extends Plant {
 
     // Implementing abstract method dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Cabbage Pult tidak cooldowns, jadi method tidak melakukan apapun
+    }
+
+    public void attack2(Peta peta){
+        int startRow = this.getKoordinat().getX();
+        int startCol = this.getKoordinat().getY();
+        
+        for (int i = 1; i <= 3; i++) {
+            int targetCol = startCol + i;
+            if (targetCol >= 11) break; // Out of grid bounds
+            Tile targetTile = peta.getTile(startRow, targetCol);
+            for (Creature targetCreature : targetTile.getEntities()) {
+                if (targetCreature instanceof Zombie) {
+                    this.attack((Zombie) targetCreature);
+                    return; // Attack the first zombie encountered
+                }
+            }
+        }
+    
     }
 }
 

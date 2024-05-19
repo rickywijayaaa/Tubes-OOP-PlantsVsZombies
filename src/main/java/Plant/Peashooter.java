@@ -1,17 +1,22 @@
 package Plant;
 import Creature.*;
 import Zombies.*;
+import MapGame.*;
+import Inventory.*;
+import Koordinat.*;
 
 public class Peashooter extends Plant {
     public Peashooter(int x, int y) {
-        super("Peashooter", 100, 25, 4, false, x,y,100, -1, 10);
+        super("Peashooter", 100, 25, 4, false, x,y,true,100, 6, 10);
     }
 
     // Implementing abstract method dari Plant class
     @Override
     public void attack(Zombie zom) {
         // Implementing attack behavior untuk Peashooter
-        zom.setHealth(getAttackDamage());
+        if(zom.getIsAlive()){
+            zom.setHealth(getAttackDamage());
+        }
     }
 
     // Implementing abstract method dari Creature class
@@ -22,8 +27,30 @@ public class Peashooter extends Plant {
 
     // Implementing abstract method dari Creature class
     @Override
-    public void resetCooldown() {
+    public void resetCooldown(double newcooldown) {
         // Peashooter tidak memiliki cooldowns, jadi method tidak melakukan apapun
     }
+
+    public void attack2(Peta peta){
+        if(this.getAttackSpeed()==0){
+            int startRow = this.getKoordinat().getX();
+            int startCol = this.getKoordinat().getY();
+            this.setAttackSpeed(4.0);
+            for (int i = 1; i <= 11- startCol; i++) {
+                int targetCol = startCol + i;
+                if (targetCol >= 11) break; // Out of grid bounds
+                Tile targetTile = peta.getTile(startRow, targetCol);
+                for (Creature targetCreature : targetTile.getEntities()) {
+                    if (targetCreature instanceof Zombie) {
+                        this.attack((Zombie) targetCreature);
+                        return; // Attack the first zombie encountered
+                    }
+                }
+            }   
+        }
+        else{
+            this.setAttackSpeed(getAttackSpeed()-1);
+        }
+     }
 }
 

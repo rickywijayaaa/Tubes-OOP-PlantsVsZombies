@@ -6,11 +6,50 @@ import Deck.*;
 
 
 public class MenuGame {
+
+    public static void printMenu() {
+        String green = "\033[32m"; // Kode warna hijau
+        String yellow = "\033[33m"; // Kode warna kuning
+        String pink = "\033[95m"; // Kode warna pink
+        String reset = "\033[0m"; // Reset warna
+
+        // Print Michael vs Lalapan
+        System.out.println(green + "                        ,---.    ,---..-./`)     _______   .---.  .---.    ____        .-''-.    .---.             " + reset);
+        System.out.println(green + "                        |    \\  /    |\\ .-.')   /   __  \\  |   |  |_ _|  .'  __ `.   .'_ _   \\   | ,_|             " + reset);
+        System.out.println(green + "                        |  ,  \\/  ,  |/ `-' \\  | ,_/  \\__) |   |  ( ' ) /   '  \\  \\ / ( ` )   ',-./  )             " + reset);
+        System.out.println(green + "                        |  |\\_   /|  | `-'`\"`,-./  )       |   '-(_{;}_)|___|  /  |. (_ o _)  |\\  '_ '`)           " + reset);
+        System.out.println(green + "                        |  _( )_/ |  | .---. \\  '_ '`)     |      (_,_)    _.-`   ||  (_,_)___| > (_)  )           " + reset);
+        System.out.println(green + "                        | (_ o _) |  | |   |  > (_)  )  __ | _ _--.   | .'   _    |'  \\   .---.(  .  .-'           " + reset);
+        System.out.println(green + "                        |  (_,_)  |  | |   | (  .  .-'_/  )|( ' ) |   | |  _( )_  | \\  `-'    / `-'`-'|___         " + reset);
+        System.out.println(green + "                        |  |      |  | |   |  `-'`-'     / (_{;}_)|   | \\ (_ o _) /  \\       /   |        \\        " + reset);
+        System.out.println(green + "                        '--'      '--' '---'    `._____.'  '(_,_) '---'  '.(_,_).'    `'-..-'    `--------`        " + reset);
+        System.out.println(yellow + "                                                        ,---.  ,---.  .-'''-.                                      " + reset);
+        System.out.println(yellow + "                                                        |   /  |   | / _     \\                                     " + reset);
+        System.out.println(yellow + "                                                        |  |   |  .'(`' )/`--'                                     " + reset);
+        System.out.println(yellow + "                                                        |  | _ |  |(_ o _).                                        " + reset);
+        System.out.println(yellow + "                                                        |  _( )_  | (_,_). '.                                      " + reset);
+        System.out.println(yellow + "                                                        \\ (_ o._) /.---.  \\  :                                     " + reset);
+        System.out.println(yellow + "                                                         \\ (_,_) / \\    `-'  |                                     " + reset);
+        System.out.println(yellow + "                                                          \\     /   \\       /                                     " + reset);
+        System.out.println(yellow + "                                                           `---`     `-...-'                                       " + reset);
+        System.out.println(pink + "                          .---.        ____      .---.        ____    .-------.    ____    ,---.   .--.            " + reset);
+        System.out.println(pink + "                          | ,_|      .'  __ `.   | ,_|      .'  __ `. \\  _(`)_ \\ .'  __ `. |    \\  |  |            " + reset);
+        System.out.println(pink + "                        ,-./  )     /   '  \\  \\,-./  )     /   '  \\  \\| (_ o._)|/   '  \\  \\|  ,  \\ |  |            " + reset);
+        System.out.println(pink + "                        \\  '_ '`)   |___|  /  |\\  '_ '`)   |___|  /  ||  (_,_) /|___|  /  ||  |\\_ \\|  |            " + reset);
+        System.out.println(pink + "                         > (_)  )      _.-`   | > (_)  )      _.-`   ||   '-.-'    _.-`   ||  _( )_\\  |            " + reset);
+        System.out.println(pink + "                        (  .  .-'   .'   _    |(  .  .-'   .'   _    ||   |     .'   _    || (_ o _)  |            " + reset);
+        System.out.println(pink + "                         `-'`-'|___ |  _( )_  | `-'`-'|___ |  _( )_  ||   |     |  _( )_  ||  (_,_\\  |            " + reset);
+        System.out.println(pink + "                          |        \\\\ (_ o _) /  |        \\\\ (_ o _) //   )     \\ (_ o _) /|  |    |  |            " + reset);
+        System.out.println(pink + "                          `--------` '.(_,_).'   `--------` '.(_,_).' `---'      '.(_,_).' '--'    '--'            " + reset);
+    }
     
     public static void Menu() {
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
         int choice;
+
+        printMenu();
+
         try{
             while (isRunning) {
                 System.out.println("\n======= PLANT VS ZOMBIE =======");
