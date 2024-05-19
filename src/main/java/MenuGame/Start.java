@@ -1,18 +1,12 @@
 package MenuGame;
 
-import MapGame.*;
-import Sun.*;
-import Plant.*;
-import Zombies.*;
-import Koordinat.*;
-import MenuGame.*;
-import Deck.*;
 import Inventory.*;
 
 //import java.util.concurrent.*;
 import java.util.Scanner;
 
 public class Start {
+
 
         public static void Start(Inventory inven){
         Scanner scanner = new Scanner(System.in);
