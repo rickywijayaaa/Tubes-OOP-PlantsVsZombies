@@ -3,6 +3,7 @@ package MenuGame;
 import java.util.Scanner;
 import Inventory.*;
 import Deck.*;
+import Thread.ThreadControl;
 
 
 public class MenuGame {

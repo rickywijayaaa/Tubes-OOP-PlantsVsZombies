@@ -22,6 +22,7 @@ public class ThreadControl {
     public synchronized static void startAllThreads() {
         for (Runnable run : ThreadList) {
             Thread t = new Thread(run);
+            t.setDaemon(true);
             t.start();
         }
     }
