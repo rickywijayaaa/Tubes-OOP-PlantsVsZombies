@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import Koordinat.Koordinat;
 import MapGame.*;
 import Sun.*;
 import Plant.*;
@@ -17,6 +19,7 @@ public class ZombieSpawnThread implements Runnable {
     private static List<Zombie> listzombie;
     private static ArrayList<Plant> listplant;
     private static String message;
+    private static boolean gameEnd = false;
 
     public ZombieSpawnThread(int gametimer, Peta mainlawn) {
         this.gametimer = gametimer;
@@ -112,6 +115,7 @@ public class ZombieSpawnThread implements Runnable {
                     }
                     System.out.println("jumlah matahari : " + Sun.getSun());
                 }
+
                 if (!listzombie.isEmpty()) {
                     Iterator<Zombie> iter = listzombie.iterator();
                     while (iter.hasNext()) {
@@ -121,9 +125,20 @@ public class ZombieSpawnThread implements Runnable {
                             System.out.println("");
                             System.out.println(zombie.getName() + " telah matii!!");
                             iter.remove();
+                        }else{
+                            Koordinat koorZ = zombie.getKoordinat();
+//                            int koorx = koorZ.getX();
+                            int koorY = koorZ.getY();
+                            if(koorY== 0){
+                                System.out.println(zombie.getName());
+                                gameEnd = true;
+                                System.exit(0);
+                                //zombie sampai base
+                            }
                         }
                     }
                 }
+
                 if (!listplant.isEmpty()) {
                     Iterator<Plant> iter2 = listplant.iterator();
                     while (iter2.hasNext()) {
@@ -164,6 +179,10 @@ public class ZombieSpawnThread implements Runnable {
                 }
             }
         }
+    }
+
+    public static boolean isGameEnd() {
+        return gameEnd;
     }
 
     private static void updateMessage(){
