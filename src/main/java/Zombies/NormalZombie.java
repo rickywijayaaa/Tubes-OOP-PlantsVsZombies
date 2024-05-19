@@ -29,8 +29,8 @@ public class NormalZombie extends Zombie {
     @Override
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
-        pl.setHealth(pl.getHealth() - this.getAttackDamage());
-        System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
+        pl.setHealth(getAttackDamage());
+        //System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
     }
 }
 
