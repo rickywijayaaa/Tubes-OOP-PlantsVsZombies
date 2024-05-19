@@ -85,24 +85,8 @@ public class Game {
     private static void plantSelectedPlant(Scanner scanner, Inventory inven, Peta peta, int choose4) {
         System.out.println("");
         System.out.printf("Pilih baris untuk tanaman ditanam (x) : ");
-        while (!scanner.hasNextInt()) {
-            GameTimerThread.printMessage();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
         int koorx = scanner.nextInt();
         System.out.printf("Pilih kolom untuk tanaman ditanam (y) : ");
-        while (!scanner.hasNextInt()) {
-            GameTimerThread.printMessage();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
         int koory = scanner.nextInt();
 
         Plant selectedPlant = inven.getDeckInven().get(choose4 - 1);
