@@ -35,7 +35,7 @@ public abstract class Creature {
         return health;
     }
 
-    public boolean getIsAlive(){
+    public boolean isAlive(){
         return isAlive;
     }
 

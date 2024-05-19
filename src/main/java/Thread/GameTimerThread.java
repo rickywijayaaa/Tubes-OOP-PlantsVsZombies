@@ -25,10 +25,10 @@ public class GameTimerThread implements Runnable {
             try {
                 Thread.sleep(1000);
                 if (!waitingForInput.get()) {
-                    System.out.print("\rTime right now: " + gametimer +
+                    System.out.print("\r(Time right now: " + gametimer +
                             " | Sun: " + GenerateSunThread.getMessage() +
                             " | Zombies: " + ZombieSpawnThread.getMessage()+
-                            " | Input: ");
+                            "), Input Pilihan Tanaman: ");
                 }
                 gametimer++;
             } catch (InterruptedException e) {
@@ -40,8 +40,7 @@ public class GameTimerThread implements Runnable {
     public static void printMessage(){
         System.out.println("Time right now: " + gametimer +
                 " | Sun: " + GenerateSunThread.getMessage() +
-                " | Zombies: " + ZombieSpawnThread.getMessage()+
-                " | Input: ");
+                " | Zombies: " + ZombieSpawnThread.getMessage());
     }
 
     public int getCurrentGameTime() {

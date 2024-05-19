@@ -60,6 +60,7 @@ public class Game {
                     waitingForInput.set(false);
                     break;
                 case 2:
+                    System.out.println();
                     GameTimerThread.printMessage();
                     waitingForInput.set(true);
                     System.out.printf("Pilih baris untuk tanaman yang ingin dihapus (x) : ");
