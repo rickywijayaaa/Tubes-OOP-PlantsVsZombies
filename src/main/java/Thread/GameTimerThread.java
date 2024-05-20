@@ -8,36 +8,46 @@ import Koordinat.*;
 import MenuGame.*;
 import Deck.*;
 import Inventory.*;
-import java.util.Random;
-import java.util.Timer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class GameTimerThread implements Runnable{
-    public int gametimer;
-   
+public class GameTimerThread implements Runnable {
+    public static int gametimer;
+    private AtomicBoolean waitingForInput;
 
-    public GameTimerThread(int gametime){
+    public GameTimerThread(int gametime, AtomicBoolean waitingForInput) {
         gametimer = gametime;
+        this.waitingForInput = waitingForInput;
     }
-    
+
     @Override
     public void run() {
-            while(gametimer < 200){
-                try {
+        while (gametimer < 200) {
+            try {
                 Thread.sleep(1000);
-                System.out.println("Time right now : " +ThreadControl.getGameTimerThread().getCurrentGameTime());
-                gametimer ++;
+                if (!waitingForInput.get()) {
+                    System.out.print("\r(Time right now: " + gametimer +
+                            " | Sun: " + GenerateSunThread.getMessage() +
+                            " | Zombies: " + ZombieSpawnThread.getMessage()+
+                            "), Input Pilihan Tanaman: ");
                 }
-                catch (InterruptedException e) {
-                    e.printStackTrace();
-                } 
+                gametimer++;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
-    public int getCurrentGameTime(){
+
+    public static void printMessage(){
+        System.out.println("Time right now: " + gametimer +
+                " | Sun: " + GenerateSunThread.getMessage() +
+                " | Zombies: " + ZombieSpawnThread.getMessage());
+    }
+
+    public int getCurrentGameTime() {
         return gametimer;
     }
 
     public void endCurrentGameTime() {
         gametimer = 0;
     }
-    
 }

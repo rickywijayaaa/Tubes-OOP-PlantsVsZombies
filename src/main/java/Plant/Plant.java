@@ -57,15 +57,12 @@ public abstract class Plant extends Creature {
 
     // Abstract method attack zombie
     public void attack(Zombie zombie){
-        // Tile target = getTileAttack(this, peta);
-        // if(target != null){
-        //     for (Creature targetCreature : target.getEntities()) {
-        //         if (targetCreature instanceof Zombie) {
-        //             this.attackZom((Zombie) targetCreature,peta);
-        //             return; // Attack the first zombie encountered
-        //         }
-        //     }  
-        // }
+        if(zombie.isAlive()){
+            zombie.setHealth(getAttackDamage());
+        }
+        if(!(this instanceof SnowPea)){
+            zombie.setSlowed(0);
+        }
     }
 
     //display plant

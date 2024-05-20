@@ -7,6 +7,7 @@ import Koordinat.*;
 public abstract class Zombie extends Creature implements Cloneable{
     private double slowed;
     private double speed;
+    private final double originalSpeed;
     private boolean isAttack;
 
     public Zombie(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y, boolean isAlive,double slowed, double speed) {
@@ -14,6 +15,7 @@ public abstract class Zombie extends Creature implements Cloneable{
         this.slowed = slowed;
         this.speed = speed;
         this.isAttack = false;
+        this.originalSpeed = this.speed; //for snowpea freeze purposes
     }
 
     // Getter methods 
@@ -39,6 +41,7 @@ public abstract class Zombie extends Creature implements Cloneable{
 
     public void setSlowed(double newslow){
         slowed = newslow;
+        this.speed = (this.originalSpeed - slowed);
     }
 
     public void displayZombie(){

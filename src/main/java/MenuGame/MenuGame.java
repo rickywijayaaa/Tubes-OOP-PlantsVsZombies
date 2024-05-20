@@ -2,6 +2,8 @@ package MenuGame;
 
 import java.util.Scanner;
 import Inventory.*;
+import Thread.ThreadControl;
+import MapGame.*;
 import Deck.*;
 
 
@@ -13,36 +15,47 @@ public class MenuGame {
         String pink = "\033[95m"; // Kode warna pink
         String reset = "\033[0m"; // Reset warna
 
-        // Print Michael vs Lalapan
-        System.out.println(green + "                        ,---.    ,---..-./`)     _______   .---.  .---.    ____        .-''-.    .---.             " + reset);
-        System.out.println(green + "                        |    \\  /    |\\ .-.')   /   __  \\  |   |  |_ _|  .'  __ `.   .'_ _   \\   | ,_|             " + reset);
-        System.out.println(green + "                        |  ,  \\/  ,  |/ `-' \\  | ,_/  \\__) |   |  ( ' ) /   '  \\  \\ / ( ` )   ',-./  )             " + reset);
-        System.out.println(green + "                        |  |\\_   /|  | `-'`\"`,-./  )       |   '-(_{;}_)|___|  /  |. (_ o _)  |\\  '_ '`)           " + reset);
-        System.out.println(green + "                        |  _( )_/ |  | .---. \\  '_ '`)     |      (_,_)    _.-`   ||  (_,_)___| > (_)  )           " + reset);
-        System.out.println(green + "                        | (_ o _) |  | |   |  > (_)  )  __ | _ _--.   | .'   _    |'  \\   .---.(  .  .-'           " + reset);
-        System.out.println(green + "                        |  (_,_)  |  | |   | (  .  .-'_/  )|( ' ) |   | |  _( )_  | \\  `-'    / `-'`-'|___         " + reset);
-        System.out.println(green + "                        |  |      |  | |   |  `-'`-'     / (_{;}_)|   | \\ (_ o _) /  \\       /   |        \\        " + reset);
-        System.out.println(green + "                        '--'      '--' '---'    `._____.'  '(_,_) '---'  '.(_,_).'    `'-..-'    `--------`        " + reset);
-        System.out.println(yellow + "                                                        ,---.  ,---.  .-'''-.                                      " + reset);
-        System.out.println(yellow + "                                                        |   /  |   | / _     \\                                     " + reset);
-        System.out.println(yellow + "                                                        |  |   |  .'(`' )/`--'                                     " + reset);
-        System.out.println(yellow + "                                                        |  | _ |  |(_ o _).                                        " + reset);
-        System.out.println(yellow + "                                                        |  _( )_  | (_,_). '.                                      " + reset);
-        System.out.println(yellow + "                                                        \\ (_ o._) /.---.  \\  :                                     " + reset);
-        System.out.println(yellow + "                                                         \\ (_,_) / \\    `-'  |                                     " + reset);
-        System.out.println(yellow + "                                                          \\     /   \\       /                                     " + reset);
-        System.out.println(yellow + "                                                           `---`     `-...-'                                       " + reset);
-        System.out.println(pink + "                          .---.        ____      .---.        ____    .-------.    ____    ,---.   .--.            " + reset);
-        System.out.println(pink + "                          | ,_|      .'  __ `.   | ,_|      .'  __ `. \\  _(`)_ \\ .'  __ `. |    \\  |  |            " + reset);
-        System.out.println(pink + "                        ,-./  )     /   '  \\  \\,-./  )     /   '  \\  \\| (_ o._)|/   '  \\  \\|  ,  \\ |  |            " + reset);
-        System.out.println(pink + "                        \\  '_ '`)   |___|  /  |\\  '_ '`)   |___|  /  ||  (_,_) /|___|  /  ||  |\\_ \\|  |            " + reset);
-        System.out.println(pink + "                         > (_)  )      _.-`   | > (_)  )      _.-`   ||   '-.-'    _.-`   ||  _( )_\\  |            " + reset);
-        System.out.println(pink + "                        (  .  .-'   .'   _    |(  .  .-'   .'   _    ||   |     .'   _    || (_ o _)  |            " + reset);
-        System.out.println(pink + "                         `-'`-'|___ |  _( )_  | `-'`-'|___ |  _( )_  ||   |     |  _( )_  ||  (_,_\\  |            " + reset);
-        System.out.println(pink + "                          |        \\\\ (_ o _) /  |        \\\\ (_ o _) //   )     \\ (_ o _) /|  |    |  |            " + reset);
-        System.out.println(pink + "                          `--------` '.(_,_).'   `--------` '.(_,_).' `---'      '.(_,_).' '--'    '--'            " + reset);
+        String[] menu = {
+            green + "                        ,---.    ,---..-./`)     _______   .---.  .---.    ____        .-''-.    .---.             " + reset,
+            green + "                        |    \\  /    |\\ .-.')   /   __  \\  |   |  |_ _|  .'  __ `.   .'_ _   \\   | ,_|             " + reset,
+            green + "                        |  ,  \\/  ,  |/ `-' \\  | ,_/  \\__) |   |  ( ' ) /   '  \\  \\ / ( ` )   ',-./  )             " + reset,
+            green + "                        |  |\\_   /|  | `-'`\"`,-./  )       |   '-(_{;}_)|___|  /  |. (_ o _)  |\\  '_ '`)           " + reset,
+            green + "                        |  _( )_/ |  | .---. \\  '_ '`)     |      (_,_)    _.-`   ||  (_,_)___| > (_)  )           " + reset,
+            green + "                        | (_ o _) |  | |   |  > (_)  )  __ | _ _--.   | .'   _    |'  \\   .---.(  .  .-'           " + reset,
+            green + "                        |  (_,_)  |  | |   | (  .  .-'_/  )|( ' ) |   | |  _( )_  | \\  `-'    / `-'`-'|___         " + reset,
+            green + "                        |  |      |  | |   |  `-'`-'     / (_{;}_)|   | \\ (_ o _) /  \\       /   |        \\        " + reset,
+            green + "                        '--'      '--' '---'    `._____.'  '(_,_) '---'  '.(_,_).'    `'-..-'    `--------`        " + reset,
+            yellow + "                                                        ,---.  ,---.  .-'''-.                                      " + reset,
+            yellow + "                                                        |   /  |   | / _     \\                                     " + reset,
+            yellow + "                                                        |  |   |  .'(`' )/`--'                                     " + reset,
+            yellow + "                                                        |  | _ |  |(_ o _).                                        " + reset,
+            yellow + "                                                        |  _( )_  | (_,_). '.                                      " + reset,
+            yellow + "                                                        \\ (_ o._) /.---.  \\  :                                     " + reset,
+            yellow + "                                                         \\ (_,_) / \\    `-'  |                                     " + reset,
+            yellow + "                                                          \\     /   \\       /                                     " + reset,
+            yellow + "                                                           `---`     `-...-'                                       " + reset,
+            pink + "                          .---.        ____      .---.        ____    .-------.    ____    ,---.   .--.            " + reset,
+            pink + "                          | ,_|      .'  __ `.   | ,_|      .'  __ `. \\  _(`)_ \\ .'  __ `. |    \\  |  |            " + reset,
+            pink + "                        ,-./  )     /   '  \\  \\,-./  )     /   '  \\  \\| (_ o._)|/   '  \\  \\|  ,  \\ |  |            " + reset,
+            pink + "                        \\  '_ '`)   |___|  /  |\\  '_ '`)   |___|  /  ||  (_,_) /|___|  /  ||  |\\_ \\|  |            " + reset,
+            pink + "                         > (_)  )      _.-`   | > (_)  )      _.-`   ||   '-.-'    _.-`   ||  _( )_\\  |            " + reset,
+            pink + "                        (  .  .-'   .'   _    |(  .  .-'   .'   _    ||   |     .'   _    || (_ o _)  |            " + reset,
+            pink + "                         `-'`-'|___ |  _( )_  | `-'`-'|___ |  _( )_  ||   |     |  _( )_  ||  (_,_\\  |            " + reset,
+            pink + "                          |        \\\\ (_ o _) /  |        \\\\ (_ o _) //   )     \\ (_ o _) /|  |    |  |            " + reset,
+            pink + "                          `--------` '.(_,_).'   `--------` '.(_,_).' `---'      '.(_,_).' '--'    '--'            " + reset
+        };
+
+        for (String line : menu) {
+            System.out.println(line);
+            try {
+                Thread.sleep(200); 
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
+                System.out.println("Printing interrupted.");
+            }
+        }
     }
-    
+
     public static void Menu() {
         Scanner scanner = new Scanner(System.in);
         boolean isRunning = true;
@@ -67,8 +80,10 @@ public class MenuGame {
                 switch (choice) {
                     case 1:
                         System.out.println("Memulai permainan...");
-                        Inventory inven = new Inventory();
-                        Start.Start(inven);
+                        ThreadControl.startAllThreads();
+                        Peta peta = new Peta();
+                        Inventory inven = new Inventory(peta);
+                        Start.Start(inven,peta);
                         isRunning = false;
                         break;
                     case 2:
@@ -188,6 +203,7 @@ public class MenuGame {
                         break;
                     case 5:
                         System.out.println("Keluar dari permainan. Sampai jumpa!");
+                        ThreadControl.stopAllThreads();
                         isRunning = false;
                         break;
                     default:
