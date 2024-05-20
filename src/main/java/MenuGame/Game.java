@@ -40,6 +40,7 @@ public class Game {
 
             waitingForInput.set(true);
             int choice2 = scanner.nextInt();
+            waitingForInput.set(false);
             switch (choice2) {
                 case 1:
                     // System.out.println();
