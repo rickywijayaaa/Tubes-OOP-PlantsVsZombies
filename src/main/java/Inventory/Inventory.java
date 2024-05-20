@@ -4,13 +4,14 @@ import Plant.*;
 import Deck.*;
 import MapGame.*;
 
-public class Inventory {
+public class Inventory<T extends Plant> {
     private ArrayList<Plant> inven;
-    private ArrayList<Plant> deck;
+    private ArrayList<T> deck;
     private Peta peta;
 
-    public Inventory(){
+    public Inventory(Peta peta){
         this.inven = new ArrayList<Plant>();
+        this.peta = peta;
         Sunflower pla1 = new Sunflower(0,0);
         Peashooter pla2 = new Peashooter(0,0);
         Wallnut pla3 = new Wallnut(0,0);
@@ -31,14 +32,14 @@ public class Inventory {
         inven.add(pla8);
         inven.add(pla9);
         inven.add(pla10);
-        deck = new ArrayList<Plant>();
+        deck = new ArrayList<>();
     }
 
     public ArrayList<Plant> getInven(){
         return inven;
     }
 
-    public ArrayList<Plant> getDeckInven(){
+    public ArrayList<T> getDeckInven(){
         return deck;
     }
 
@@ -48,7 +49,7 @@ public class Inventory {
 
     public void choosePlant(int index){
         Plant plant = inven.remove(index);
-        deck.add(plant);
+        deck.add((T)plant);
     }
 
     public void swapPlant(int index1, int index2){
@@ -59,8 +60,8 @@ public class Inventory {
 
     public void deletePlant(int index){
         if (index >= 0 && index < deck.size()){
-            Plant plant = deck.remove(index);
-            inven.add(plant);
+            T plant = deck.remove(index);
+            inven.add((Plant)plant);
         }
     }
 
@@ -72,69 +73,19 @@ public class Inventory {
     }
 
     public void displayDeck() {
-        System.out.println("Deck tanaman beserta costnya:");
-        for (int i = 0; i < deck.size(); i++) {
-            System.out.println((i + 1) + ". " + deck.get(i).getName()+ " - " + deck.get(i).getCost());
+        if(deck.size()>0){
+            System.out.println("Deck tanaman beserta costnya:");
+            for (int i = 0; i < deck.size(); i++) {
+                System.out.println((i + 1) + ". " + deck.get(i).getName()+ " - " + deck.get(i).getCost());
+            }
+        }  
+        else{
+            System.out.println("Deck kosong!!!");
         }
     }
 
     public void addPlant(Plant plant, int koorx, int koory){
             Tile tile = peta.getTile(koorx,koory);
             tile.addCreature(plant);
-    //     try {
-    //         Tile tile = peta.getTile(koorx, koory);
-    //         System.out.println("check1");
-    //         if (tile.hasPlanted()) {
-    //             System.out.println("check2");
-    //             throw new ExceptionIsPlanted("Tile berikut sudah ada tanaman !!!");
-    //         }
-    //         else if (isCooldownOver()) {
-    //             System.out.println("check3");
-    //             throw new ExceptionPlantStillCooldown("Tanaman masih cooldown!!");
-
-    //         }
-    //         else {
-    //             System.out.println("check4");
-    //             tile.addCreature(plant);
-    //         }
-    //     }
-    //     catch (ExceptionIsPlanted e) {
-    //         System.out.println(e.getMessage());
-    //     }
-    //     catch (ExceptionPlantStillCooldown e) {
-    //         System.out.println(e.getMessage());
-    //     }
-    // }
     }
-
 }
-    
-// class ExceptionIsPlanted extends java.lang.Exception {
-//     public ExceptionIsPlanted(String message) {
-//         System.out.println(message);
-//     }
-//     @Override
-//     public String getMessage(){
-//         return "Petak sudah terdapat tanaman !!!";
-//     }
-// }
-
-// class ExceptionIsNotPlanted extends java.lang.Exception {
-//     public ExceptionIsNotPlanted(String message) {
-//         System.out.println(message);
-//     }
-//     @Override
-//     public String getMessage(){
-//         return "Belum ditanamn";
-//     }
-// }
-
-// class ExceptionPlantStillCooldown extends java.lang.Exception {
-//     public ExceptionPlantStillCooldown(String message){
-//         System.out.println(message);
-//     }
-//     @Override
-//     public String getMessage(){
-//         return "Tanaman masih cooldown!!";
-//     }
-// }
