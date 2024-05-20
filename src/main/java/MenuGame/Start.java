@@ -1,6 +1,14 @@
 package MenuGame;
 
 import Inventory.*;
+import MapGame.*;
+import Sun.*;
+import Plant.*;
+import Zombies.*;
+import Koordinat.*;
+import MenuGame.*;
+import Deck.*;
+import Inventory.*;
 
 //import java.util.concurrent.*;
 import java.util.Scanner;
@@ -8,18 +16,8 @@ import java.util.Scanner;
 public class Start {
 
 
-        public static void Start(Inventory inven){
+        public static void Start(Inventory inven, Peta peta){
         Scanner scanner = new Scanner(System.in);
-        // long seconds = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
-        // System.out.println("detik awal game: " + seconds);
-
-        // //nyoba thread
-        // try {
-        //     Thread.sleep(1000);
-        // } catch (InterruptedException e) {
-        //     e.printStackTrace();
-        // }
-        
         System.out.println("");
         
         inven.displayInventory();
@@ -84,7 +82,9 @@ public class Start {
                             break;                            
                         }
                         System.out.println("");
-                        System.out.println("Berhasil menukar " + inven.getInven().get(indexSwap1 -1).getName() + " dengan " + inven.getInven().get(indexSwap2-1).getName() + "!!!" );
+                        Object plant1 = inven.getInven().get(indexSwap1 - 1);
+                        Object plant2 = inven.getInven().get(indexSwap2 - 1);
+                        System.out.println("Berhasil menukar " + ((Plant) plant1).getName() + " dengan " + ((Plant) plant2).getName() + "!!!" );
                         inven.swapPlant(indexSwap1 - 1, indexSwap2 - 1); // Karena indeks dimulai dari 1, sementara ArrayList dimulai dari 0
                         System.out.println("");
                         inven.displayInventory();

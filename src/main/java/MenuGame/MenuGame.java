@@ -3,6 +3,8 @@ package MenuGame;
 import java.util.Scanner;
 import Inventory.*;
 import Thread.ThreadControl;
+import MapGame.*;
+import Deck.*;
 
 
 public class MenuGame {
@@ -68,8 +70,9 @@ public class MenuGame {
                     case 1:
                         System.out.println("Memulai permainan...");
                         ThreadControl.startAllThreads();
-                        Inventory inven = new Inventory();
-                        Start.Start(inven);
+                        Peta peta = new Peta();
+                        Inventory inven = new Inventory(peta);
+                        Start.Start(inven,peta);
                         isRunning = false;
                         break;
                     case 2:
