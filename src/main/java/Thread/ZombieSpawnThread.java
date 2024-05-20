@@ -19,12 +19,14 @@ public class ZombieSpawnThread implements Runnable {
     private static ArrayList<Plant> listplant;
     private static String message;
     private AtomicBoolean waitingForInput;
+    private AtomicBoolean suppressDisplayMap;
     private static HashSet<Plant> uniquePlants;
 
-    public ZombieSpawnThread(int gametimer, Peta mainlawn,AtomicBoolean waitingForInput) {
+    public ZombieSpawnThread(int gametimer, Peta mainlawn, AtomicBoolean waitingForInput, AtomicBoolean suppressDisplayMap) {
         this.gametimer = gametimer;
         this.peta = mainlawn;
         this.waitingForInput = waitingForInput;
+        this.suppressDisplayMap = suppressDisplayMap;
         listzombie = new ArrayList<>();
         listplant = new ArrayList<>();
         uniquePlants = new HashSet<>();
@@ -38,18 +40,6 @@ public class ZombieSpawnThread implements Runnable {
             Random rand = new Random();
             ZombieDeck deckzom = new ZombieDeck();
             int zombieCount = 0;
-            // Repeater sun1 = new Repeater(0, 1);
-            // CabbagePult sun2 = new CabbagePult(1, 1);
-            // Peashooter plant2 = new Peashooter(4, 1);
-            // SnowPea plant3 = new SnowPea(5, 1);
-            // Tile zomtile5 = peta.getTile(0, 1);
-            // Tile zomtile6 = peta.getTile(1, 1);
-            // Tile zomtile7 = peta.getTile(4, 1);
-            // Tile zomtile8 = peta.getTile(5, 1);
-            // zomtile5.addCreature(sun1);
-            // zomtile6.addCreature(sun2);
-            // zomtile7.addCreature(plant2);
-            // zomtile8.addCreature(plant3);
 
             for (int row = 0; row < 6; row++) {
                 for (int col = 0; col < 11; col++) {
@@ -64,7 +54,7 @@ public class ZombieSpawnThread implements Runnable {
             }
 
             while (gametimer > 0) {
-                // scan tanaman yang sedang ada di peta dan dimasukkan ke list
+                // Scan plants on the map and add to list
                 for (int row = 0; row < 6; row++) {
                     for (int col = 0; col < 11; col++) {
                         Tile tile = peta.getTile(row, col);
@@ -80,11 +70,11 @@ public class ZombieSpawnThread implements Runnable {
                         }
                     }
                 }
-                if (ThreadControl.getGameTimerThread().getCurrentGameTime() > 20 && ThreadControl.getGameTimerThread().getCurrentGameTime() < 160) {
-                    if ((rand.nextInt(10) >7) && (zombieCount < 10)) {
-                        int bariszom = rand.nextInt(6); // Perbaiki jangkauan bariszom
+                if (ThreadControl.getGameTimerThread().getCurrentGameTime() > 20 && ThreadControl.getGameTimerThread().getCurrentGameTime() < 160 && ThreadControl.getGameTimerThread().getCurrentGameTime() % 3 == 0) {
+                    if ((rand.nextInt(10) > 7) && (zombieCount < 10)) {
+                        int bariszom = rand.nextInt(6);
                         int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
-                        Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone(); // Buat salinan baru dari zombie
+                        Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone();
                         System.out.println("\nZombie spawned: " + zom.getName());
 
                         if (bariszom == 2 || bariszom == 3) {
@@ -93,8 +83,6 @@ public class ZombieSpawnThread implements Runnable {
                                 zom.setKoordinat(bariszom, 10);
                                 listzombie.add(zom);
                                 zombieCount++;
-                            } else {
-                                //System.out.println("Aquatic zombie cannot spawn on non-aquatic tile");
                             }
                         } else {
                             if (!zom.isAquatic()) {
@@ -102,23 +90,32 @@ public class ZombieSpawnThread implements Runnable {
                                 zom.setKoordinat(bariszom, 10);
                                 listzombie.add(zom);
                                 zombieCount++;
-                            } else {
-                                //System.out.println("Non-aquatic zombie cannot spawn on aquatic tile");
                             }
                         }
                         updateMessage();
-                    } else {
-                        //System.out.println("Zombie not spawned");
                     }
-//                    System.out.println("Zombie Count: " + listzombie.size());
-                    System.out.println();
                     for (Zombie zombie : listzombie) {
                         zombie.walk(peta);
                     }
 
-                    peta.displayMap(false);
-                    
-                    
+                    // if(waitingForInput.get()){
+                    //     System.out.println("waiting true");
+                    // }
+                    // else {
+                    //     System.out.println("waiting false");
+                    // }
+
+                    // if(!suppressDisplayMap.get()){
+                    //     System.out.println("suppress false");
+                    // }
+                    // else {
+                    //     System.out.println("suppress true");
+                    // }
+
+
+                    if (waitingForInput.get() && suppressDisplayMap.get()) {
+                        peta.displayMap(false);
+                    }
 
                     for (Plant plant : listplant) {
                         if (plant instanceof Sunflower) {
@@ -133,7 +130,7 @@ public class ZombieSpawnThread implements Runnable {
                             ((Repeater) plant).attack2(peta);
                         }
                     }
-                    System.out.println("jumlah matahari : " + Sun.getSun());
+                    // System.out.println("jumlah matahari : " + Sun.getSun());
                 }
                 if (!listzombie.isEmpty()) {
                     Iterator<Zombie> iter = listzombie.iterator();
@@ -163,37 +160,15 @@ public class ZombieSpawnThread implements Runnable {
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            // Handle exception
             e.printStackTrace();
         }
     }
-    
-    public static void attackZombie(Peta peta) {
-        for (int i = 0; i < 6; i++) {
-            for (int j = 1; j < 10; j++) {
-                Tile tile = peta.getTile(i, j);
-                List<Plant> plants = listplant;
-                List<Zombie> zombies = listzombie;
-    
-                if (!plants.isEmpty()) {
-                    Plant plant = plants.get(0); // Assuming attacking the first plant
-                    for (Zombie zombie : zombies) {
-                        zombie.setAttack(true);
-                        zombie.attack(plant);
-                        if (plant.getHealth() <= 0) {
-                            tile.removeCreature(plant);
-                        }
-                    }
-                }
-            }
-        }
-    }
 
-    private static void updateMessage(){
+    private static void updateMessage() {
         message = " || Zombie Count: " + listzombie.size();
     }
 
-    public static String getMessage(){
+    public static String getMessage() {
         return message;
     }
 }
