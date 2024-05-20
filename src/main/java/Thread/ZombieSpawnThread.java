@@ -116,9 +116,8 @@ public class ZombieSpawnThread implements Runnable {
                         zombie.walk(peta);
                     }
 
-                    if(!waitingForInput.get()){
-                        peta.displayMap(false);
-                    }
+                    peta.displayMap(false);
+                    
                     
 
                     for (Plant plant : listplant) {
