@@ -79,6 +79,7 @@ public class Peta {
         }
 
         //toBePlanted.setCooldown(true);
+        Sun.reduceSun(toBePlanted.getCost());
         this.grid[row][col].addCreature(toBePlanted);
     }
 

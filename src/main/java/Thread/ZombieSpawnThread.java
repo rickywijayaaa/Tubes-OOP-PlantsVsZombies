@@ -76,6 +76,7 @@ public class ZombieSpawnThread implements Runnable {
                         int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
                         Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone();
                         System.out.println("\nZombie spawned: " + zom.getName());
+                        System.out.println("");
 
                         if (bariszom == 2 || bariszom == 3) {
                             if (zom.isAquatic()) {
@@ -98,24 +99,7 @@ public class ZombieSpawnThread implements Runnable {
                         zombie.walk(peta);
                     }
 
-                    // if(waitingForInput.get()){
-                    //     System.out.println("waiting true");
-                    // }
-                    // else {
-                    //     System.out.println("waiting false");
-                    // }
 
-                    // if(!suppressDisplayMap.get()){
-                    //     System.out.println("suppress false");
-                    // }
-                    // else {
-                    //     System.out.println("suppress true");
-                    // }
-
-
-                    if (waitingForInput.get() && suppressDisplayMap.get()) {
-                        peta.displayMap(false);
-                    }
 
                     for (Plant plant : listplant) {
                         if (plant instanceof Sunflower) {
@@ -143,6 +127,12 @@ public class ZombieSpawnThread implements Runnable {
                             iter.remove();
                         }
                     }
+                }
+                if (waitingForInput.get() && suppressDisplayMap.get() &&ThreadControl.getGameTimerThread().getCurrentGameTime()>20) {
+                    System.out.println("Time right now : " + ThreadControl.getGameTimerThread().getCurrentGameTime() );
+                    System.out.println("");
+                    peta.displayMap(false);
+                    System.out.println("");
                 }
                 if (!listplant.isEmpty()) {
                     Iterator<Plant> iter2 = listplant.iterator();

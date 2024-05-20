@@ -25,7 +25,7 @@ public class Sun {
         amountSun += 25;
     }
 
-    public static void reduceSun(int harga){
+    public static synchronized void reduceSun(int harga){
         Sun.amountSun -= harga;
     }
 
