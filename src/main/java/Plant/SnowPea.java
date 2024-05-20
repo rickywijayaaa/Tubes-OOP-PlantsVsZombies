@@ -2,10 +2,9 @@ package Plant;
 import Creature.*;
 import Zombies.*;
 import MapGame.*;
-import Inventory.*;
-import Koordinat.*;
 
 public class SnowPea extends Plant {
+    private static final double freeze = 1.5;
     public SnowPea(int x, int y) {
         super("Snow Pea", 100, 25, 4, false, x,y,true,175,-1, 10);
     }
@@ -14,9 +13,8 @@ public class SnowPea extends Plant {
     @Override
     public void attack(Zombie zom) {
         // Implementing attack behavior untuk Peashooter
-        if(zom.getIsAlive()){
-            zom.setHealth(getAttackDamage());
-        }
+        super.attack(zom);
+        zom.setSlowed(freeze);
     }
 
     // Implementing abstract method dari Creature class

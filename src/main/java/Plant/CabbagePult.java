@@ -2,8 +2,6 @@ package Plant;
 import Creature.*;
 import Zombies.*;
 import MapGame.*;
-import Inventory.*;
-import Koordinat.*;
 
 public class CabbagePult extends Plant {
     public CabbagePult(int x, int y) {
@@ -11,13 +9,6 @@ public class CabbagePult extends Plant {
     }
 
     //Implementing abstract method dari Plant class
-    @Override
-    public void attack(Zombie zom) {
-        // Implementing attack behavior untuk Peashooter
-        if(zom.getIsAlive()){
-            zom.setHealth(getAttackDamage());
-        }
-    }
 
     // Implementing abstract method dari Creature class
     @Override

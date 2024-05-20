@@ -8,9 +8,6 @@ import MapGame.*;
 import Sun.*;
 import Plant.*;
 import Zombies.*;
-import Koordinat.*;
-import MenuGame.*;
-import Deck.*;
 import Creature.*;
 import Inventory.*;
 
@@ -119,7 +116,7 @@ public class ZombieSpawnThread implements Runnable {
                     Iterator<Zombie> iter = listzombie.iterator();
                     while (iter.hasNext()) {
                         Zombie zombie = iter.next();
-                        if (!zombie.getIsAlive()) {
+                        if (!zombie.isAlive()) {
                             zombie.die(peta);
                             System.out.println("");
                             System.out.println(zombie.getName() + " telah matii!!");
@@ -131,7 +128,7 @@ public class ZombieSpawnThread implements Runnable {
                     Iterator<Plant> iter2 = listplant.iterator();
                     while (iter2.hasNext()) {
                         Plant pl = iter2.next();
-                        if (!pl.getIsAlive()) {
+                        if (!pl.isAlive()) {
                             pl.die(peta);
                             System.out.println("");
                             System.out.println(pl.getName() + " telah matii!!");

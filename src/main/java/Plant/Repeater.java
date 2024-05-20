@@ -2,22 +2,13 @@ package Plant;
 import Creature.*;
 import Zombies.*;
 import MapGame.*;
-import Inventory.*;
-import Koordinat.*;
 
 public class Repeater extends Plant {
     public Repeater(int x, int y) {
         super("Repeater", 300, 20, 1,false,x,y,true,200, 3, 0.5);
     }
 
-    // Implementing abstract method dari Plant class
-    @Override
-    public void attack(Zombie zom) {
-        // Implementing attack behavior untuk Peashooter
-        if(zom.getIsAlive()){
-            zom.setHealth(getAttackDamage());
-        }
-    }
+
 
     // Implementing abstract method dari Creature class
     @Override

@@ -16,6 +16,8 @@ public class Lilypad extends Plant {
     //     System.out.println("Lilypad can't attack");
     // }
 
+
+
     // Implementing abstract method dari Creature class
     @Override
     public void move() {
