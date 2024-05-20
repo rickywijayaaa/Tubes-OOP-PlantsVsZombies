@@ -26,7 +26,7 @@ public class GameTimerThread implements Runnable {
         while (gametimer < 200) {
             try {
                 Thread.sleep(1000);
-                if (!waitingForInput.get()) {
+                if (!waitingForInput.get() && suppressDisplayMap.get()) {
                     System.out.print("\r(Time right now: " + gametimer +
                             " | Sun: " + GenerateSunThread.getMessage() +
                             " | Zombies: " + ZombieSpawnThread.getMessage() +
