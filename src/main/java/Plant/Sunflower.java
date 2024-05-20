@@ -22,7 +22,7 @@ public class Sunflower extends Plant {
             Sun.addSun();
             resetCooldown(3);
             // Implementasi act untuk Sunflower
-            System.out.println(getName() + " produces sun points.");
+            //System.out.println(getName() + " produces sun points.");
         }
         else{
             resetCooldown(getCooldown()-1);

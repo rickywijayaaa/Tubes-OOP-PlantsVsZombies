@@ -13,10 +13,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class GameTimerThread implements Runnable {
     public static int gametimer;
     private AtomicBoolean waitingForInput;
+    private AtomicBoolean suppressDisplayMap;
 
-    public GameTimerThread(int gametime, AtomicBoolean waitingForInput) {
+    public GameTimerThread(int gametime, AtomicBoolean waitingForInput, AtomicBoolean suppressDisplayMap) {
         gametimer = gametime;
         this.waitingForInput = waitingForInput;
+        this.suppressDisplayMap = suppressDisplayMap;
     }
 
     @Override
@@ -27,7 +29,7 @@ public class GameTimerThread implements Runnable {
                 if (!waitingForInput.get()) {
                     System.out.print("\r(Time right now: " + gametimer +
                             " | Sun: " + GenerateSunThread.getMessage() +
-                            " | Zombies: " + ZombieSpawnThread.getMessage()+
+                            " | Zombies: " + ZombieSpawnThread.getMessage() +
                             "), Input Pilihan Tanaman: ");
                 }
                 gametimer++;
@@ -37,7 +39,7 @@ public class GameTimerThread implements Runnable {
         }
     }
 
-    public static void printMessage(){
+    public static void printMessage() {
         System.out.println("Time right now: " + gametimer +
                 " | Sun: " + GenerateSunThread.getMessage() +
                 " | Zombies: " + ZombieSpawnThread.getMessage());
