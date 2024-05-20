@@ -44,13 +44,13 @@ public class Game {
             suppressDisplayMap.set(true);
             int choice2 = scanner.nextInt();
             waitingForInput.set(false);
-            suppressDisplayMap.set(false);
+            suppressDisplayMap.set(true);
 
             switch (choice2) {
                 case 1:
                     int choose4 = scanner.nextInt();
-                    waitingForInput.set(true);
-                    suppressDisplayMap.set(true);
+                    // waitingForInput.set(true);
+                    suppressDisplayMap.set(false);
                     plantSelectedPlant(scanner, inven, peta, choose4);
                     waitingForInput.set(false);
                     suppressDisplayMap.set(false);
