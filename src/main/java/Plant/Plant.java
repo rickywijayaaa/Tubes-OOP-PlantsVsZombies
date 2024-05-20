@@ -6,6 +6,7 @@ import Koordinat.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public abstract class Plant extends Creature {
     private int cost;
@@ -13,7 +14,7 @@ public abstract class Plant extends Creature {
     private double cooldown;
 
     
-    static HashMap<Class<? extends Plant> , Boolean> coolDownMap = new HashMap<>();
+    static HashMap<Class<? extends Plant> , Long> coolDownMap = new HashMap<>();
    
 
     public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y,boolean isAlive,int cost,int range, double cooldown) {
@@ -23,7 +24,7 @@ public abstract class Plant extends Creature {
         this.cooldown = cooldown;
 
     
-        coolDownMap.putIfAbsent(this.getClass(),false);
+        coolDownMap.putIfAbsent(this.getClass(),0L);
    
     }
 
@@ -34,14 +35,31 @@ public abstract class Plant extends Creature {
         // else{
         //     return false;
         // }
-        return false;
+        // return false;
+        long currentTimeMillis = System.currentTimeMillis();
+        long lastPlantedTimeMillis = coolDownMap.get(this.getClass());
+        boolean inCooldown = (currentTimeMillis - lastPlantedTimeMillis) < (cooldown * 1000);
+
+        long currentTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(currentTimeMillis);
+        long lastPlantedTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(lastPlantedTimeMillis);
+        long cooldownEndTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(lastPlantedTimeMillis + (long)(cooldown * 1000));
+        long cooldownRemaining = cooldownEndTimeSeconds - currentTimeSeconds;
+
+        System.out.println("Checking cooldown for " + this.getClass().getSimpleName() + ": " + inCooldown);
+        System.out.println("Current time: " + currentTimeSeconds + " seconds");
+        System.out.println("Last planted time: " + lastPlantedTimeSeconds + " seconds");
+        if (inCooldown) {
+            System.out.println("Cooldown remaining: " + cooldownRemaining + " seconds");
+        }
+
+        return inCooldown;
     }
-    public void setCooldown(boolean isInCooldown) {
-        coolDownMap.put(this.getClass(), isInCooldown);
+    public void setCooldown() {
+        long currentTime = System.currentTimeMillis();
+        coolDownMap.put(this.getClass(), currentTime);
+        System.out.println(this.getClass().getSimpleName() + " is set to cooldown at " + currentTime);
     }
 
-
-  
     // Getter methods untuk atribut tambahan
     public int getCost() {
         return cost;

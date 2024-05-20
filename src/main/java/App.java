@@ -22,9 +22,11 @@ public class  App {
         Peta peta = new Peta();
         Inventory inven = new Inventory(peta);
         MenuGame.Menu();
+    }
+}    
 
-    }       
-}
+
+
 
 
 

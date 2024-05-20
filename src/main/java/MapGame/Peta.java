@@ -79,8 +79,10 @@ public class Peta {
         }
 
         //toBePlanted.setCooldown(true);
+        toBePlanted.setCooldown();
         Sun.reduceSun(toBePlanted.getCost());
         this.grid[row][col].addCreature(toBePlanted);
+        System.out.println("Planted " + toBePlanted.getName() + " at (" + row + ", " + col + ")");
     }
 
     public void displayMap(boolean command) {
