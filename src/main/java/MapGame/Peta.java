@@ -36,6 +36,7 @@ public class Peta {
     }
 
     public void plant(Plant toBePlanted,int row, int col) throws Exception {
+        Tile tile = this.getTile(row, col);
         if (col <= 0 || col >= 10) {
             throw new Exception("Tile belum ada lilypad sehingga tidak bisa ditanam");
         }
@@ -45,6 +46,17 @@ public class Peta {
         if (toBePlanted.isInCooldown()) {
             throw new Exception("Tanaman " + toBePlanted.getName() + " masih dalam cooldown");
         }
+
+        if (tile.hasPlanted() && !(tile instanceof PoolTile && toBePlanted instanceof Lilypad)) {
+            System.out.println("Tile already has a plant.");
+            return; // Prevent adding the plant
+        }
+
+        if (tile instanceof PoolTile && !tile.hasLilypad() && !(toBePlanted instanceof Lilypad)) {
+            System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+            return; // Prevent adding the plant
+        }
+
 
         boolean pool = row >= 2 && row <= 3 && col!= 0 && col!=10;
         if (toBePlanted instanceof Lilypad && !pool) {
@@ -79,10 +91,22 @@ public class Peta {
         }
 
         //toBePlanted.setCooldown(true);
+        tile.addCreature(toBePlanted);
         toBePlanted.setCooldown();
         Sun.reduceSun(toBePlanted.getCost());
-        this.grid[row][col].addCreature(toBePlanted);
         System.out.println("Planted " + toBePlanted.getName() + " at (" + row + ", " + col + ")");
+    }
+
+    public void decrementAllCooldowns() {
+        for (Tile[] row : grid) {
+            for (Tile tile : row) {
+                for (Creature creature : tile.getEntities()) {
+                    if (creature instanceof Plant) {
+                        ((Plant) creature).decrementCooldown();
+                    }
+                }
+            }
+        }
     }
 
     public void displayMap(boolean command) {

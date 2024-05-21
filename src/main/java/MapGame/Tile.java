@@ -24,11 +24,23 @@ public class Tile {
     }
 
     public void addCreature(Creature creature) {
+        if (creature instanceof Plant) {
+            if (this.hasPlanted() && !(this instanceof PoolTile)) {
+                System.out.println("Tile already has a plant.");
+                return;
+            }
+            if (this instanceof PoolTile && !this.hasLilypad() && !(creature instanceof Lilypad)) {
+                System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+                return;
+            }
+        }
         entity.add(creature);
+        this.updatePlantStatus();
     }
 
     public void removeCreature(Creature creature) {
         entity.remove(creature);
+        this.updatePlantStatus();
     }
 
     public ArrayList<Creature> getEntities() {
@@ -37,6 +49,16 @@ public class Tile {
 
     public void isPlanted() {
         for (Creature creatures : entity) { 
+            if (creatures instanceof Plant) {
+                hasPlant = true;
+                return;
+            }
+        }
+        hasPlant = false;
+    }
+
+    public void updatePlantStatus() {
+        for (Creature creatures : entity) {
             if (creatures instanceof Plant) {
                 hasPlant = true;
                 return;
@@ -78,6 +100,15 @@ public class Tile {
         //         entity.clear();
         //     }
         // }
+    }
+
+    public boolean hasLilypad() {
+        for (Creature creatures : entity) {
+            if (creatures instanceof Lilypad) {
+                return true;
+            }
+        }
+        return false;
     }
     
 }

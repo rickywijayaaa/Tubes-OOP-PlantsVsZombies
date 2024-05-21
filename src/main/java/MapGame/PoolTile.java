@@ -1,5 +1,8 @@
 package MapGame;
 
+import Creature.*;
+import Plant.*;
+
 public class PoolTile extends Tile {    
     
     private boolean lilyPad_Plant;
@@ -22,4 +25,21 @@ public class PoolTile extends Tile {
     }
 
     //Butuh Exception kalau belum ada lilipad
+    public void checkLilyPadBeforePlanting(Creature creature) {
+        if (!(creature instanceof Lilypad) && !this.hasLilypad()) {
+            System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+        }
+    }
+
+    @Override
+    public void addCreature(Creature creature) {
+        if (creature instanceof Plant) {
+            this.checkLilyPadBeforePlanting(creature);
+            if (!(creature instanceof Lilypad) && !this.hasLilypad()) {
+                System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+                return; // Prevent adding the plant
+            }
+        }
+        super.addCreature(creature);
+    }
 }

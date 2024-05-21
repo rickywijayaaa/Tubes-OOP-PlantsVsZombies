@@ -14,7 +14,7 @@ public abstract class Plant extends Creature {
     private double cooldown;
 
     
-    static HashMap<Class<? extends Plant> , Long> coolDownMap = new HashMap<>();
+    static HashMap<Class<? extends Plant> , Double> cooldownMap = new HashMap<>();
    
 
     public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y,boolean isAlive,int cost,int range, double cooldown) {
@@ -22,9 +22,8 @@ public abstract class Plant extends Creature {
         this.cost = cost;
         this.range = range;
         this.cooldown = cooldown;
-
     
-        coolDownMap.putIfAbsent(this.getClass(),0L);
+        cooldownMap.putIfAbsent(this.getClass(),0.0);
    
     }
 
@@ -36,28 +35,25 @@ public abstract class Plant extends Creature {
         //     return false;
         // }
         // return false;
-        long currentTimeMillis = System.currentTimeMillis();
-        long lastPlantedTimeMillis = coolDownMap.get(this.getClass());
-        boolean inCooldown = (currentTimeMillis - lastPlantedTimeMillis) < (cooldown * 1000);
-
-        long currentTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(currentTimeMillis);
-        long lastPlantedTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(lastPlantedTimeMillis);
-        long cooldownEndTimeSeconds = TimeUnit.MILLISECONDS.toSeconds(lastPlantedTimeMillis + (long)(cooldown * 1000));
-        long cooldownRemaining = cooldownEndTimeSeconds - currentTimeSeconds;
+        double remainingCooldown = cooldownMap.get(this.getClass());
+        boolean inCooldown = remainingCooldown > 0;
 
         System.out.println("Checking cooldown for " + this.getClass().getSimpleName() + ": " + inCooldown);
-        System.out.println("Current time: " + currentTimeSeconds + " seconds");
-        System.out.println("Last planted time: " + lastPlantedTimeSeconds + " seconds");
-        if (inCooldown) {
-            System.out.println("Cooldown remaining: " + cooldownRemaining + " seconds");
-        }
+        System.out.println("Cooldown remaining: " + remainingCooldown + " seconds");
 
         return inCooldown;
     }
+
     public void setCooldown() {
-        long currentTime = System.currentTimeMillis();
-        coolDownMap.put(this.getClass(), currentTime);
-        System.out.println(this.getClass().getSimpleName() + " is set to cooldown at " + currentTime);
+        cooldownMap.put(this.getClass(), this.cooldown);
+        System.out.println(this.getClass().getSimpleName() + " is set to cooldown for " + this.cooldown + " seconds");
+    }
+
+    public void decrementCooldown() {
+        double remainingCooldown = cooldownMap.get(this.getClass());
+        if (remainingCooldown > 0) {
+            cooldownMap.put(this.getClass(), remainingCooldown - 1);
+        }
     }
 
     // Getter methods untuk atribut tambahan
@@ -93,7 +89,7 @@ public abstract class Plant extends Creature {
     public void resetCooldown(double newcooldown) {
         // Implementing attack behavior untuk Plant
         // Methodnya akan beragam sesuai dengan Plant
-        cooldown = newcooldown;
+        cooldown = (int) newcooldown;
     }
 
     @Override
