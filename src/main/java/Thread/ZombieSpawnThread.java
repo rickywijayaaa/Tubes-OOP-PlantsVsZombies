@@ -70,8 +70,8 @@ public class ZombieSpawnThread implements Runnable {
                         }
                     }
                 }
-                if (ThreadControl.getGameTimerThread().getCurrentGameTime() > 20 && ThreadControl.getGameTimerThread().getCurrentGameTime() < 160 && ThreadControl.getGameTimerThread().getCurrentGameTime() % 3 == 0) {
-                    if ((rand.nextInt(10) > 7) && (zombieCount < 10)) {
+                if (ThreadControl.getGameTimerThread().getCurrentGameTime() > 2 && ThreadControl.getGameTimerThread().getCurrentGameTime() < 160 && ThreadControl.getGameTimerThread().getCurrentGameTime() % 3 == 0) {
+                    if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
                         int bariszom = rand.nextInt(6);
                         int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
                         Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone();
@@ -112,6 +112,8 @@ public class ZombieSpawnThread implements Runnable {
                             ((SnowPea) plant).attack2(peta);
                         } else if (plant instanceof Repeater) {
                             ((Repeater) plant).attack2(peta);
+                        } else if (plant instanceof Squash){
+                            ((Squash) plant).attack2(peta);
                         }
                     }
                     // System.out.println("jumlah matahari : " + Sun.getSun());
@@ -128,6 +130,12 @@ public class ZombieSpawnThread implements Runnable {
                         }
                     }
                 }
+                // System.out.println("");
+                // peta.displayMap(false);
+
+                // for(int i=0; i<listplant.size();i++){
+                //     System.out.println(listplant.get(i).getName());
+                // }
                 if (waitingForInput.get() && suppressDisplayMap.get() &&ThreadControl.getGameTimerThread().getCurrentGameTime()>20) {
                     System.out.println("Time right now : " + ThreadControl.getGameTimerThread().getCurrentGameTime() );
                     System.out.println("");
