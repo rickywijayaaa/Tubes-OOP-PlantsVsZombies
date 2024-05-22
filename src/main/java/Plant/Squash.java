@@ -10,13 +10,26 @@ public class Squash extends Plant {
     }
 
     // Implementing abstract method dari Plant class
-    // @Override
-    // public void attack(Zombie zom,Peta peta) {
-    //     // Implementing attack behavior untuk Peashooter
-    //     if(zom.getIsAlive()){
-    //         zom.setHealth(getAttackDamage());
-    //     }
-    // }
+    public void attack2(Peta peta){
+        int startRow = this.getKoordinat().getX();
+        int startCol = this.getKoordinat().getY();
+        int targetCol = startCol + 1;
+
+        Tile tiletarget = peta.getTile(startRow,targetCol);
+
+        if(tiletarget.hasZombie()){
+            for (Creature creature : tiletarget.getEntities()) {
+                if (creature instanceof Zombie) {
+                    this.attack((Zombie) creature); // Attack the plant
+                    this.setIsAlive();
+                    this.die(peta);
+                    return; // Stop walking since the zombie attacks
+                }
+            }
+        }
+        
+
+    }
 
     // Implementing abstract method dari Creature class
     @Override
