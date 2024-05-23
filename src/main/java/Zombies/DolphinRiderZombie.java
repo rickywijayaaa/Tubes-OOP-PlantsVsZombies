@@ -42,45 +42,44 @@ public class DolphinRiderZombie extends Zombie {
     }
 
     // fungsi
-    public void jump(Peta gameMap){
+
+    public void jump(Peta gameMap) {
         Koordinat koorZ = getKoordinat();
         // Posisi zombie sekarang
         int koorx = koorZ.getX();
         int koory = koorZ.getY();
         int nextCol = koory - 2;
-        int loncat = koory - 1;
-
+    
         // Check apakah tile sudah lewat
-        if (nextCol > 0) {
-            Tile tile = gameMap.getTile(koorx,koory); // Get tile sekarang
-            Tile nextTile = gameMap.getTile(koorx,nextCol); // Loncat ke 2 tile setelahnya
-            Tile matiTile = gameMap.getTile(koorx,loncat); // Tile yang dilompati
-
-
+        if (nextCol >= 0) {
+            Tile tile = gameMap.getTile(koorx, koory); // Get tile sekarang
+            Tile nextTile = gameMap.getTile(koorx, nextCol); // Loncat ke 2 tile setelahnya
+    
             // Remove the zombie from the current tile
-            tile.removeCreature(this); //menghapus posisi sekarang
-            nextTile.addCreature(this); // pindah ke tile 2 berikutnya
-            matiTile.removeAllCreatures(); // membunuh semua creature yang dilompati
-            
-
-
-        } else if (nextCol == 0 ) {
-            Tile tile = gameMap.getTile(koorx,koory); // Get tile sekarang
-            Tile nextTile = gameMap.getTile(koorx,nextCol); // Loncat ke 2 tile setelahnya
-            Tile matiTile = gameMap.getTile(koorx,loncat); // Tile yang dilompati
-
-
+            tile.removeCreature(this); // Menghapus posisi sekarang
+    
+            // Remove only Plant creatures from the next tile
+            nextTile.getEntities().removeIf(creature -> creature instanceof Plant || creature instanceof Lilypad);
+    
+            nextTile.addCreature(this); // Pindah ke tile 2 berikutnya
+            this.setKoordinat(koorx, nextCol);
+        } else if (nextCol == 0) {
+            Tile tile = gameMap.getTile(koorx, koory); // Get tile sekarang
+            Tile nextTile = gameMap.getTile(koorx, nextCol); // Loncat ke 2 tile setelahnya
+    
             // Remove the zombie from the current tile
-            tile.removeCreature(this); //menghapus posisi sekarang
-            nextTile.addCreature(this); // pindah ke tile 2 berikutnya
-            matiTile.removeAllCreatures(); // membunuh semua creature yang dilompati
-            // game end
-        }    
-        else{ 
-            // Zombie has reached the end of the map, you may want to handle this case
-            // For example, remove the zombie from the game or trigger a game over condition
+            tile.removeCreature(this); // Menghapus posisi sekarang
+    
+            // Remove only Plant creatures from the next tile
+            nextTile.getEntities().removeIf(creature -> creature instanceof Plant || creature instanceof Lilypad);
+    
+            nextTile.addCreature(this); // Pindah ke tile 2 berikutnya
+            this.setKoordinat(koorx, nextCol);
+            // Handle game end condition here if needed
+        } else {
+            // Zombie has reached the end of the map
+            // Handle this case (e.g., remove the zombie or trigger game over)
         }
-
     }
 }
 

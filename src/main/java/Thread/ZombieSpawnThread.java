@@ -74,7 +74,7 @@ public class ZombieSpawnThread implements Runnable {
                     if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
                         int bariszom = rand.nextInt(6);
                         int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
-                        Zombie zom = deckzom.getZombieDeck().get(2).clone();
+                        Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone();
                         System.out.println("\nZombie spawned: " + zom.getName());
                         System.out.println("");
 
