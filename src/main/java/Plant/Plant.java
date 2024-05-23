@@ -58,6 +58,7 @@ public abstract class Plant extends Creature {
             }
             cooldownMap.put(this.getClass(), remainingCooldown);
         }
+        System.out.println("Decrementing cooldown for " + this.getClass().getSimpleName() + ": " + remainingCooldown + " seconds remaining");
     }
 
     // Getter methods untuk atribut tambahan

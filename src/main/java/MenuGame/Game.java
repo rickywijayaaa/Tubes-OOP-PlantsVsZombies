@@ -89,6 +89,9 @@ public class Game {
                 default:
                     System.out.println("Menu tidak valid. Silakan pilih menu yang sesuai.");
             }
+            for (Plant plant : peta.getAllPlants()) {
+                plant.decrementCooldown();
+            }
         }
     }
 

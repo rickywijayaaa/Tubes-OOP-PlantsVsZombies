@@ -115,6 +115,8 @@ public class ZombieSpawnThread implements Runnable {
                         ((Squash) plant).attack2(peta);
                     } else if (plant instanceof TangleKelp){
                         ((TangleKelp) plant).attack2(peta);
+                    }else if (plant instanceof CherryBomb){
+                        ((CherryBomb) plant).attack2(peta);
                     }
                 }
                 if (!listzombie.isEmpty()) {

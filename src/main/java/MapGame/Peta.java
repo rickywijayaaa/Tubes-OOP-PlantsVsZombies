@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import Sun.*;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.List;
 
 public class Peta {
     private Tile[][] grid;
@@ -127,6 +128,20 @@ public class Peta {
                 }
             }
         }
+    }
+
+    public List<Plant> getAllPlants() {
+        List<Plant> allPlants = new ArrayList<>();
+        for (Tile[] row : grid) {
+            for (Tile tile : row) {
+                for (Creature creature : tile.getEntities()) {
+                    if (creature instanceof Plant) {
+                        allPlants.add((Plant) creature);
+                    }
+                }
+            }
+        }
+        return allPlants;
     }
 
     public void displayMap(boolean command) {
