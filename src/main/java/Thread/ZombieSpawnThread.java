@@ -81,7 +81,9 @@ public class ZombieSpawnThread implements Runnable {
                                 peta.displayMap(false);
                             } // entah aku ga seberapa paham ini apa, remove aja kalau gak butu
                             noZombie160 = true;
-                            System.exit(0);
+                            ThreadControl.stopAllThreads();
+                            System.out.println("PLANT WINS,JANGAN LUPA NUBES");
+                            MenuGame.Menu();
                             break;
                         }
                         while (zombieCount < 25) {
