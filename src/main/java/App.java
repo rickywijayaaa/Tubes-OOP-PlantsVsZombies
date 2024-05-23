@@ -25,7 +25,7 @@ public class  App {
         Peta peta = new Peta();
         Inventory inven = new Inventory(peta);
         MenuGame.Menu();
-        Game.play(inven);
+        //Game.play(inven);
     }
 }    
 
