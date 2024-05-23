@@ -109,6 +109,7 @@ public class ZombieSpawnThread implements Runnable {
 //                            System.out.println("shit");
                             zombieWins = true;
                             ThreadControl.stopAllThreads();
+                            System.out.println("ZOMBIE WINS,YUK NUBES JANGAN MAIN TERUS");
                             MenuGame.Menu();
 //                            System.exit(0);
                             break;
