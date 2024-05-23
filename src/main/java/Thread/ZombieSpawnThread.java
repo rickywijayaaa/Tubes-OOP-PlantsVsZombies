@@ -36,25 +36,11 @@ public class ZombieSpawnThread implements Runnable {
     @Override
     public void run() {
         try {
-            // Zombie Spawn Logic
             Random rand = new Random();
             ZombieDeck deckzom = new ZombieDeck();
             int zombieCount = 0;
 
-            for (int row = 0; row < 6; row++) {
-                for (int col = 0; col < 11; col++) {
-                    Tile tile = peta.getTile(row, col);
-                    ArrayList<Creature> entities = tile.getEntities();
-                    for (Creature creature : entities) {
-                        if (creature instanceof Plant) {
-                            listplant.add((Plant) creature);
-                        }
-                    }
-                }
-            }
-
             while (gametimer > 0) {
-                // Scan plants on the map and add to list
                 for (int row = 0; row < 6; row++) {
                     for (int col = 0; col < 11; col++) {
                         Tile tile = peta.getTile(row, col);
@@ -70,96 +56,108 @@ public class ZombieSpawnThread implements Runnable {
                         }
                     }
                 }
-                if (ThreadControl.getGameTimerThread().getCurrentGameTime() > 2 && ThreadControl.getGameTimerThread().getCurrentGameTime() < 160 && ThreadControl.getGameTimerThread().getCurrentGameTime() % 3 == 0) {
-                    if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
-                        int bariszom = rand.nextInt(6);
-                        int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
-                        Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone();
-                        System.out.println("\nZombie spawned: " + zom.getName());
-                        System.out.println("");
 
-                        if (bariszom == 2 || bariszom == 3) {
-                            if (zom.isAquatic()) {
-                                peta.getTile(bariszom, 10).addCreature(zom);
-                                zom.setKoordinat(bariszom, 10);
-                                listzombie.add(zom);
-                                zombieCount++;
-                            }
-                        } else {
-                            if (!zom.isAquatic()) {
-                                peta.getTile(bariszom, 10).addCreature(zom);
-                                zom.setKoordinat(bariszom, 10);
-                                listzombie.add(zom);
-                                zombieCount++;
-                            }
-                        }
+                int currentTime = ThreadControl.getGameTimerThread().getCurrentGameTime();
+                if (currentTime > 2 && currentTime < 160 && currentTime % 3 == 0) {
+                    if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
+                        spawnZombie(rand, deckzom);
+                        zombieCount++;
                         updateMessage();
                     }
-                    // System.out.println("jumlah matahari : " + Sun.getSun());
-                }
-                for (Zombie zombie : listzombie) {
-                    zombie.walk(peta);
-                }
-                for (Plant plant : listplant) {
-                    if (plant instanceof Sunflower) {
-                        ((Sunflower) plant).act();
-                    } else if (plant instanceof Peashooter) {
-                        ((Peashooter) plant).attack2(peta);
-                    } else if (plant instanceof CabbagePult) {
-                        ((CabbagePult) plant).attack2(peta);
-                    } else if (plant instanceof SnowPea) {
-                        ((SnowPea) plant).attack2(peta);
-                    } else if (plant instanceof Repeater) {
-                        ((Repeater) plant).attack2(peta);
-                    } else if (plant instanceof Squash){
-                        ((Squash) plant).attack2(peta);
-                    } else if (plant instanceof TangleKelp){
-                        ((TangleKelp) plant).attack2(peta);
-                    }else if (plant instanceof CherryBomb){
-                        ((CherryBomb) plant).attack2(peta);
+                } else if (currentTime > 160 && currentTime <= 165) {
+                    while (zombieCount < 25) {
+                        spawnZombie(rand, deckzom);
+                        zombieCount++;
                     }
+                    updateMessage();
                 }
-                if (!listzombie.isEmpty()) {
-                    Iterator<Zombie> iter = listzombie.iterator();
-                    while (iter.hasNext()) {
-                        Zombie zombie = iter.next();
-                        if (!zombie.isAlive()) {
-                            zombie.die(peta);
-                            System.out.println("");
-                            System.out.println(zombie.getName() + " telah matii!!");
-                            iter.remove();
-                        }
-                    }
-                }
-                System.out.println("");
-                peta.displayMap(false);
 
-                // for(int i=0; i<listplant.size();i++){
-                //     System.out.println(listplant.get(i).getName());
-                // }
-                if (waitingForInput.get() && suppressDisplayMap.get() &&ThreadControl.getGameTimerThread().getCurrentGameTime()>20) {
-                    System.out.println("Time right now : " + ThreadControl.getGameTimerThread().getCurrentGameTime() );
-                    System.out.println("");
+                moveZombies();
+                activatePlants();
+
+                removeDeadEntities(listzombie, listplant);
+
+                if (waitingForInput.get() && suppressDisplayMap.get() && currentTime > 20) {
+                    System.out.println("Time right now: " + currentTime);
                     peta.displayMap(false);
-                    System.out.println("");
-                }
-                if (!listplant.isEmpty()) {
-                    Iterator<Plant> iter2 = listplant.iterator();
-                    while (iter2.hasNext()) {
-                        Plant pl = iter2.next();
-                        if (!pl.isAlive()) {
-                            pl.die(peta);
-                            System.out.println("");
-                            System.out.println(pl.getName() + " telah matii!!");
-                            iter2.remove();
-                        }
-                    }
                 }
 
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void spawnZombie(Random rand, ZombieDeck deckzom) {
+        int bariszom = rand.nextInt(6);
+        int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
+        Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone();
+        System.out.println("\nZombie spawned: " + zom.getName());
+        System.out.println("");
+
+        if (bariszom == 2 || bariszom == 3) {
+            if (zom.isAquatic()) {
+                peta.getTile(bariszom, 10).addCreature(zom);
+                zom.setKoordinat(bariszom, 10);
+                listzombie.add(zom);
+            }
+        } else {
+            if (!zom.isAquatic()) {
+                peta.getTile(bariszom, 10).addCreature(zom);
+                zom.setKoordinat(bariszom, 10);
+                listzombie.add(zom);
+            }
+        }
+    }
+
+    private void moveZombies() {
+        for (Zombie zombie : listzombie) {
+            zombie.walk(peta);
+        }
+    }
+
+    private void activatePlants() {
+        for (Plant plant : listplant) {
+            if (plant instanceof Sunflower) {
+                ((Sunflower) plant).act();
+            } else if (plant instanceof Peashooter) {
+                ((Peashooter) plant).attack2(peta);
+            } else if (plant instanceof CabbagePult) {
+                ((CabbagePult) plant).attack2(peta);
+            } else if (plant instanceof SnowPea) {
+                ((SnowPea) plant).attack2(peta);
+            } else if (plant instanceof Repeater) {
+                ((Repeater) plant).attack2(peta);
+            } else if (plant instanceof Squash) {
+                ((Squash) plant).attack2(peta);
+            } else if (plant instanceof TangleKelp) {
+                ((TangleKelp) plant).attack2(peta);
+            } else if (plant instanceof CherryBomb) {
+                ((CherryBomb) plant).attack2(peta);
+            }
+        }
+    }
+
+    private void removeDeadEntities(List<Zombie> zombies, List<Plant> plants) {
+        Iterator<Zombie> zombieIterator = zombies.iterator();
+        while (zombieIterator.hasNext()) {
+            Zombie zombie = zombieIterator.next();
+            if (!zombie.isAlive()) {
+                zombie.die(peta);
+                System.out.println(zombie.getName() + " has died!!");
+                zombieIterator.remove();
+            }
+        }
+
+        Iterator<Plant> plantIterator = plants.iterator();
+        while (plantIterator.hasNext()) {
+            Plant plant = plantIterator.next();
+            if (!plant.isAlive()) {
+                plant.die(peta);
+                System.out.println(plant.getName() + " has died!!");
+                plantIterator.remove();
+            }
         }
     }
 

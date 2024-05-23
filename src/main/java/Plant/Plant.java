@@ -38,8 +38,8 @@ public abstract class Plant extends Creature {
         double remainingCooldown = cooldownMap.get(this.getClass());
         boolean inCooldown = remainingCooldown > 0;
 
-        System.out.println("Checking cooldown for " + this.getClass().getSimpleName() + ": " + inCooldown);
-        System.out.println("Cooldown remaining: " + remainingCooldown + " seconds");
+        // System.out.println("Checking cooldown for " + this.getClass().getSimpleName() + ": " + inCooldown);
+        // System.out.println("Cooldown remaining: " + remainingCooldown + " seconds");
 
         return inCooldown;
     }
@@ -58,7 +58,7 @@ public abstract class Plant extends Creature {
             }
             cooldownMap.put(this.getClass(), remainingCooldown);
         }
-        System.out.println("Decrementing cooldown for " + this.getClass().getSimpleName() + ": " + remainingCooldown + " seconds remaining");
+        // System.out.println("Decrementing cooldown for " + this.getClass().getSimpleName() + ": " + remainingCooldown + " seconds remaining");
     }
 
     // Getter methods untuk atribut tambahan
