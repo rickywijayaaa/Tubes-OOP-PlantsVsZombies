@@ -93,6 +93,13 @@ public class Game {
                 default:
                     System.out.println("Menu tidak valid. Silakan pilih menu yang sesuai.");
             }
+
+            if(ZombieSpawnThread.isGameEnd()){
+                ThreadControl.stopAllThreads();
+                System.exit(0);
+                isRunningGame = false;
+            }
+
         }
 
 
