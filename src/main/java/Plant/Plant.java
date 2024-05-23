@@ -52,7 +52,11 @@ public abstract class Plant extends Creature {
     public void decrementCooldown() {
         double remainingCooldown = cooldownMap.get(this.getClass());
         if (remainingCooldown > 0) {
-            cooldownMap.put(this.getClass(), remainingCooldown - 1);
+            remainingCooldown -= 1.0; // Decrement by 1 second
+            if (remainingCooldown < 0) {
+                remainingCooldown = 0; // Ensure it doesn't go negative
+            }
+        cooldownMap.put(this.getClass(), remainingCooldown);
         }
     }
 
