@@ -7,7 +7,6 @@ import java.util.*;
 
 import Koordinat.Koordinat;
 import MapGame.*;
-import Sun.*;
 import Plant.*;
 import Zombies.*;
 import Creature.*;
@@ -23,7 +22,8 @@ public class ZombieSpawnThread implements Runnable {
     private AtomicBoolean waitingForInput;
     private AtomicBoolean suppressDisplayMap;
     private static HashSet<Plant> uniquePlants;
-    private volatile boolean gameEnd;
+    private volatile boolean zombieWins;
+    private volatile boolean noZombie160;
 
     public ZombieSpawnThread(int gametimer, Peta mainlawn, AtomicBoolean waitingForInput, AtomicBoolean suppressDisplayMap) {
         this.gametimer = gametimer;
@@ -34,12 +34,13 @@ public class ZombieSpawnThread implements Runnable {
         listplant = new ArrayList<>();
         uniquePlants = new HashSet<>();
         message = "|| Zombie Count: " + listzombie.size();
-       gameEnd = false;
+       zombieWins = false;
+       noZombie160 = false;
     }
 
     @Override
     public void run() {
-        while(!gameEnd){
+        while(!zombieWins){
             try {
 
                 Random rand = new Random();
@@ -75,13 +76,13 @@ public class ZombieSpawnThread implements Runnable {
                             if (waitingForInput.get() && suppressDisplayMap.get()) {
                                 System.out.println("Time right now: " + currentTime);
                                 peta.displayMap(false);
-                            } // entah aku ga seberapa paham ini apa, remove aja kalau gak butuh
-                            gameEnd = true;
+                            } // entah aku ga seberapa paham ini apa, remove aja kalau gak butu
+                            noZombie160 = true;
                             System.exit(0);
                             break;
                         }
                         while (zombieCount < 25) {
-                            gameEnd = false; //berarti zombie 1<=x<=25
+                          //berarti zombie 1<=x<=25
                             spawnZombie(rand, deckzom);
                             zombieCount++;
                         }
@@ -102,8 +103,8 @@ public class ZombieSpawnThread implements Runnable {
                     for(Zombie z : listzombie){
                         Koordinat kz = z.getKoordinat();
                         if(kz.getY() == 0 ){
-                            System.out.println("shit");
-                            gameEnd = true;
+//                            System.out.println("shit");
+                            zombieWins = true;
                             System.exit(0);
                             break;
                         }
@@ -198,7 +199,11 @@ public class ZombieSpawnThread implements Runnable {
         return message;
     }
 
-    public boolean isGameEnd() {
-        return gameEnd;
+    public synchronized boolean isZombieWins() {
+        return zombieWins;
+    }
+
+    public synchronized boolean isNoZombie160() {
+        return noZombie160;
     }
 }

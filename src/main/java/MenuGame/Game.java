@@ -3,14 +3,9 @@ package MenuGame;
 import MapGame.*;
 import Sun.*;
 import Plant.*;
-import Zombies.*;
-import Koordinat.*;
-import MenuGame.*;
-import Deck.*;
 import Inventory.*;
 import Thread.*;
 
-import java.sql.SQLOutput;
 import java.util.concurrent.*;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -63,11 +58,11 @@ public class Game {
         ThreadControl.addThread(zt);
         ThreadControl.startAllThreads();
 
-        while (!(gt.isTime160() && zt.isGameEnd()) && !zt.isGameEnd()) {
+        while (true) {
 
-            if(zt.isGameEnd()){
-                System.exit(0);
-            }
+            System.out.println("zt" + zt.isZombieWins());
+            System.out.println("zt60" + zt.isNoZombie160());
+
             //isRunningGame ga ke modif , aku hapus aja
             System.out.println();
             inven.displayDeck();
@@ -101,7 +96,6 @@ public class Game {
         }
 
 
-        System.out.println("Game Over!");
     }
 
     private static void plantSelectedPlant(Scanner scanner, Inventory inven, Peta peta, int choose4) {
