@@ -93,7 +93,7 @@ public abstract class Plant extends Creature {
     public void resetCooldown(double newcooldown) {
         // Implementing attack behavior untuk Plant
         // Methodnya akan beragam sesuai dengan Plant
-        cooldown = (int) newcooldown;
+        cooldown = newcooldown;
     }
 
     @Override

@@ -111,7 +111,9 @@ public abstract class Creature {
     // Abstract method for movement
     public abstract void move();
 
-
+    public void setdie(){
+        health = 0;
+    }
 
 
 }

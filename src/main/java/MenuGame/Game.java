@@ -25,6 +25,18 @@ public class Game {
         Sun.getInstance();
         Sun.setSun(500);
         Peta peta = new Peta();
+        // Squash sun1 = new Squash(1,8);
+        // Tile til1 = peta.getTile(1,8);
+        // Squash sun2 = new Squash(0,8);
+        // Tile til2 = peta.getTile(0,8);
+        // Squash sun3 = new Squash(4,8);
+        // Tile til3 = peta.getTile(4,8);
+        // Squash sun4 = new Squash(5,8);
+        // Tile til4 = peta.getTile(5,8);
+        // til1.addCreature(sun1);
+        // til2.addCreature(sun2);
+        // til3.addCreature(sun3);
+        // til4.addCreature(sun4);
         System.out.println("");
         System.out.println("Deck tanaman yang dapat kamu gunakan");
         System.out.println("");
