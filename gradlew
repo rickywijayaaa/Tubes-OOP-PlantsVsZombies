@@ -247,3 +247,6 @@ eval "set -- $(
     )" '"$@"'
 
 exec "$JAVACMD" "$@"
+
+apply plugin: 'java'
+compileJava {options.encoding = "UTF-8"}

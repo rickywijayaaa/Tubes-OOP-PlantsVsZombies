@@ -224,37 +224,40 @@ public class MenuGame {
     }
 
     private static void displayHowToPlay() {
-        System.out.println("Cara bermain:");
-        System.out.println("1. Mengunduh folder “Tubes-OOP-PlantsVsZombies” dari GitHub.");
-        System.out.println("2. Setelah diunduh, buka folder tersebut menggunakan Command Prompt pada direktori folder tersebut.");
-        System.out.println("3. Masukkan perintah berikut “.\\run”, lalu game bisa dijalankan.");
-        System.out.println();
-        System.out.println("Ketentuan permainan:");
-        System.out.println("- Sun yang dihasilkan oleh Sunflower akan langsung disimpan (tidak perlu diambil manual).");
-        System.out.println("- Pada pagi hari, pemain akan mendapatkan 25 sun untuk setiap interval waktu yang acak antara 5-10 detik.");
-        System.out.println("- Deck hanya dapat menyimpan 6 jenis tanaman saja dan harus terisi penuh sebelum permainan dimulai.");
-        System.out.println("- Pada permainan ini, 1 hari memiliki 200 detik yang terdiri dari 100 detik pagi hari dan 100 detik malam hari.");
-        System.out.println("- Zombie hanya akan dimunculkan pada detik ke 20 sampai 160.");
-        System.out.println("- Pemain menang jika jumlah zombie pada permainan telah habis dan kalah jika salah satu zombie telah mencapai kolom pertama pada peta permainan.");
-        System.out.println();
-        System.out.println("Di awal permainan, kamu akan ditampilkan oleh 5 pilihan menu diantaranya “Start”, “Help”, “Plant List”, “Zombie List”, dan “Exit”.");
-        System.out.println("Untuk pilihan “Start”, akan menampilkan inventory tanaman beserta cost nya dan beberapa tindakan yang bisa dilakukan oleh pemain.");
-        System.out.println("“Memilih tanaman untuk deck” akan meminta inputan pemain untuk memilih tanaman yang ingin dimasukkan ke dalam deck.");
-        System.out.println("“Menukar posisi tanaman” akan meminta inputan pemain dengan memilih dua tanaman yang ingin ditukar posisinya.");
-        System.out.println("“Menghapus tanaman dari deck” akan meminta inputan pemain dengan memilih tanaman yang ingin dihapus dari deck.");
-        System.out.println("“Melihat deck” akan menampilkan deck tanaman.");
-        System.out.println("“Start Game” akan memulai game jika deck telah terisi penuh.");
-        System.out.println();
+        System.out.println("""
+        Cara bermain:
+        1. Mengunduh folder “Tubes-OOP-PlantsVsZombies” dari GitHub.
+        2. Setelah diunduh, buka folder tersebut menggunakan Command Prompt pada direktori folder tersebut.
+        3. Masukkan perintah berikut “.run”, lalu game bisa dijalankan.
+
+        Ketentuan permainan:
+        - Sun yang dihasilkan oleh Sunflower akan langsung disimpan (tidak perlu diambil manual).
+        - Pada pagi hari, pemain akan mendapatkan 25 sun untuk setiap interval waktu yang acak antara 5-10 detik.
+        - Deck hanya dapat menyimpan 6 jenis tanaman saja dan harus terisi penuh sebelum permainan dimulai.
+        - Pada permainan ini, 1 hari memiliki 200 detik yang terdiri dari 100 detik pagi hari dan 100 detik malam hari.
+        - Zombie hanya akan dimunculkan pada detik ke 20 sampai 160.
+        - Pemain menang jika jumlah zombie pada permainan telah habis dan kalah jika salah satu zombie telah mencapai kolom pertama pada peta permainan.
+
+        Di awal permainan, kamu akan ditampilkan oleh 5 pilihan menu diantaranya “Start”, “Help”, “Plant List”, “Zombie List”, dan “Exit”.
+        Untuk pilihan “Start”, akan menampilkan inventory tanaman beserta cost nya dan beberapa tindakan yang bisa dilakukan oleh pemain.
+        “Memilih tanaman untuk deck” akan meminta inputan pemain untuk memilih tanaman yang ingin dimasukkan ke dalam deck.
+        “Menukar posisi tanaman” akan meminta inputan pemain dengan memilih dua tanaman yang ingin ditukar posisinya.
+        “Menghapus tanaman dari deck” akan meminta inputan pemain dengan memilih tanaman yang ingin dihapus dari deck.
+        “Melihat deck” akan menampilkan deck tanaman.
+        “Start Game” akan memulai game jika deck telah terisi penuh.
+        """);
     }
 
     private static void displayCommandList() {
-        System.out.println("Daftar command:");
-        System.out.println("1. <1 x y indexplant> - Menanam tanaman di koordinat (x,y) dengan indeks tanaman yang dipilih dari deck.");
-        System.out.println("   Contoh: 1 2 3 1 (menanam tanaman indeks pertama dari deck di koordinat (2,3)).");
-        System.out.println("2. <2 x y> - Menghapus tanaman yang ada di koordinat (x,y).");
-        System.out.println("   Contoh: 2 2 3 (menghapus tanaman di koordinat (2,3)).");
-        System.out.println("3. <3> - Menampilkan peta permainan saat ini.");
-        System.out.println("   Contoh: 3.");
-        System.out.println();
+        System.out.println("""
+        Daftar command:
+        1. <1 x y indexplant> - Menanam tanaman di koordinat (x,y) dengan indeks tanaman yang dipilih dari deck.
+           Contoh: 1 2 3 1 (menanam tanaman indeks pertama dari deck di koordinat (2,3)).
+        2. <2 x y> - Menghapus tanaman yang ada di koordinat (x,y).
+           Contoh: 2 2 3 (menghapus tanaman di koordinat (2,3)).
+        3. <3> - Menampilkan peta permainan saat ini.
+           Contoh: 3.
+        """);
     }
+
 }

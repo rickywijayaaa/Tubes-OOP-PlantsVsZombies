@@ -9,6 +9,8 @@ import MenuGame.*;
 import Deck.*;
 import Inventory.*;
 import Thread.*;
+
+import java.sql.SQLOutput;
 import java.util.concurrent.*;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -54,12 +56,19 @@ public class Game {
         System.out.println("");
         inven.displayDeck();
 
-        ThreadControl.addThread(new GameTimerThread(0, waitingForInput, suppressDisplayMap));
+        GameTimerThread gt = new GameTimerThread(0, waitingForInput, suppressDisplayMap);
+        ThreadControl.addThread(gt);
         ThreadControl.addThread(new GenerateSunThread(100));
-        ThreadControl.addThread(new ZombieSpawnThread(200, peta, waitingForInput, suppressDisplayMap));
+        ZombieSpawnThread zt = new ZombieSpawnThread(200, peta, waitingForInput, suppressDisplayMap);
+        ThreadControl.addThread(zt);
         ThreadControl.startAllThreads();
 
-        while (isRunningGame) {
+        while (!(gt.isTime160() && zt.isGameEnd()) && !zt.isGameEnd()) {
+
+            if(zt.isGameEnd()){
+                System.exit(0);
+            }
+            //isRunningGame ga ke modif , aku hapus aja
             System.out.println();
             inven.displayDeck();
             System.out.println("\n<1 x y indexplant> menanam tanaman di koordinat (x,y)\n<2 x y> dig tanaman di map\n");
@@ -90,6 +99,9 @@ public class Game {
                     System.out.println("Menu tidak valid. Silakan pilih menu yang sesuai.");
             }
         }
+
+
+        System.out.println("Game Over!");
     }
 
     private static void plantSelectedPlant(Scanner scanner, Inventory inven, Peta peta, int choose4) {

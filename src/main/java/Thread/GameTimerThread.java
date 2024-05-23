@@ -14,11 +14,13 @@ public class GameTimerThread implements Runnable {
     public static int gametimer;
     private AtomicBoolean waitingForInput;
     private AtomicBoolean suppressDisplayMap;
+    private volatile boolean time160;
 
     public GameTimerThread(int gametime, AtomicBoolean waitingForInput, AtomicBoolean suppressDisplayMap) {
         gametimer = gametime;
         this.waitingForInput = waitingForInput;
         this.suppressDisplayMap = suppressDisplayMap;
+        this.time160 = false;
     }
 
     @Override
@@ -33,6 +35,9 @@ public class GameTimerThread implements Runnable {
                             "), Input Pilihan Tanaman: ");
                 }
                 gametimer++;
+                if(gametimer >=160 ){
+                    time160 = true;
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -51,5 +56,9 @@ public class GameTimerThread implements Runnable {
 
     public void endCurrentGameTime() {
         gametimer = 0;
+    }
+
+    public boolean isTime160() {
+        return time160;
     }
 }
