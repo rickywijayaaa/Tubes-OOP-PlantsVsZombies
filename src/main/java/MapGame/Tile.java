@@ -20,23 +20,24 @@ public class Tile {
     }
 
     public String getType() {
-        return this.area;
+        return this.
+        area;
     }
-
     public void addCreature(Creature creature) {
         if (creature instanceof Plant) {
             if (this.hasPlanted() && !(this instanceof PoolTile)) {
                 System.out.println("Tile already has a plant.");
                 return;
             }
-            if (this instanceof PoolTile && !this.hasLilypad() && !(creature instanceof Lilypad)) {
-                System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+            if (this instanceof PoolTile && !this.hasLilypad() && !(creature instanceof Lilypad || creature instanceof TangleKelp)) {
+                System.out.println("Can only plant on top of a Lilypad or TangleKelp in PoolTile.");
                 return;
             }
         }
         entity.add(creature);
         this.updatePlantStatus();
     }
+
 
     public void removeCreature(Creature creature) {
         entity.remove(creature);

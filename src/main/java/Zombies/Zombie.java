@@ -80,7 +80,7 @@ public abstract class Zombie extends Creature implements Cloneable{
             if(checktanaman.hasPlanted()){
                 for (Creature creature : checktanaman.getEntities()) {
                     if (creature instanceof Plant) {
-                        if(creature instanceof Squash){
+                        if(creature instanceof Squash || creature instanceof TangleKelp){
                             return;
                         }
                         else{

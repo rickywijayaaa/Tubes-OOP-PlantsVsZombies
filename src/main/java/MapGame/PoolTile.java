@@ -31,15 +31,15 @@ public class PoolTile extends Tile {
         }
     }
 
-    @Override
-    public void addCreature(Creature creature) {
-        if (creature instanceof Plant) {
-            this.checkLilyPadBeforePlanting(creature);
-            if (!(creature instanceof Lilypad) && !this.hasLilypad()) {
-                System.out.println("Can only plant on top of a Lilypad in PoolTile.");
-                return; // Prevent adding the plant
-            }
-        }
-        super.addCreature(creature);
-    }
+    // @Override
+    // public void addCreature(Creature creature) {
+    //     if (creature instanceof Plant) {
+    //         this.checkLilyPadBeforePlanting(creature);
+    //         if (!(creature instanceof Lilypad) && !this.hasLilypad() || !(creature instanceof TangleKelp) ) {
+    //             System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+    //             return; // Prevent adding the plant
+    //         }
+    //     }
+    //     super.addCreature(creature);
+    // }
 }
