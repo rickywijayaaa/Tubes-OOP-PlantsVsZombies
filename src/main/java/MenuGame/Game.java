@@ -89,9 +89,6 @@ public class Game {
                 default:
                     System.out.println("Menu tidak valid. Silakan pilih menu yang sesuai.");
             }
-            for (Plant plant : peta.getAllPlants()) {
-                plant.decrementCooldown();
-            }
         }
     }
 
@@ -101,53 +98,17 @@ public class Game {
         int koorx = scanner.nextInt();
         System.out.printf("Pilih kolom untuk tanaman ditanam (y) : ");
         int koory = scanner.nextInt();
-
+    
         Plant selectedPlant = (Plant) inven.getDeckInven().get(choose4 - 1);
         String plantName = selectedPlant.getName();
-        Plant plantToBePlanted = null;
-
-        switch (plantName) {
-            case "Sunflower":
-                plantToBePlanted = new Sunflower(koorx, koory);
-                break;
-            case "Repeater":
-                plantToBePlanted = new Repeater(koorx, koory);
-                break;
-            case "Snow Pea":
-                plantToBePlanted = new SnowPea(koorx, koory);
-                break;
-            case "Lilypad":
-                plantToBePlanted = new Lilypad(koorx, koory);
-                break;
-            case "Wallnut":
-                plantToBePlanted = new Wallnut(koorx, koory);
-                break;
-            case "Peashooter":
-                plantToBePlanted = new Peashooter(koorx, koory);
-                break;
-            case "Squash":
-                plantToBePlanted = new Squash(koorx, koory);
-                break;
-            case "Cherry Bomb":
-                plantToBePlanted = new CherryBomb(koorx, koory);
-                break;
-            case "Cabbage Pult":
-                plantToBePlanted = new CabbagePult(koorx, koory);
-                break;
-            case "Tangle Kelp":
-                plantToBePlanted = new TangleKelp(koorx, koory);
-                break;
-            default:
-                System.out.println("Tanaman tidak valid. Silakan pilih tanaman yang sesuai.");
-                return;
-        }
-
-        if (plantToBePlanted != null) {
-            try {
-                peta.plant(plantToBePlanted, koorx, koory);
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
+    
+        try {
+            Plant plantToBePlanted = PlantFactory.createPlant(plantName, koorx, koory);
+            peta.plant(plantToBePlanted, koorx, koory);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Tanaman tidak valid. Silakan pilih tanaman yang sesuai.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
