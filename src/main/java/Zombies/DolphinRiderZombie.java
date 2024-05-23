@@ -10,7 +10,15 @@ public class DolphinRiderZombie extends Zombie {
         super("Dolphin Rider Zombie", 175, 100, 1, true,x,y,true, 0, 5);
     }
 
+    private boolean jump = false;
 
+    public boolean isJump(){
+        return jump;
+    }
+
+    public void setJump(){
+        jump = true;
+    }
 
     // Implementasi abstract method 
     @Override
