@@ -96,8 +96,18 @@ public abstract class Zombie extends Creature implements Cloneable{
                             if (!zompole.isJump()) {
                                 zompole.jump(gameMap);
                                 zompole.setJump();
+                                return;
                             } else {
                                 zompole.attack((Plant) creature);
+                            }
+                        } else if (this instanceof DolphinRiderZombie) {
+                            DolphinRiderZombie zomdol = (DolphinRiderZombie) this;
+                            if (!zomdol.isJump()) {
+                                zomdol.jump(gameMap);
+                                zomdol.setJump();
+                                return;
+                            } else {
+                                zomdol.attack((Plant) creature);
                             }
                         }
                     } else {
