@@ -1,5 +1,7 @@
 package Thread;
 
+import java.awt.*;
+import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,6 +9,7 @@ import java.util.*;
 
 import Koordinat.Koordinat;
 import MapGame.*;
+import MenuGame.MenuGame;
 import Plant.*;
 import Zombies.*;
 import Creature.*;
@@ -105,7 +108,9 @@ public class ZombieSpawnThread implements Runnable {
                         if(kz.getY() == 0 ){
 //                            System.out.println("shit");
                             zombieWins = true;
-                            System.exit(0);
+                            ThreadControl.stopAllThreads();
+                            MenuGame.Menu();
+//                            System.exit(0);
                             break;
                         }
                     }
