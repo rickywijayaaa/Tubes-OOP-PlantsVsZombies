@@ -4,9 +4,12 @@ import Zombies.*;
 import Plant.*;
 import java.util.ArrayList;
 import Sun.*;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Peta {
     private Tile[][] grid;
+    private Timer timer;
 
     public Peta() {
         this.grid = new Tile[6][11];
@@ -23,6 +26,23 @@ public class Peta {
                     grid[row][col] = new GrassTile();
                 }
             }
+        }
+        startCooldownTimer();
+    }
+
+    private void startCooldownTimer() {
+        timer = new Timer(true); 
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                decrementAllCooldowns();
+            }
+        }, 0, 1000); // Execute every second
+    }
+
+    public void stopCooldownTimer() {
+        if (timer != null) {
+            timer.cancel();
         }
     }
 

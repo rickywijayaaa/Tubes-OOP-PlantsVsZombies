@@ -95,28 +95,27 @@ public class ZombieSpawnThread implements Runnable {
                         }
                         updateMessage();
                     }
-                    for (Zombie zombie : listzombie) {
-                        zombie.walk(peta);
-                    }
-
-
-
-                    for (Plant plant : listplant) {
-                        if (plant instanceof Sunflower) {
-                            ((Sunflower) plant).act();
-                        } else if (plant instanceof Peashooter) {
-                            ((Peashooter) plant).attack2(peta);
-                        } else if (plant instanceof CabbagePult) {
-                            ((CabbagePult) plant).attack2(peta);
-                        } else if (plant instanceof SnowPea) {
-                            ((SnowPea) plant).attack2(peta);
-                        } else if (plant instanceof Repeater) {
-                            ((Repeater) plant).attack2(peta);
-                        } else if (plant instanceof Squash){
-                            ((Squash) plant).attack2(peta);
-                        }
-                    }
                     // System.out.println("jumlah matahari : " + Sun.getSun());
+                }
+                for (Zombie zombie : listzombie) {
+                    zombie.walk(peta);
+                }
+                for (Plant plant : listplant) {
+                    if (plant instanceof Sunflower) {
+                        ((Sunflower) plant).act();
+                    } else if (plant instanceof Peashooter) {
+                        ((Peashooter) plant).attack2(peta);
+                    } else if (plant instanceof CabbagePult) {
+                        ((CabbagePult) plant).attack2(peta);
+                    } else if (plant instanceof SnowPea) {
+                        ((SnowPea) plant).attack2(peta);
+                    } else if (plant instanceof Repeater) {
+                        ((Repeater) plant).attack2(peta);
+                    } else if (plant instanceof Squash){
+                        ((Squash) plant).attack2(peta);
+                    } else if (plant instanceof TangleKelp){
+                        ((TangleKelp) plant).attack2(peta);
+                    }
                 }
                 if (!listzombie.isEmpty()) {
                     Iterator<Zombie> iter = listzombie.iterator();
@@ -130,8 +129,8 @@ public class ZombieSpawnThread implements Runnable {
                         }
                     }
                 }
-                // System.out.println("");
-                // peta.displayMap(false);
+                System.out.println("");
+                peta.displayMap(false);
 
                 // for(int i=0; i<listplant.size();i++){
                 //     System.out.println(listplant.get(i).getName());
