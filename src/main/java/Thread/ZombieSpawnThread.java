@@ -1,11 +1,15 @@
 package Thread;
 
+import java.awt.*;
+import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.*;
+
+import Koordinat.Koordinat;
 import MapGame.*;
-import Sun.*;
+import MenuGame.MenuGame;
 import Plant.*;
 import Zombies.*;
 import Creature.*;
@@ -21,6 +25,8 @@ public class ZombieSpawnThread implements Runnable {
     private AtomicBoolean waitingForInput;
     private AtomicBoolean suppressDisplayMap;
     private static HashSet<Plant> uniquePlants;
+    private volatile boolean zombieWins;
+    private volatile boolean noZombie160;
 
     public ZombieSpawnThread(int gametimer, Peta mainlawn, AtomicBoolean waitingForInput, AtomicBoolean suppressDisplayMap) {
         this.gametimer = gametimer;
@@ -31,62 +37,94 @@ public class ZombieSpawnThread implements Runnable {
         listplant = new ArrayList<>();
         uniquePlants = new HashSet<>();
         message = "|| Zombie Count: " + listzombie.size();
+       zombieWins = false;
+       noZombie160 = false;
     }
 
     @Override
     public void run() {
-        try {
-            Random rand = new Random();
-            ZombieDeck deckzom = new ZombieDeck();
-            int zombieCount = 0;
+        while(!zombieWins){
+            try {
 
-            while (gametimer > 0) {
-                for (int row = 0; row < 6; row++) {
-                    for (int col = 0; col < 11; col++) {
-                        Tile tile = peta.getTile(row, col);
-                        ArrayList<Creature> entities = tile.getEntities();
-                        for (Creature creature : entities) {
-                            if (creature instanceof Plant) {
-                                Plant plant = (Plant) creature;
-                                if (!uniquePlants.contains(plant)) {
-                                    uniquePlants.add(plant);
-                                    listplant.add(plant);
+                Random rand = new Random();
+                ZombieDeck deckzom = new ZombieDeck();
+                int zombieCount = 0;
+
+                while (gametimer > 0) {
+                    for (int row = 0; row < 6; row++) {
+                        for (int col = 0; col < 11; col++) {
+                            Tile tile = peta.getTile(row, col);
+                            ArrayList<Creature> entities = tile.getEntities();
+                            for (Creature creature : entities) {
+                                if (creature instanceof Plant) {
+                                    Plant plant = (Plant) creature;
+                                    if (!uniquePlants.contains(plant)) {
+                                        uniquePlants.add(plant);
+                                        listplant.add(plant);
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                int currentTime = ThreadControl.getGameTimerThread().getCurrentGameTime();
-                if (currentTime > 2 && currentTime < 160 && currentTime % 3 == 0) {
-                    if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
-                        spawnZombie(rand, deckzom);
-                        zombieCount++;
+                    int currentTime = ThreadControl.getGameTimerThread().getCurrentGameTime();
+                    if (currentTime > 2 && currentTime < 160 && currentTime % 3 == 0) {
+                        if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
+                            spawnZombie(rand, deckzom);
+                            zombieCount++;
+                            updateMessage();
+                        }
+                    } else if (currentTime > 160 && currentTime <= 165) {
+                        if(zombieCount == 0){
+                            if (waitingForInput.get() && suppressDisplayMap.get()) {
+                                System.out.println("Time right now: " + currentTime);
+                                peta.displayMap(false);
+                            } // entah aku ga seberapa paham ini apa, remove aja kalau gak butu
+                            noZombie160 = true;
+                            ThreadControl.stopAllThreads();
+                            System.out.println("PLANT WINS,JANGAN LUPA NUBES");
+                            MenuGame.Menu();
+                            break;
+                        }
+                        while (zombieCount < 25) {
+                          //berarti zombie 1<=x<=25
+                            spawnZombie(rand, deckzom);
+                            zombieCount++;
+                        }
                         updateMessage();
                     }
-                } else if (currentTime > 160 && currentTime <= 165) {
-                    while (zombieCount < 25) {
-                        spawnZombie(rand, deckzom);
-                        zombieCount++;
+
+                    moveZombies();
+                    activatePlants();
+
+                    removeDeadEntities(listzombie, listplant);
+
+                    if (waitingForInput.get() && suppressDisplayMap.get() && currentTime > 20) {
+                        System.out.println("Time right now: " + currentTime);
+                        peta.displayMap(false);
                     }
-                    updateMessage();
+
+
+                    for(Zombie z : listzombie){
+                        Koordinat kz = z.getKoordinat();
+                        if(kz.getY() == 0 ){
+//                            System.out.println("shit");
+                            zombieWins = true;
+                            ThreadControl.stopAllThreads();
+                            System.out.println("ZOMBIE WINS,YUK NUBES JANGAN MAIN TERUS");
+                            MenuGame.Menu();
+//                            System.exit(0);
+                            break;
+                        }
+                    }
+                    Thread.sleep(1000);
+
                 }
-
-                moveZombies();
-                activatePlants();
-
-                removeDeadEntities(listzombie, listplant);
-
-                if (waitingForInput.get() && suppressDisplayMap.get() && currentTime > 20) {
-                    System.out.println("Time right now: " + currentTime);
-                    peta.displayMap(false);
-                }
-
-                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
+
     }
 
     private void spawnZombie(Random rand, ZombieDeck deckzom) {
@@ -167,5 +205,13 @@ public class ZombieSpawnThread implements Runnable {
 
     public static String getMessage() {
         return message;
+    }
+
+    public synchronized boolean isZombieWins() {
+        return zombieWins;
+    }
+
+    public synchronized boolean isNoZombie160() {
+        return noZombie160;
     }
 }
