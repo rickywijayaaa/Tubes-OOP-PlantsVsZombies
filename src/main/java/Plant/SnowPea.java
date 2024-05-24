@@ -30,10 +30,10 @@ public class SnowPea extends Plant {
     }
 
     public void attack2(Peta peta){
-        if(this.getAttackSpeed()==0){
+        if(this.getAttackSpeed()==4){
             int startRow = this.getKoordinat().getX();
             int startCol = this.getKoordinat().getY();
-            this.setAttackSpeed(4.0);
+            this.setAttackSpeed(0);
             for (int i = 1; i <= 11- startCol; i++) {
                 int targetCol = startCol + i;
                 if (targetCol >= 11) break; // Out of grid bounds
@@ -47,7 +47,7 @@ public class SnowPea extends Plant {
             }   
         }
         else{
-            this.setAttackSpeed(getAttackSpeed()-1);
+            this.setAttackSpeed(getAttackSpeed()+1);
         }
      }
 }
