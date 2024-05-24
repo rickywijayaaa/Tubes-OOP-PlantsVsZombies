@@ -78,6 +78,9 @@ public class Peta {
             return; // Prevent adding the plant
         }
 
+        if (tile instanceof GrassTile && (toBePlanted instanceof Lilypad || toBePlanted instanceof TangleKelp)) {
+            throw new Exception("Lilypad dan Tangle Kelp tidak bisa ditanam di GrassTile!");
+        }
 
         boolean pool = row >= 2 && row <= 3 && col!= 0 && col!=10;
         if (toBePlanted instanceof Lilypad && !pool) {
@@ -89,7 +92,7 @@ public class Peta {
         }
 
         boolean spawn = col==10;
-        if (spawn){
+        if(spawn){
             throw new Exception("Tanaman tidak bisa ditanam di spawn zombie !");
         }
 

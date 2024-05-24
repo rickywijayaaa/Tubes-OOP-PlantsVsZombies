@@ -24,7 +24,7 @@ public class  App {
         Sun.setSun(0);
         Peta peta = new Peta();
         Inventory inven = new Inventory(peta);
-        //MenuGame.Menu();
+        MenuGame.Menu();
         Game.play(inven);
     }
 }    

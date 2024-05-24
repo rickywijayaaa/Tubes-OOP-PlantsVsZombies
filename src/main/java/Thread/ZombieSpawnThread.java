@@ -70,7 +70,6 @@ public class ZombieSpawnThread implements Runnable {
                     int currentTime = ThreadControl.getGameTimerThread().getCurrentGameTime();
                     if (currentTime > 2 && currentTime < 155 && currentTime % 3 == 0) {
                         if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
-                            System.out.println("coba");
                             spawnZombie(rand, deckzom);
                             zombieCount++;
                             updateMessage();
