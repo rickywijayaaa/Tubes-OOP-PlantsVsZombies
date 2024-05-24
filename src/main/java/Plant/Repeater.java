@@ -26,7 +26,7 @@ public class Repeater extends Plant {
         int startRow = this.getKoordinat().getX();
         int startCol = this.getKoordinat().getY();
         
-        for (int i = 1; i <= 11- startCol; i++) {
+        for (int i = 0; i <= 11- startCol; i++) {
             int targetCol = startCol + i;
             if (targetCol >= 11) break; // Out of grid bounds
             Tile targetTile = peta.getTile(startRow, targetCol);

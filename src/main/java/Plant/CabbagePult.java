@@ -26,7 +26,7 @@ public class CabbagePult extends Plant {
         int startRow = this.getKoordinat().getX();
         int startCol = this.getKoordinat().getY();
         
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 0; i <= 3; i++) {
             int targetCol = startCol + i;
             if (targetCol >= 11) break; // Out of grid bounds
             Tile targetTile = peta.getTile(startRow, targetCol);

@@ -37,7 +37,7 @@ public class CherryBomb extends Plant {
         System.out.println("debug");
     
         // Check the 3 tiles in front of CherryBomb
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 0; i <= 3; i++) {
             int targetCol = startCol + i;
             if (targetCol >= 11) break; // Out of grid bounds
             Tile targetTile = peta.getTile(startRow, targetCol);
