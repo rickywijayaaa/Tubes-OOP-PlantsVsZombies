@@ -84,7 +84,16 @@ public class Game {
                     suppressDisplayMap.set(false);
                     break;
                 case 2:
-                    // Handle plant removal logic
+                    System.out.printf("Pilih baris untuk tanaman dicabut (x) : ");
+                    int koorxRemove = scanner.nextInt();
+                    System.out.printf("Pilih kolom untuk tanaman dicabut (y) : ");
+                    int kooryRemove = scanner.nextInt();
+
+                    try {
+                        peta.removePlant(koorxRemove, kooryRemove);
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                     break;
                 case 3:
                     System.out.println("\n");

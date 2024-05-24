@@ -198,4 +198,24 @@ public class Peta {
             System.out.println(white); // Reset to white at the end of each row
         }
     }
+    
+    public void removePlant(int row, int col) throws Exception {
+        Tile tile = this.getTile(row, col);
+
+        // Find and remove the plant
+        Plant plantToRemove = null;
+        for (Creature creature : tile.getEntities()) {
+            if (creature instanceof Plant) {
+                plantToRemove = (Plant) creature;
+                break;
+            }
+        }
+
+        if (plantToRemove != null) {
+            tile.removeCreature(plantToRemove);
+            System.out.println("Removed " + plantToRemove.getName() + " from (" + row + ", " + col + ")");
+        } else {
+            throw new Exception("No plant found at the specified location");
+        }
+    }
 }
