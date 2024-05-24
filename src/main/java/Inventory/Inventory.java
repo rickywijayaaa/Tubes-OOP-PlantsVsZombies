@@ -74,6 +74,8 @@ public class Inventory<T extends Plant> {
         }
     }
 
+
+    
     public void displayInventory() {
         System.out.println("Inventory tanaman beserta costnya:");
         for (int i = 0; i < inven.size(); i++) {
