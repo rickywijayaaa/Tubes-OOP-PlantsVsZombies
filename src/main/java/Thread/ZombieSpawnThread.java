@@ -9,11 +9,12 @@ import java.util.*;
 
 import Koordinat.Koordinat;
 import MapGame.*;
-import MenuGame.MenuGame;
+import MenuGame.*;
 import Plant.*;
 import Zombies.*;
 import Creature.*;
 import Inventory.*;
+import Sun.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ZombieSpawnThread implements Runnable {
@@ -69,7 +70,7 @@ public class ZombieSpawnThread implements Runnable {
 
                     int currentTime = ThreadControl.getGameTimerThread().getCurrentGameTime();
                     if (currentTime > 20 && currentTime < 155 && currentTime % 3 == 0) {
-                        if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
+                        if ((rand.nextInt(10) > 7) && (zombieCount < 10)) {
                             spawnZombie(rand, deckzom);
                             zombieCount++;
                             updateMessage();
@@ -96,6 +97,7 @@ public class ZombieSpawnThread implements Runnable {
                             System.out.println("/   )       |        \\\\ (_ o _) /|  |    |  |    (_I_)           |    /  \\    | |   | |  |    |  | \\       /(_(=)_)(_(=)_)(_(=)_)(_(=)_)(_(=)_)        ");
                             System.out.println("`---'       `--------` '.(_,_).' '--'    '--'    '---'           `---'    `---` '---' '--'    '--'  `-...-'  (_I_)  (_I_)  (_I_)  (_I_)  (_I_)         ");
                             MenuGame.Menu();
+                            // System.exit(0);
                             break;
                         }
                         
@@ -111,7 +113,7 @@ public class ZombieSpawnThread implements Runnable {
 
                     if (waitingForInput.get() && suppressDisplayMap.get() && currentTime > 20) {
                         System.out.println("");
-                        System.out.println("Time right now: " + currentTime);
+                        System.out.println("Time right now: " + currentTime + "|| Sun : "+ Sun.getSun());
                         peta.displayMap(false);
                     }
 
@@ -134,7 +136,6 @@ public class ZombieSpawnThread implements Runnable {
                             System.out.println("|    (_,_)|  '. \\_/``\".'  |  |      |  ||  (_,_)  /|   |   \\       /         |    /  \\    | |   | |  |    |  | \\       /(_(=)_)(_(=)_)(_(=)_)(_(=)_)(_(=)_)        ");
                             System.out.println("|_________|    '-----'    '--'      '--'/_______.' '---'    `'-..-'          `---'    `---` '---' '--'    '--'  `-...-'  (_I_)  (_I_)  (_I_)  (_I_)  (_I_)         ");
                             MenuGame.Menu();
-//                            System.exit(0);
                             break;
                         }
                     }
