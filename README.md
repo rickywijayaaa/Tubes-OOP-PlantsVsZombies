@@ -44,5 +44,5 @@ Michael vs Lalapan adalah game versi sederhana dari permainan populer Plant vs Z
    git clone https://github.com/rickywijayaaa/Tubes-OOP-PlantsVsZombies.git
 2. Run the program by using this command
     ```sh 
-    ./gradlew run
+    ./gradlew -q --console plain run
 
