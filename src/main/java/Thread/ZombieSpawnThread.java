@@ -113,6 +113,8 @@ public class ZombieSpawnThread implements Runnable {
                         if(kz.getY() == 0 ){
 //                            System.out.println("shit");
                             zombieWins = true;
+                            waitingForInput.set(true);
+                            suppressDisplayMap.set(true);
                             ThreadControl.stopAllThreads();
                             System.out.println("ZOMBIE WINS!!!!");
                             MenuGame.Menu();
