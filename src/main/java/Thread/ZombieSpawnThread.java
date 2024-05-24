@@ -76,17 +76,6 @@ public class ZombieSpawnThread implements Runnable {
                             updateMessage();
                         }
                     } else if (currentTime > 155 && currentTime <= 160) {
-                        if(zombieCount == 0){
-                            if (waitingForInput.get() && suppressDisplayMap.get()) {
-                                System.out.println("Time right now: " + currentTime);
-                                peta.displayMap(false);
-                            } // entah aku ga seberapa paham ini apa, remove aja kalau gak butu
-                            noZombie160 = true;
-                            ThreadControl.stopAllThreads();
-                            System.out.println("PLANT WINS!!!");
-                            MenuGame.Menu();
-                            break;
-                        }
                         while (zombieCount < 25) {
                           //berarti zombie 1<=x<=25
                             spawnZombie(rand, deckzom);
@@ -94,10 +83,23 @@ public class ZombieSpawnThread implements Runnable {
                         }
                         updateMessage();
                     }
+                    else if (currentTime > 160) {
+                        if(zombieCount == 0){
+                            noZombie160 = true;
+                            ThreadControl.stopAllThreads();
+                            System.out.println("PLANT WINS!!!");
+                            MenuGame.Menu();
+                            break;
+                        }
+                        
+                    }
 
                     moveZombies();
                     activatePlants();
 
+                    // Update zombie count after moving zombies and activating plants
+                    zombieCount = listzombie.size();
+                    
                     removeDeadEntities(listzombie, listplant);
 
                     if (waitingForInput.get() && suppressDisplayMap.get() && currentTime > 20) {
