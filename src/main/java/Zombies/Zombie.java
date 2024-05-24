@@ -69,75 +69,77 @@ public abstract class Zombie extends Creature implements Cloneable{
         System.out.println(getName() + " moves slowly with speed " + getSpeed());
     }
 
-
-    //the object decrease plant health in the same tile based on its atkdmg
     public void walk(Peta gameMap) {
         Koordinat koorZ = getKoordinat(); // Get zombie's current position
         int koorx = koorZ.getX();
         int koory = koorZ.getY();
-        int nextCol = koory - 1;
-        if (nextCol >= 0) {
-            Tile checktanaman = gameMap.getTile(koorx, nextCol);
-            if (checktanaman.hasPlanted()) {
-                List<Creature> creaturesToAttack = new ArrayList<>();
-                for (Creature creature : checktanaman.getEntities()) {
-                    if (creature instanceof Plant) {
-                        if (creature instanceof Squash || creature instanceof TangleKelp) {
-                            return;
-                        } else {
-                            creaturesToAttack.add(creature);
-                        }
+
+        // Check the current tile for any plants
+        Tile currentTile = gameMap.getTile(koorx, koory);
+        if (currentTile.hasPlanted()) {
+            List<Creature> creaturesToAttack = new ArrayList<>();
+            for (Creature creature : currentTile.getEntities()) {
+                if (creature instanceof Plant) {
+                    if (creature instanceof Squash || creature instanceof TangleKelp) {
+                        return; // Do not attack these plants
+                    } else {
+                        creaturesToAttack.add(creature);
                     }
                 }
-                for (Creature creature : creaturesToAttack) {
-                    if (this instanceof PoleVaultingZombie || this instanceof DolphinRiderZombie) {
-                        if (this instanceof PoleVaultingZombie) {
-                            PoleVaultingZombie zompole = (PoleVaultingZombie) this;
-                            if (!zompole.isJump()) {
-                                zompole.jump(gameMap);
-                                zompole.setJump();
-                                return;
+            }
+
+            // Attack plants on the current tile
+            for (Creature creature : creaturesToAttack) {
+                this.attack((Plant) creature);
+                return;
+            }
+        } else {
+            // Move to the next tile and check for plants
+            int nextCol = koory - 1;
+            if (nextCol >= 0) {
+                Tile nextTile = gameMap.getTile(koorx, nextCol);
+                if (nextTile.hasPlanted()) {
+                    List<Creature> creaturesToAttack = new ArrayList<>();
+                    for (Creature creature : nextTile.getEntities()) {
+                        if (creature instanceof Plant) {
+                            if (creature instanceof Squash || creature instanceof TangleKelp) {
+                                return; // Do not attack these plants
                             } else {
-                                zompole.attack((Plant) creature);
-                            }
-                        } else if (this instanceof DolphinRiderZombie) {
-                            DolphinRiderZombie zomdol = (DolphinRiderZombie) this;
-                            if (!zomdol.isJump()) {
-                                zomdol.jump(gameMap);
-                                zomdol.setJump();
-                                return;
-                            } else {
-                                zomdol.attack((Plant) creature);
+                                creaturesToAttack.add(creature);
                             }
                         }
-                    } else {
+                    }
+
+                    // Attack plants on the next tile
+                    for (Creature creature : creaturesToAttack) {
                         this.attack((Plant) creature);
                         return;
                     }
-                }
-            } else {
-                if ((this.getSpeed()) == 0) {
-                    if (nextCol > 0) {
-                        Tile tile = gameMap.getTile(koorx, koory); // Get the current tile
-                        Tile nextTile = gameMap.getTile(koorx, nextCol); // Get the next tile
-                        nextTile.addCreature(this);
-                        tile.removeCreature(this);
-                        this.setKoordinat(koorx, nextCol);
-                        this.setSpeed(10);
-                    } else if (nextCol == 0) {
-                        Tile tile = gameMap.getTile(koorx, koory); // Get the current tile
-                        Tile nextTile = gameMap.getTile(koorx, nextCol); // Get the next tile
-                        nextTile.addCreature(this);
-                        tile.removeCreature(this);
-                        this.setKoordinat(koorx, nextCol);
-                        this.setSpeed(10);
-                        // Handle game end condition here if needed
-                    } else {
-                        // Zombie has reached the end of the map
-                        // Handle this case (e.g., remove the zombie or trigger game over)
-                    }
                 } else {
-                    this.setSpeed(this.getSpeed() - 1);
+                    // Move to the next tile if no plants are found
+                    if ((this.getSpeed()) == 0) {
+                        if (nextCol > 0) {
+                            Tile tile2 = gameMap.getTile(koorx, koory); // Get the current tile
+                            Tile nextTile2 = gameMap.getTile(koorx, nextCol); // Get the next tile
+                            nextTile2.addCreature(this);
+                            tile2.removeCreature(this);
+                            this.setKoordinat(koorx, nextCol);
+                            this.setSpeed(10);
+                        } else if (nextCol == 0) {
+                            Tile tile2 = gameMap.getTile(koorx, koory); // Get the current tile
+                            Tile nextTile2 = gameMap.getTile(koorx, nextCol); // Get the next tile
+                            nextTile2.addCreature(this);
+                            tile2.removeCreature(this);
+                            this.setKoordinat(koorx, nextCol);
+                            this.setSpeed(10);
+                            // Handle game end condition here if needed
+                        } else {
+                            // Zombie has reached the end of the map
+                            // Handle this case (e.g., remove the zombie or trigger game over)
+                        }
+                    } else {
+                        this.setSpeed(this.getSpeed() - 1);
+                    }
                 }
             }
         }

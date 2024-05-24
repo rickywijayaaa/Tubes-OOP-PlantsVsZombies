@@ -20,7 +20,7 @@ public class Game {
         boolean isRunningGame = true;
         long mulaigame = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
         Sun.getInstance();
-        Sun.setSun(50);
+        Sun.setSun(5000);
         Peta peta = new Peta();
         // Repeater sun1 = new Repeater(0,8);
         // Tile til1 = peta.getTile(0,8);
