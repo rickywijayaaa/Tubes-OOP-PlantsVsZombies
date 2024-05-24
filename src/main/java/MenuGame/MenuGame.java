@@ -257,6 +257,8 @@ public class MenuGame {
         System.out.println("| - Sun yang dihasilkan oleh Sunflower    |");
         System.out.println("|   akan langsung disimpan (tidak perlu   |");
         System.out.println("|   diambil manual).                      |");
+        System.out.println("| - Pemain akan memiliki 50 sun di awal   |");
+        System.out.println("|   permainan.                            |");
         System.out.println("| - Pada pagi hari, pemain akan           |");
         System.out.println("|   mendapatkan 25 sun untuk setiap       |");
         System.out.println("|   interval waktu yang acak antara 5-10  |");
@@ -300,27 +302,6 @@ public class MenuGame {
         System.out.println("| - “Start Game” akan memulai game jika   |");
         System.out.println("|   deck telah terisi penuh.              |");
         System.out.println("===========================================");
-    }
-
-    private static void displayCommandList() {
-        System.out.println("===========================================");
-        System.out.println("|              Daftar Command             |");
-        System.out.println("===========================================");
-        System.out.println("| 1. <1 x y indexplant> - Menanam tanaman |");
-        System.out.println("|    di koordinat (x,y) dengan indeks     |");
-        System.out.println("|    tanaman yang dipilih dari deck.      |");
-        System.out.println("|    Contoh: 1 2 3 1 (menanam tanaman     |");
-        System.out.println("|    indeks pertama dari deck di          |");
-        System.out.println("|    koordinat (2,3)).                    |");
-        System.out.println("| 2. <2 x y> - Menghapus tanaman yang ada |");
-        System.out.println("|    di koordinat (x,y).                  |");
-        System.out.println("|    Contoh: 2 2 3 (menghapus tanaman di  |");
-        System.out.println("|    koordinat (2,3)).                    |");
-        System.out.println("| 3. <3> - Menampilkan peta permainan     |");
-        System.out.println("|    saat ini.                            |");
-        System.out.println("|    Contoh: 3.                           |");
-        System.out.println("===========================================");
-
     }
 
 }
