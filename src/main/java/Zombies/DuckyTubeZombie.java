@@ -4,7 +4,7 @@ import Creature.*;
 
 public class DuckyTubeZombie extends Zombie {
     public DuckyTubeZombie(int x, int y) {
-        super("Ducky Tube Zombie", 100, 100, 1, true,x,y,true, 0,5);
+        super("Ducky Tube Zombie", 100, 100, 1, true,x,y,true, 0,10);
     }
 
 

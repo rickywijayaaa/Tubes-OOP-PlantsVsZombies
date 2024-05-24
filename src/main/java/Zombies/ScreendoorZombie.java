@@ -5,7 +5,7 @@ import Creature.*;
 
 public class ScreendoorZombie extends Zombie {
     public ScreendoorZombie(int x, int y) {
-        super("Screendoor Zombie",500,75,1,false,x,y,true,0,5);
+        super("Screendoor Zombie",500,75,1,false,x,y,true,0,10);
     }
 
 

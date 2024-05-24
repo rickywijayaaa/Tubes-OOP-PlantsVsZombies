@@ -56,7 +56,7 @@ public class Peta {
         return this.grid[row][col];
     }
 
-    public synchronized void plant(Plant toBePlanted,int row, int col) throws Exception {
+    public void plant(Plant toBePlanted,int row, int col) throws Exception {
         Tile tile = this.getTile(row, col);
         if (col <= 0 || col >= 10) {
             throw new Exception("Tile belum ada lilypad sehingga tidak bisa ditanam");
