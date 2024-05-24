@@ -30,11 +30,12 @@ public class Start {
             System.out.println("");
             System.out.println("Pilih tindakan:");
             System.out.println("1. Memilih tanaman untuk deck");
-            System.out.println("2. Menukar posisi tanaman");
+            System.out.println("2. Menukar posisi tanaman pada inventory");
             System.out.println("3. Menghapus tanaman dari deck");
             System.out.println("4. Melihat deck");
-            System.out.println("5. Start Game");
-            System.out.printf("Masukkan input tindakan (1/2/3/4/5) : ");
+            System.out.println("5. Menukar posisi tanaman pada deck");
+            System.out.println("6. Start Game");
+            System.out.printf("Masukkan input tindakan (1/2/3/4/5/6) : ");
             int choice = scanner.nextInt();
                 
                 switch (choice) {
@@ -120,6 +121,35 @@ public class Start {
                             break;
                         }
                     case 5 :
+                        System.out.println("");
+                        inven.displayDeck();
+                        System.out.println("");
+                        System.out.printf("Masukkan nomor indeks tanaman yang ingin ditukar posisinya: ");
+                        int indexSwap3 = scanner.nextInt();
+                        if (indexSwap3 < 1 || indexSwap3 > inven.getDeckInven().size()){
+                            System.out.println("Indeks tidak valid!");
+                            break;
+                        }
+                        System.out.printf("Masukkan nomor indeks tanaman lain untuk ditukar posisinya: ");
+                        int indexSwap4 = scanner.nextInt();
+                        if (indexSwap4 < 1 || indexSwap4 > inven.getDeckInven().size()){
+                            System.out.println("Indeks tidak valid!");
+                            break;
+                        }
+                        else if (indexSwap3 == indexSwap4){
+                            System.out.println("Tidak boleh menukar pada indeks yang sama!");
+                            break;                            
+                        }
+                        System.out.println("");
+                        Object plant3 = inven.getDeckInven().get(indexSwap3 - 1);
+                        Object plant4 = inven.getDeckInven().get(indexSwap4 - 1);
+                        System.out.println("Berhasil menukar " + ((Plant) plant3).getName() + " dengan " + ((Plant) plant4).getName() + "!!!" );
+                        inven.swapPlantDeck(indexSwap3 - 1, indexSwap4 - 1); // Karena indeks dimulai dari 1, sementara ArrayList dimulai dari 0
+                        System.out.println("");
+                        inven.displayDeck();
+                        break;
+
+                    case 6 :
                         if (inven.getDeckInven().size() == 6){
                             System.out.println("");
                             System.out.println("Deck sudah penuh!!! Game dimulaii !!!");
