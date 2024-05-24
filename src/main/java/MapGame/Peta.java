@@ -54,10 +54,10 @@ public class Peta {
         return this.grid[row][col];
     }
 
-    public void plant(Plant toBePlanted,int row, int col) throws Exception {
+    public void plant(Plant toBePlanted, int row, int col) throws Exception {
         Tile tile = this.getTile(row, col);
         if (col <= 0 || col >= 10) {
-            throw new Exception("Tile belum ada lilypad sehingga tidak bisa ditanam");
+            throw new Exception("Tile tidak bisa ditanam di kolom ini");
         }
         if (Sun.getSun() < toBePlanted.getCost()) {
             throw new Exception("Tidak cukup matahari untuk membeli tanaman");
@@ -65,61 +65,74 @@ public class Peta {
         if (toBePlanted.isInCooldown()) {
             throw new Exception("Tanaman " + toBePlanted.getName() + " masih dalam cooldown");
         }
-
-        if (tile.hasPlanted() && !(tile instanceof PoolTile && toBePlanted instanceof Lilypad)) {
+    
+        boolean poolTileHasLilypad = (tile instanceof PoolTile) && ((PoolTile) tile).hasLilypad();
+    
+        if (tile.hasPlanted() && !(tile instanceof PoolTile)) {
             System.out.println("Tile already has a plant.");
             return; // Prevent adding the plant
         }
-
-        if (tile instanceof PoolTile && !(toBePlanted instanceof Lilypad) && !(toBePlanted instanceof TangleKelp)) {
-            if (!tile.hasLilypad()) {
-                System.out.println("Can only plant on top of a Lilypad in PoolTile.");
-                return; // Prevent adding the plant
+    
+        if (tile instanceof PoolTile) {
+            if (toBePlanted instanceof Lilypad || toBePlanted instanceof TangleKelp) {
+                // Allow Lilypad and Tangle Kelp to be planted directly on PoolTile
+            } else {
+                if (!((PoolTile) tile).hasLilypad()) {
+                    System.out.println("Hanya bisa menanam di atas Lilypad di PoolTile.");
+                    return; // Prevent adding the plant
+                }
             }
         }
-
+    
         if (tile instanceof GrassTile && (toBePlanted instanceof Lilypad || toBePlanted instanceof TangleKelp)) {
             throw new Exception("Lilypad dan Tangle Kelp tidak bisa ditanam di GrassTile!");
         }
-
-        boolean pool = row >= 2 && row <= 3 && col!= 0 && col!=10;
+    
+        boolean pool = row >= 2 && row <= 3 && col != 0 && col != 10;
         if (toBePlanted instanceof Lilypad && !pool) {
             throw new Exception("Tile bertanam invalid");
         }
-        boolean base = col==0;
-        if (base){
+        boolean base = col == 0;
+        if (base) {
             throw new Exception("Tanaman tidak bisa ditanam di base !");
         }
-
-        boolean spawn = col==10;
-        if(spawn){
+    
+        boolean spawn = col == 10;
+        if (spawn) {
             throw new Exception("Tanaman tidak bisa ditanam di spawn zombie !");
         }
-
+    
         boolean lilyPlanted = false;
         boolean plantOnTop = false;
         for (Creature creature : grid[row][col].getEntities()) {
             if (creature instanceof Lilypad) {
                 lilyPlanted = true;
-            } else if (creature.getClass().isAssignableFrom(Plant.class)) {
+            } else if (creature instanceof Plant) {
                 plantOnTop = true;
             }
         }
-
-        if (pool && !(toBePlanted instanceof TangleKelp) && !lilyPlanted && !(toBePlanted instanceof Lilypad)) {
-            throw new Exception("Tile bertanam invalid");
+    
+        // Ensure only Tangle Kelp cannot be planted on top of a Lilypad
+        if (lilyPlanted && toBePlanted instanceof TangleKelp) {
+            throw new Exception("Tangle Kelp tidak bisa ditanam di atas Lilypad.");
         }
-
-        if (plantOnTop) {
-            throw new Exception("Tile bertanam invalid");
+    
+        // Allow planting on top of Lilypad for all plants except Tangle Kelp
+        if (lilyPlanted && !(toBePlanted instanceof TangleKelp)) {
+            tile.addCreature(toBePlanted);
+            toBePlanted.setCooldown();
+            Sun.reduceSun(toBePlanted.getCost());
+            System.out.println("Planted " + toBePlanted.getName() + " at (" + row + ", " + col + ")");
+            return;
         }
-
-        //toBePlanted.setCooldown(true);
+    
+        // Default planting
         tile.addCreature(toBePlanted);
         toBePlanted.setCooldown();
         Sun.reduceSun(toBePlanted.getCost());
         System.out.println("Planted " + toBePlanted.getName() + " at (" + row + ", " + col + ")");
     }
+    
 
     public void decrementAllCooldowns() {
         for (Tile[] row : grid) {

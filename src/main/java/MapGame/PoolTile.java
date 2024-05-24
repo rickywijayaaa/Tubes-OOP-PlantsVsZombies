@@ -15,31 +15,30 @@ public class PoolTile extends Tile {
     public boolean getLilyPad_Plant() {
         return this.lilyPad_Plant;
     }
-
-    public void Plant_LilyPad() {
-        this.lilyPad_Plant = true;
+    public void setLilypad(boolean hasLilypad) {
+        this.lilyPad_Plant = hasLilypad;
     }
 
-    public void UnPlant_LilyPad() {
-        this.lilyPad_Plant = false;
-    }
+    // //Butuh Exception kalau belum ada lilipad
+    // public void checkLilyPadBeforePlanting(Creature creature) throws Exception {
+    //     if (!(creature instanceof Lilypad) && !(creature instanceof TangleKelp) && !this.hasLilypad()) {
+    //         throw new Exception("Can only plant on top of a Lilypad in PoolTile, except for TangleKelp.");
+    //     }
+    // }
 
-    //Butuh Exception kalau belum ada lilipad
-    public void checkLilyPadBeforePlanting(Creature creature) throws Exception {
-        if (!(creature instanceof Lilypad) && !(creature instanceof TangleKelp) && !this.hasLilypad()) {
-            throw new Exception("Can only plant on top of a Lilypad in PoolTile, except for TangleKelp.");
+    @Override
+    public void addCreature(Creature creature) {
+        super.addCreature(creature);
+        if (creature instanceof Lilypad) {
+            this.setLilypad(true);
         }
     }
 
-    // @Override
-    // public void addCreature(Creature creature) {
-    //     if (creature instanceof Plant) {
-    //         this.checkLilyPadBeforePlanting(creature);
-    //         if (!(creature instanceof Lilypad) && !this.hasLilypad() || !(creature instanceof TangleKelp) ) {
-    //             System.out.println("Can only plant on top of a Lilypad in PoolTile.");
-    //             return; // Prevent adding the plant
-    //         }
-    //     }
-    //     super.addCreature(creature);
-    // }
+    @Override
+    public void removeCreature(Creature creature) {
+        super.removeCreature(creature);
+        if (creature instanceof Lilypad) {
+            this.setLilypad(false);
+        }
+    }
 }
