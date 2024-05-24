@@ -257,6 +257,8 @@ public class MenuGame {
         System.out.println("| - Sun yang dihasilkan oleh Sunflower    |");
         System.out.println("|   akan langsung disimpan (tidak perlu   |");
         System.out.println("|   diambil manual).                      |");
+        System.out.println("| - Pemain akan memiliki 50 sun di awal   |");
+        System.out.println("|   permainan.                            |");
         System.out.println("| - Pada pagi hari, pemain akan           |");
         System.out.println("|   mendapatkan 25 sun untuk setiap       |");
         System.out.println("|   interval waktu yang acak antara 5-10  |");
@@ -300,6 +302,7 @@ public class MenuGame {
         System.out.println("| - “Start Game” akan memulai game jika   |");
         System.out.println("|   deck telah terisi penuh.              |");
         System.out.println("===========================================");
+
     }
 
     private static void displayCommandList() {
