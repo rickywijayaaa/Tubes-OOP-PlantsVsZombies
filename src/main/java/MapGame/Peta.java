@@ -72,10 +72,7 @@ public class Peta {
         }
 
         if (tile instanceof PoolTile) {
-            if (toBePlanted instanceof TangleKelp) {
-                if (tile.hasLilypad()) {
-                    throw new Exception("Tangle Kelp cannot be planted on top of a Lilypad.");
-                }
+            if (toBePlanted instanceof TangleKelp || toBePlanted instanceof Lilypad) {
             } else {
                 if (!tile.hasLilypad()) {
                     System.out.println("Can only plant on top of a Lilypad in PoolTile.");
@@ -116,8 +113,12 @@ public class Peta {
             throw new Exception("Tile bertanam invalid");
         }
 
-        if (plantOnTop) {
+        if (plantOnTop && !(toBePlanted instanceof TangleKelp)) {
             throw new Exception("Tile bertanam invalid");
+        }
+
+        if (lilyPlanted && toBePlanted instanceof TangleKelp) {
+            throw new Exception("Tangle Kelp cannot be planted on top of a Lilypad.");
         }
 
         //toBePlanted.setCooldown(true);
