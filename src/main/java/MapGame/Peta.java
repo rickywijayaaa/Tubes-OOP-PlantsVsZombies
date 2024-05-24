@@ -47,8 +47,6 @@ public class Peta {
         }
     }
 
-
-
     public Tile getTile(int row, int col) {
         if (row < 0 || row >= 6 || col < 0 || col >= 11) {
             throw new IllegalArgumentException("Indeks di luar batas matriks");
@@ -73,9 +71,11 @@ public class Peta {
             return; // Prevent adding the plant
         }
 
-        if (tile instanceof PoolTile && !tile.hasLilypad() && !(toBePlanted instanceof Lilypad)) {
-            System.out.println("Can only plant on top of a Lilypad in PoolTile.");
-            return; // Prevent adding the plant
+        if (tile instanceof PoolTile && !(toBePlanted instanceof Lilypad) && !(toBePlanted instanceof TangleKelp)) {
+            if (!tile.hasLilypad()) {
+                System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+                return; // Prevent adding the plant
+            }
         }
 
         if (tile instanceof GrassTile && (toBePlanted instanceof Lilypad || toBePlanted instanceof TangleKelp)) {
@@ -106,7 +106,7 @@ public class Peta {
             }
         }
 
-        if (pool && !lilyPlanted && !(toBePlanted instanceof Lilypad)) {
+        if (pool && !(toBePlanted instanceof TangleKelp) && !lilyPlanted && !(toBePlanted instanceof Lilypad)) {
             throw new Exception("Tile bertanam invalid");
         }
 

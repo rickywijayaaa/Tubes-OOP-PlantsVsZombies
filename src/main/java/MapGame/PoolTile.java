@@ -25,9 +25,9 @@ public class PoolTile extends Tile {
     }
 
     //Butuh Exception kalau belum ada lilipad
-    public void checkLilyPadBeforePlanting(Creature creature) {
-        if (!(creature instanceof Lilypad) && !this.hasLilypad()) {
-            System.out.println("Can only plant on top of a Lilypad in PoolTile.");
+    public void checkLilyPadBeforePlanting(Creature creature) throws Exception {
+        if (!(creature instanceof Lilypad) && !(creature instanceof TangleKelp) && !this.hasLilypad()) {
+            throw new Exception("Can only plant on top of a Lilypad in PoolTile, except for TangleKelp.");
         }
     }
 
