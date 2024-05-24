@@ -68,13 +68,13 @@ public class ZombieSpawnThread implements Runnable {
                     }
 
                     int currentTime = ThreadControl.getGameTimerThread().getCurrentGameTime();
-                    if (currentTime > 2 && currentTime < 160 && currentTime % 3 == 0) {
+                    if (currentTime > 20 && currentTime < 155 && currentTime % 3 == 0) {
                         if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
                             spawnZombie(rand, deckzom);
                             zombieCount++;
                             updateMessage();
                         }
-                    } else if (currentTime > 160 && currentTime <= 165) {
+                    } else if (currentTime > 155 && currentTime <= 160) {
                         if(zombieCount == 0){
                             if (waitingForInput.get() && suppressDisplayMap.get()) {
                                 System.out.println("Time right now: " + currentTime);
@@ -82,7 +82,7 @@ public class ZombieSpawnThread implements Runnable {
                             } // entah aku ga seberapa paham ini apa, remove aja kalau gak butu
                             noZombie160 = true;
                             ThreadControl.stopAllThreads();
-                            System.out.println("PLANT WINS,JANGAN LUPA NUBES");
+                            System.out.println("PLANT WINS!!!");
                             MenuGame.Menu();
                             break;
                         }
@@ -100,6 +100,7 @@ public class ZombieSpawnThread implements Runnable {
                     removeDeadEntities(listzombie, listplant);
 
                     if (waitingForInput.get() && suppressDisplayMap.get() && currentTime > 20) {
+                        System.out.println("");
                         System.out.println("Time right now: " + currentTime);
                         peta.displayMap(false);
                     }
@@ -111,7 +112,7 @@ public class ZombieSpawnThread implements Runnable {
 //                            System.out.println("shit");
                             zombieWins = true;
                             ThreadControl.stopAllThreads();
-                            System.out.println("ZOMBIE WINS,YUK NUBES JANGAN MAIN TERUS");
+                            System.out.println("ZOMBIE WINS!!!!");
                             MenuGame.Menu();
 //                            System.exit(0);
                             break;
@@ -131,8 +132,8 @@ public class ZombieSpawnThread implements Runnable {
         int bariszom = rand.nextInt(6);
         int acakzombie = rand.nextInt(deckzom.getZombieDeck().size());
         Zombie zom = deckzom.getZombieDeck().get(acakzombie).clone();
-        System.out.println("\nZombie spawned: " + zom.getName());
-        System.out.println("");
+        // System.out.println("\nZombie spawned: " + zom.getName());
+        // System.out.println("");
 
         if (bariszom == 2 || bariszom == 3) {
             if (zom.isAquatic()) {
