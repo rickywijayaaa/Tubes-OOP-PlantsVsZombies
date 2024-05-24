@@ -52,7 +52,7 @@ public class GameTimerThread implements Runnable {
     }
 
     public void endCurrentGameTime() {
-        gametimer = 0;
+        gametimer = 1000;
     }
 
 //    public boolean isTime160() {
