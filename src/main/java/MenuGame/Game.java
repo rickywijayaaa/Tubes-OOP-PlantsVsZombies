@@ -46,6 +46,7 @@ public class Game {
         // til6.addCreature(sun6);
         // til7.addCreature(sun7);
         // til8.addCreature(sun8);
+        inven.randomDeck();
         System.out.println("");
         System.out.println("Deck tanaman yang dapat kamu gunakan");
         System.out.println("");
