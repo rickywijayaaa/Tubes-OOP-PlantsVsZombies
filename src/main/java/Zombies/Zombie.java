@@ -123,14 +123,14 @@ public abstract class Zombie extends Creature implements Cloneable{
                         nextTile.addCreature(this);
                         tile.removeCreature(this);
                         this.setKoordinat(koorx, nextCol);
-                        this.setSpeed(5);
+                        this.setSpeed(10);
                     } else if (nextCol == 0) {
                         Tile tile = gameMap.getTile(koorx, koory); // Get the current tile
                         Tile nextTile = gameMap.getTile(koorx, nextCol); // Get the next tile
                         nextTile.addCreature(this);
                         tile.removeCreature(this);
                         this.setKoordinat(koorx, nextCol);
-                        this.setSpeed(5);
+                        this.setSpeed(10);
                         // Handle game end condition here if needed
                     } else {
                         // Zombie has reached the end of the map

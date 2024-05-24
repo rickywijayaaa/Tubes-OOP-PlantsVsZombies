@@ -68,7 +68,7 @@ public class ZombieSpawnThread implements Runnable {
                     }
 
                     int currentTime = ThreadControl.getGameTimerThread().getCurrentGameTime();
-                    if (currentTime > 20 && currentTime < 155 && currentTime % 3 == 0) {
+                    if (currentTime > 2 && currentTime < 155 && currentTime % 3 == 0) {
                         if ((rand.nextInt(10) > 2) && (zombieCount < 10)) {
                             spawnZombie(rand, deckzom);
                             zombieCount++;
@@ -184,6 +184,7 @@ public class ZombieSpawnThread implements Runnable {
             Zombie zombie = zombieIterator.next();
             if (!zombie.isAlive()) {
                 zombie.die(peta);
+                System.out.println(" ");
                 System.out.println(zombie.getName() + " has died!!");
                 zombieIterator.remove();
             }
@@ -194,6 +195,7 @@ public class ZombieSpawnThread implements Runnable {
             Plant plant = plantIterator.next();
             if (!plant.isAlive()) {
                 plant.die(peta);
+                System.out.println(" ");
                 System.out.println(plant.getName() + " has died!!");
                 plantIterator.remove();
             }
