@@ -9,13 +9,6 @@ public class TangleKelp extends Plant {
         super("Tangle Kelp", 100, 5000, 0,true,x,y,true,25, 1, 5);
     }
 
-    // Implementing abstract method dari Plant class
-    // @Override
-    // public void attack(Zombie zom,Peta peta) {
-    //     // Tangle Kelp menyerang dengan entangling dan eliminating satu aquatic zombie
-    //     System.out.println(getName() + " entangles and eliminates a single aquatic zombie!");
-    // }
-
     // Implementing abstract method dari Creature class
     @Override
     public void move() {
@@ -27,7 +20,6 @@ public class TangleKelp extends Plant {
     public void resetCooldown(double newcooldown) {
         // Tangle Kelp tidak memiliki cooldowns, jadi method tidak melakukan apapun
     }
-
 
     public void attack2(Peta peta){
         int startRow = this.getKoordinat().getX();
@@ -46,8 +38,6 @@ public class TangleKelp extends Plant {
                 }
             }
         }
-        
-
     }
 }
 

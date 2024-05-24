@@ -27,8 +27,6 @@ public class Squash extends Plant {
                 }
             }
         }
-        
-
     }
 
     // Implementing abstract method dari Creature class

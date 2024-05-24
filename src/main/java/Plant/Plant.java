@@ -12,11 +12,9 @@ public abstract class Plant extends Creature {
     private int cost;
     private int range;
     private double cooldown;
-
-    
+   
     static HashMap<Class<? extends Plant> , Double> cooldownMap = new HashMap<>();
    
-
     public Plant(String name, int health, int attackDamage, double attackSpeed, boolean isAquatic,int x , int y,boolean isAlive,int cost,int range, double cooldown) {
         super(name,health, attackDamage, attackSpeed, isAquatic,x,y,isAlive);
         this.cost = cost;
@@ -28,13 +26,6 @@ public abstract class Plant extends Creature {
     }
 
     public boolean isInCooldown() {
-        // if (timemilis - this.getTimeCreated()% cooldown == 0){
-        //     return true;
-        // }
-        // else{
-        //     return false;
-        // }
-        // return false;
         double remainingCooldown = cooldownMap.get(this.getClass());
         boolean inCooldown = remainingCooldown > 0;
 
@@ -58,7 +49,6 @@ public abstract class Plant extends Creature {
             }
             cooldownMap.put(this.getClass(), remainingCooldown);
         }
-        // System.out.println("Decrementing cooldown for " + this.getClass().getSimpleName() + ": " + remainingCooldown + " seconds remaining");
     }
 
     // Getter methods untuk atribut tambahan
@@ -114,9 +104,7 @@ public abstract class Plant extends Creature {
     return zombiesInRange;
     }
 
-
     // Get Tile buat attack
-
     public Tile getTileAttack(Plant plant, Peta peta){
         int col = plant.getKoordinat().getX();
         int row = plant.getKoordinat().getY();
@@ -144,13 +132,6 @@ public abstract class Plant extends Creature {
         }
         return null;
     }
-
-    // public void attackZom(Zombie zom,Peta peta) {
-    //     // Implementing attack behavior untuk Peashooter
-    //     if(zom.getIsAlive()){
-    //         zom.setHealth(getAttackDamage());
-    //     }
-    // }
 }
 
 

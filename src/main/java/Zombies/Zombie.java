@@ -154,7 +154,6 @@ public abstract class Zombie extends Creature implements Cloneable{
             throw new AssertionError(); // Can't happen
         }
     }
-
 }
 
 

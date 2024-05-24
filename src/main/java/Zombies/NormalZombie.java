@@ -8,8 +8,6 @@ public class NormalZombie extends Zombie {
         super("Normal Zombie", 125, 100, 1, false,x,y, true,0, 10);
     }
 
-
-
     // Implementing abstract method from Creature class
     @Override
     public void resetCooldown(double newcooldown){
@@ -30,7 +28,6 @@ public class NormalZombie extends Zombie {
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
         pl.setHealth(getAttackDamage());
-        //System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
     }
 }
 
