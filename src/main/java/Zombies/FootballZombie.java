@@ -7,7 +7,7 @@ import Koordinat.*;
 
 public class FootballZombie extends Zombie {
     public FootballZombie(int x, int y) {
-        super("Football Zombie" ,300,100,7,false,x,y,true,0,3);
+        super("Football Zombie" ,300,100,7,false,x,y,true,0,5);
     }
 
 
