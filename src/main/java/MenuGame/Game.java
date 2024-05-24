@@ -77,6 +77,10 @@ public class Game {
                 case 1:
                     int choose4 = scanner.nextInt();
                     // waitingForInput.set(true);
+                    if(choose4 < 1 || choose4 > 6){
+                        System.out.println(" ");
+                        System.out.println("Input invalid");
+                    }
                     suppressDisplayMap.set(false);
                     plantSelectedPlant(scanner, inven, peta, choose4);
                     waitingForInput.set(false);
