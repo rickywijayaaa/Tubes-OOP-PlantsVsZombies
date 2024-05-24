@@ -302,7 +302,6 @@ public class MenuGame {
         System.out.println("| - “Start Game” akan memulai game jika   |");
         System.out.println("|   deck telah terisi penuh.              |");
         System.out.println("===========================================");
-
     }
 
     private static void displayCommandList() {
