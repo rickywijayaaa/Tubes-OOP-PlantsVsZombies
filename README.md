@@ -35,13 +35,16 @@
                           `--------` '.(_,_).'   `--------` '.(_,_).' `---'      '.(_,_).' '--'    '--'            
 
 
-#Deskripsi Program
-Michael vs Lalapan adalah game versi sederhana dari permainan populer Plant vs Zombie. Tujuan dari permainan ini adalah melindungi rumah pemain dari serangan zombie. Untuk mewujudkan hal tersebut, disediakan beberapa tanaman yang mampu menyerang zombie. Pemain harus menanam tanaman secara strategis untuk melindungi rumah dari serangan zombie. Setiap tanaman dan zombie memiliki aksi dan atribut nya masing - masing.
+## Deskripsi Program
+Michael vs Lalapan adalah game versi sederhana dari permainan populer Plant vs Zombie. Tujuan dari permainan ini adalah melindungi rumah pemain dari serangan zombie. Untuk mewujudkan hal tersebut, disediakan beberapa tanaman yang mampu menyerang zombie. Pemain harus menanam tanaman secara strategis untuk melindungi rumah dari serangan zombie. Setiap tanaman dan zombie memiliki aksi dan atributnya masing-masing.
 
-##How to Run:
-1. Clone this repository in your directory
-    ```sh git clone https://github.com/rickywijayaaa/Tubes-OOP-PlantsVsZombies.git
+## How to Run:
+1. Clone this repository in your directory:
+   ```sh
+   git clone https://github.com/rickywijayaaa/Tubes-OOP-PlantsVsZombies.git
 
-###2. Run the program by using this command
-    ```sh ./gradlew run
+## How to Run:
+2. Run the program by using this command
+    ```sh 
+    ./gradlew run
 
