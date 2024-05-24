@@ -11,8 +11,6 @@ import Thread.*;
 import java.util.concurrent.*;
 import java.util.Scanner;
 
-import javax.management.monitor.GaugeMonitor;
-
 
 
 public class  App {
@@ -25,7 +23,7 @@ public class  App {
         Peta peta = new Peta();
         Inventory inven = new Inventory(peta);
         MenuGame.Menu();
-        Game.play(inven);
+        //Game.play(inven);
     }
 }    
 
