@@ -8,8 +8,6 @@ public class BucketheadZombie extends Zombie {
         super("Buckethead Zombie", 300,100, 1, false,x,y,true, 0, 10);
     }
 
-
-
     // Implementasi abstract method 
     @Override
     public void resetCooldown(double newcooldown){
@@ -28,7 +26,6 @@ public class BucketheadZombie extends Zombie {
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
         pl.setHealth(getAttackDamage());
-        //System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
     }
 }
 

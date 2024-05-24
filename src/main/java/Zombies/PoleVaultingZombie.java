@@ -39,7 +39,6 @@ public class PoleVaultingZombie extends Zombie {
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
         pl.setHealth(getAttackDamage());
-        //System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
     }
 
     public void jump(Peta gameMap) {

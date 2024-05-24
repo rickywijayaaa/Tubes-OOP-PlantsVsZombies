@@ -11,12 +11,6 @@ public class Sunflower extends Plant {
         super("Sunflower", 100, 0, 0, false,x,y,true,50, 0, 3);
     }
 
-
-    // @Override
-    // public void attack(Zombie zom,Peta peta){
-
-    // }
-
     public void act() {
         if(getCooldown()== 0){
             Sun.addSun();

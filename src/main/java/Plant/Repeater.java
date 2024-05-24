@@ -8,8 +8,6 @@ public class Repeater extends Plant {
         super("Repeater", 300, 20, 1,false,x,y,true,200, 3, 0.5);
     }
 
-
-
     // Implementing abstract method dari Creature class
     @Override
     public void move() {
@@ -37,6 +35,5 @@ public class Repeater extends Plant {
                 }
             }
         }
-    
     }
 }

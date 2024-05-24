@@ -9,13 +9,6 @@ public class Wallnut extends Plant {
         super("Wallnut", 1000, 0, 0, false,x,y,true, 50, 0, 20);
     }
 
-    // Implementing abstract method dari Plant class
-    // @Override
-    // public void attack(Zombie zom,Peta peta) {
-    //     // Wall-nut tidak memiliki attack action karena merupakan defensive plant
-    //     System.out.println(getName() + " can't attack");
-    // }
-
     // Implementing abstract method dari Creature class
     @Override
     public void move() {

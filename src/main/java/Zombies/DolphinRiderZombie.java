@@ -38,7 +38,6 @@ public class DolphinRiderZombie extends Zombie {
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
         pl.setHealth(getAttackDamage());
-        //System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
     }
 
     // fungsi

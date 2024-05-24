@@ -7,8 +7,6 @@ public class FlagZombie extends Zombie {
         super("Flag Zombie",300,50,1,false,x,y,true,0,10);
     }
 
-
-
     // Implementasi abstract method 
     @Override
     public void resetCooldown(double newcooldown){
@@ -27,7 +25,6 @@ public class FlagZombie extends Zombie {
     public void attack(Plant pl) {
         // Implementasi attack untuk zombie
         pl.setHealth(getAttackDamage());
-        //System.out.println(this.getName() + " attacked " + pl.getName() + " reducing its health to " + pl.getHealth());
     }
 }
 
