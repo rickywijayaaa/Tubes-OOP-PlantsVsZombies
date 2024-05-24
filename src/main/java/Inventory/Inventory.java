@@ -97,4 +97,21 @@ public class Inventory<T extends Plant> {
             Tile tile = peta.getTile(koorx,koory);
             tile.addCreature(plant);
     }
+
+
+    public void randomDeck(){
+        Repeater sun1 = new Repeater(0,0);
+        CherryBomb sun2 = new CherryBomb(0,0);
+        Sunflower sun3 = new Sunflower(0,0);
+        SnowPea sun4 = new SnowPea(0,0);
+        Squash sun5 = new Squash(0,0);
+        Peashooter sun6 = new Peashooter(0,0);
+        deck.add((T)sun1);
+        deck.add((T)sun2);
+        deck.add((T)sun3);
+        deck.add((T)sun4);
+        deck.add((T)sun5);
+        deck.add((T)sun6);
+        
+    }
 }
