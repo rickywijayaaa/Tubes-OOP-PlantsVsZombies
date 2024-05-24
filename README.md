@@ -6,7 +6,6 @@
 - 18222051 Firsa Athaya Raissa Alifah
 - 18222061 Winata Tristan
 
-## ASCII Art
                         ,---.    ,---..-./`)     _______   .---.  .---.    ____        .-''-.    .---.             
                         |    \  /    |\ .-.')   /   __  \  |   |  |_ _|  .'  __ `.   .'_ _   \   | ,_|             
                         |  ,  \/  ,  |/ `-' \  | ,_/  \__) |   |  ( ' ) /   '  \  \ / ( ` )   ',-./  )             
@@ -39,10 +38,10 @@
 #Deskripsi Program
 Michael vs Lalapan adalah game versi sederhana dari permainan populer Plant vs Zombie. Tujuan dari permainan ini adalah melindungi rumah pemain dari serangan zombie. Untuk mewujudkan hal tersebut, disediakan beberapa tanaman yang mampu menyerang zombie. Pemain harus menanam tanaman secara strategis untuk melindungi rumah dari serangan zombie. Setiap tanaman dan zombie memiliki aksi dan atribut nya masing - masing.
 
-#How to Run:
+##How to Run:
 1. Clone this repository in your directory
-    ```sh
-$ git clone https://github.com/rickywijayaaa/Tubes-OOP-PlantsVsZombies.git
-##2. Run the program by using this command
-$ ./gradlew run
+    ```sh git clone https://github.com/rickywijayaaa/Tubes-OOP-PlantsVsZombies.git
+
+###2. Run the program by using this command
+    ```sh ./gradlew run
 
