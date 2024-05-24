@@ -58,6 +58,15 @@ public class Inventory<T extends Plant> {
         inven.set(index2, temPlant);
     }
 
+
+    
+    public void swapPlantDeck(int index1, int index2){
+        T tempPlant = deck.get(index1);
+        deck.set(index1, deck.get(index2));
+        deck.set(index2, tempPlant);
+    }
+    
+
     public void deletePlant(int index){
         if (index >= 0 && index < deck.size()){
             T plant = deck.remove(index);
